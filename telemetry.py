@@ -27,7 +27,7 @@ def main():
 
     # WRITE TO CSV 
     data_line = [temp_result, total_mem, free_mem, total_storage, free_storage]
-    csv_file = "/telemetry.csv"
+    csv_file = "telemetry.csv"
     with open(csv_file, mode='a') as file:
         writer = csv.writer(file)
         writer.writerow(data_line)
