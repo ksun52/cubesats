@@ -11,6 +11,8 @@ lines = result.strip().split('\n')
 data = lines[1].split()
 Total_Mem = float(data[1])
 Free_Mem = float(data[3])
+print(Total_Mem)
+print(Free_Mem)
 
 # GET STORAGE DATA
 command = 'df -h'
@@ -19,5 +21,7 @@ lines = result.strip().split('\n')
 data = lines[1].split()
 Total_Storage = data[1]
 Free_Storage = data[3]
+print(Total_Storage)
+print(Free_Storage)
 
 # WRITE TO CSV 
