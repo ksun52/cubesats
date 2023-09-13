@@ -1,6 +1,7 @@
 import csv
 import time 
 import subprocess
+from temp_test import sensor_temperature
 
 def main():
     starttime = time.time()
@@ -18,8 +19,11 @@ def main():
         # GET STORAGE DATA
         total_storage, free_storage = storage_data()
 
+        # GET SENSOR TEMP
+        sensor_temp = sensor_temperature()
+
         # WRITE TO CSV 
-        data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage]
+        data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage, sensor_temp]
         write_line(data_line)
 
         # data collection runs once every 10 seconds
@@ -30,10 +34,11 @@ def main():
 
 
 def write_line(new_data):
-    csv_file = "telemetry.csv"
-    with open(csv_file, mode='a') as file:
-        writer = csv.writer(file)
-        writer.writerow(new_data)
+    #csv_file = "telemetry.csv"
+    #with open(csv_file, mode='a') as file:
+    #    writer = csv.writer(file)
+    #    writer.writerow(new_data)
+    print(new_data)
 
 
 def temperature():
