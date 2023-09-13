@@ -28,7 +28,7 @@ def main():
 
         # data collection runs once every 10 seconds
         # remove the time taken by code to execute 
-        time.sleep(10.0 - ((time.time() - starttime) % 10.0))
+        time.sleep(4.0 - ((time.time() - starttime) % 4.0))
 
         i += 1 
 
@@ -60,6 +60,9 @@ def mem_data():
     return total_mem, free_mem
 
 
+"""
+TO DO - just use df and free and figure out what unit those are in (that is just the raw data)
+"""
 def storage_data():
     command = 'df -h'
     result = subprocess.check_output(command, shell=True, universal_newlines=True)
