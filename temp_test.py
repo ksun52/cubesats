@@ -37,7 +37,7 @@ def read_temp():
     return temp_c
 
 # Initialize I2C (SMBus)
-bus = smbus.SMBus(i2c_ch)
+bus = smbus2.SMBus(i2c_ch)
 
 # Read the CONFIG register (2 bytes)
 val = bus.read_i2c_block_data(i2c_address, reg_config, 2)
