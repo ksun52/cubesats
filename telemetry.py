@@ -4,8 +4,10 @@ import subprocess
 
 def main():
     starttime = time.time()
-
-    while(True):
+    i = 0
+    while(i < 10):
+        # TIME
+        timestamp = time.time()
         
         #GET CPU TEMPERATURE (in celsius)
         cpu_temp = temperature()
@@ -17,12 +19,14 @@ def main():
         total_storage, free_storage = storage_data()
 
         # WRITE TO CSV 
-        data_line = [cpu_temp, total_mem, free_mem, total_storage, free_storage]
+        data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage]
         write_line(data_line)
 
         # data collection runs once every 10 seconds
         # remove the time taken by code to execute 
         time.sleep(10.0 - ((time.time() - starttime) % 10.0))
+
+        i += 1 
 
 
 def write_line(new_data):
