@@ -6,7 +6,7 @@ from temp_test import sensor_temperature
 def main():
     starttime = time.time()
     i = 0
-    while(i < 10):
+    while(True):
         # TIME
         timestamp = time.time()
         
