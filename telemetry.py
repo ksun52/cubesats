@@ -1,7 +1,7 @@
 import csv
 import time 
 import subprocess
-from temp_test import sensor_temperature
+from temperature import sensor_temperature
 
 def main():
     starttime = time.time()
