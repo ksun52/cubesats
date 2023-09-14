@@ -2,10 +2,10 @@ import serial
 
 from ublox_gps import UbloxGps
 
-port = serial.Serial('/dev/tty1', baudrate=38400, timeout=1)
-gps = UbloxGps(port)
+def gpsdata():
 
-def run():
+    port = serial.Serial('/dev/tty1', baudrate=38400, timeout=1) #Baud could be 115200 instead
+    gps = UbloxGps(port)
 
     try:
         print("Listening for UBX Messages")
@@ -21,4 +21,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    gpsdata()

@@ -2,6 +2,7 @@ import csv
 import time 
 import subprocess
 from temperature import sensor_temperature
+from gps import gpsdata
 
 def main():
     starttime = time.time()
@@ -22,8 +23,11 @@ def main():
         # GET SENSOR TEMP
         sensor_temp = sensor_temperature()
 
+        # GET GPS DATA
+        lat, lon, vel = gpsdata()
+
         # WRITE TO CSV 
-        data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage, sensor_temp]
+        data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage, sensor_temp, lat, lon, vel]
         write_line(data_line)
 
         # data collection runs once every 10 seconds
