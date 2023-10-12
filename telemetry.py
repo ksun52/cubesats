@@ -1,34 +1,57 @@
+import os
 import csv
 import time 
+import datetime
 import subprocess
-from temperature import sensor_temperature
-from gps import gpsdata
+import temperature
+# import gps
+from pathlib import Path
 
 def main():
     starttime = time.time()
+    value = datetime.datetime.fromtimestamp(starttime)
+    date = value.strftime('%Y-%m-%d_%H:%M:%S')
+    filename = f"telemetry_{date}.csv"
+
+    csv_file = create_file(filename) # returns a path to the CSV file we need to write to 
+
     i = 0
     while(True):
         # TIME
         timestamp = time.time()
         
         #GET CPU TEMPERATURE (in celsius)
-        cpu_temp = temperature()
+        try:
+            cpu_temp = cpu_temperature()
+        except:
+            cpu_temp = None
+        
 
         #GET MEMORY DATA 
-        total_mem, free_mem = mem_data()
+        try:
+            total_mem, free_mem = mem_data()
+        except:
+            total_mem, free_mem = None, None
 
         # GET STORAGE DATA
-        total_storage, free_storage = storage_data()
+        try:
+            total_storage, free_storage = storage_data()
+        except:
+            total_storage, free_storage = None
 
         # GET SENSOR TEMP
-        sensor_temp = sensor_temperature()
+        try:
+            sensor_temp = temperature.sensor_temp()
+        except:
+            sensor_temp = None
 
         # GET GPS DATA
-        lat, lon, vel = gpsdata()
+        # lat, lon, vel = gps.gpsdata()
+        lat, lon, vel = None, None, None
 
         # WRITE TO CSV 
         data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage, sensor_temp, lat, lon, vel]
-        write_line(data_line)
+        write_line(data_line, csv_file)
 
         # data collection runs once every 10 seconds
         # remove the time taken by code to execute 
@@ -37,18 +60,19 @@ def main():
         i += 1 
 
 
-def write_line(new_data):
-    #csv_file = "telemetry.csv"
-    #with open(csv_file, mode='a') as file:
-    #    writer = csv.writer(file)
+def write_line(new_data, csv_file):
+    with open(csv_file, mode='a') as file:
+       writer = csv.writer(file)
     #    writer.writerow(new_data)
-    print(new_data)
+       writer.writerow(["None" if data is None else data for data in new_data])
+    
 
 
-def temperature():
+def cpu_temperature():
     command = "vcgencmd measure_temp | egrep -o '[0-9]*\.[0-9]*'"   # only pull out the number from string
     temp_result = float(subprocess.check_output(command, shell=True, universal_newlines=True))
     return temp_result
+
 
 
 def mem_data():
@@ -86,6 +110,22 @@ def strip_shell_result(shell_result):
     data = lines[1].split()
     return data
 
+
+def create_file(filename):
+    csv_file = Path("telemetry", filename)
+    counter = 1
+    
+    while csv_file.exists():
+        new_name = f"{filename}_({counter})"
+        csv_file = Path("telemetry", new_name)
+        counter += 1
+
+    with open(csv_file, 'w', newline='') as csvfile:
+        # Write the header row
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(["time", "temp_result", "total_mem", "free_mem", "total_storage", "free_storage"]) 
+
+    return csv_file
 
 if __name__ == "__main__":
     main()
