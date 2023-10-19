@@ -14,37 +14,62 @@ pID = data[currentIndex:currentIndex+4]
 currentIndex = currentIndex+4
 
 sID = data[currentIndex:currentIndex+4]
+sID_decimal = int(sID,16)
 currentIndex = currentIndex+4
 
 flags = data[currentIndex:currentIndex+2]
+flags_decimal = int(flags,16)
 currentIndex = currentIndex+2
 
-# stored in wrong -> converted to good endian
+# stored in wrong -> converted to good endian for byte size
 length = data[currentIndex:currentIndex+4] #f500 
-length = length[2:] + length[0:2]
-length = int(length, 16)
+length_decimal = length[2:] + length[0:2] # converts to big endian
+length_decimal = int(length_decimal, 16) # converts hexa to decimal
 currentIndex = currentIndex+4
 
-headerChecksum = data[currentIndex:currentIndex+4]
+# Fletcher 16 implementation for header checksum
+sum1 = 0
+sum2 = 0
+for i in range(0,18,2):
+    sum1 = (sum1 + int(data[i:i+2],16)) % 255
+    sum2 = (sum2 + sum1) % 255
+headerChecksum_F16_decimal = (sum2 << 8) | sum1
 
-dataBytes = length - 17
+headerChecksum = data[currentIndex:currentIndex+4]
+headerChecksum = headerChecksum[2:] + headerChecksum[0:2] # converts to big endian
+headerChecksum_decimal = int(headerChecksum,16)
+
+dataBytes = length_decimal - 17
 realData = data[currentIndex:currentIndex+dataBytes*2]
+
 currentIndex = currentIndex+dataBytes*2
 
 checksum = data[currentIndex:currentIndex+4]
+checksum_decimal = int(checksum,16)
 currentIndex = currentIndex+4
+
+# Fletcher 16 implementation for data checksum
+sum1 = 0
+sum2 = 0
+for i in range(22,22+dataBytes*2,2):
+    sum1 = (sum1 + int(data[i:i+2],16)) % 255
+    sum2 = (sum2 + sum1) % 255
+dataChecksum_F16_decimal = (sum2 << 8) | sum1
 
 HMAC = data[currentIndex:currentIndex+8]
 currentIndex = currentIndex+8
 
 print('Sync Characters: ' + syncChars)
 print('pID: ' + pID)
-print('sID: ' + sID)
-print('flags: ' + flags)
-print('length (bytes): ' + str(length))
-print('Header Checksum: ' + headerChecksum)
+print('sID (decimal): ' + str(sID_decimal))
+print('flags (decimal): ' + str(flags_decimal))
+print('length (bytes): ' + length)
+print('Header Checksum (decimal): ' + str(headerChecksum_decimal))
+print('Header Checksum (Fletcher-16, decimal): ' + str(headerChecksum_F16_decimal))
 print('Data: ' + realData)
-print('Checksum: ' + checksum)
+print('Data Checksum (decimal): ' + str(checksum_decimal))
+print('Data Checksum Fletcher 16 (decimal): ' + str(dataChecksum_F16_decimal))
 print('HMAC: ' + HMAC)
 print('Full Header: ' + syncChars + pID + sID + flags + str(length) + headerChecksum)
 print('Footer: ' + checksum + HMAC)
+
