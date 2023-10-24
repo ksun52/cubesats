@@ -2,8 +2,6 @@ from math import sqrt
 import pdb
 # documentation link: https://docs.google.com/spreadsheets/d/1UO--kbqhnvFxWSW4DkALG8KMoHwPn-7fcskuqaRLpkQ/edit#gid=0
 
-<<<<<<< HEAD
-
 
 def little_to_big_endian(little_endian_hex):
     # Convert little-endian hex string to bytes
