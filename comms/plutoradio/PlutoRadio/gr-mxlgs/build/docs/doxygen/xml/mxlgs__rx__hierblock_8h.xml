@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="mxlgs__rx__hierblock_8h" kind="file" language="C++">
+    <compoundname>mxlgs_rx_hierblock.h</compoundname>
+    <includes refid="api_8h" local="no">mxlgs/api.h</includes>
+    <includes local="no">gnuradio/hier_block2.h</includes>
+    <incdepgraph>
+      <node id="42">
+        <label>gnuradio/hier_block2.h</label>
+      </node>
+      <node id="40">
+        <label>mxlgs/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="39">
+        <label>mxlgs_rx_hierblock.h</label>
+        <link refid="mxlgs__rx__hierblock_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1mxlgs_1_1mxlgs__rx__hierblock" prot="public">gr::mxlgs::mxlgs_rx_hierblock</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1mxlgs">gr::mxlgs</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_rx_hierblock.h"/>
+  </compounddef>
+</doxygen>

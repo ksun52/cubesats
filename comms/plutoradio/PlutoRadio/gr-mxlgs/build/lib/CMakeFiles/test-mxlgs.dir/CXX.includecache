@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/plutoradio/PlutoRadio/gr-mxlgs/lib/qa_mxlgs.cc
+qa_mxlgs.h
+/home/pi/plutoradio/PlutoRadio/gr-mxlgs/lib/qa_mxlgs.h
+
+/home/pi/plutoradio/PlutoRadio/gr-mxlgs/lib/qa_mxlgs.h
+gnuradio/attributes.h
+-
+cppunit/TestSuite.h
+-
+
+/home/pi/plutoradio/PlutoRadio/gr-mxlgs/lib/test_mxlgs.cc
+config.h
+/home/pi/plutoradio/PlutoRadio/gr-mxlgs/lib/config.h
+cppunit/TextTestRunner.h
+-
+cppunit/XmlOutputter.h
+-
+gnuradio/unittests.h
+-
+qa_mxlgs.h
+/home/pi/plutoradio/PlutoRadio/gr-mxlgs/lib/qa_mxlgs.h
+iostream
+-
+fstream
+-
+

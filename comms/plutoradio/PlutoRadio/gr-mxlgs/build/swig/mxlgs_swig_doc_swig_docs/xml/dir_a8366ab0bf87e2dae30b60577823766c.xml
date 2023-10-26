@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_a8366ab0bf87e2dae30b60577823766c" kind="dir">
+    <compoundname>/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs</compoundname>
+    <innerfile refid="api_8h">api.h</innerfile>
+    <innerfile refid="mxlgs__ax25__packetization_8h">mxlgs_ax25_packetization.h</innerfile>
+    <innerfile refid="mxlgs__doppler__correction__cc_8h">mxlgs_doppler_correction_cc.h</innerfile>
+    <innerfile refid="mxlgs__evmest__cf_8h">mxlgs_evmest_cf.h</innerfile>
+    <innerfile refid="mxlgs__rx__hierblock_8h">mxlgs_rx_hierblock.h</innerfile>
+    <innerfile refid="mxlgs__stream__to__pdu_8h">mxlgs_stream_to_pdu.h</innerfile>
+    <innerfile refid="mxlgs__tx__hierblock_8h">mxlgs_tx_hierblock.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/"/>
+  </compounddef>
+</doxygen>

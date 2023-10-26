@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="mxlgs__evmest__cf_8h" kind="file" language="C++">
+    <compoundname>mxlgs_evmest_cf.h</compoundname>
+    <includes refid="api_8h" local="no">mxlgs/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">gnuradio/digital/constellation.h</includes>
+    <includes local="no">math.h</includes>
+    <incdepgraph>
+      <node id="33">
+        <label>mxlgs/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="36">
+        <label>gnuradio/digital/constellation.h</label>
+      </node>
+      <node id="34">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="37">
+        <label>math.h</label>
+      </node>
+      <node id="32">
+        <label>mxlgs_evmest_cf.h</label>
+        <link refid="mxlgs__evmest__cf_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classmxlgs__evmest__cf" prot="public">mxlgs_evmest_cf</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mxlgs__evmest__cf_8h_1ae8c36623010df067875d3eed4110af9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> mxlgs_evmest_cf_sptr</type>
+        <definition>MXLGS_API mxlgs_evmest_cf_sptr mxlgs_make_evmest_cf</definition>
+        <argsstring>(unsigned int npoints, unsigned int lvec, gr::digital::constellation_sptr cnst)</argsstring>
+        <name>mxlgs_make_evmest_cf</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>npoints</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>lvec</declname>
+        </param>
+        <param>
+          <type>gr::digital::constellation_sptr</type>
+          <declname>cnst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="17" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h"/>
+  </compounddef>
+</doxygen>

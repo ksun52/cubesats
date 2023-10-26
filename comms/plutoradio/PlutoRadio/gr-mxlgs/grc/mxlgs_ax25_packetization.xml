@@ -1,0 +1,55 @@
+<?xml version = "1.0"?>
+<block>
+	<name>AX25 Packetization</name>
+	<key>mxlgs_ax25_packetization</key>
+	<category>MXLGS</category>
+	<import>import mxlgs</import>
+	<import>from gnuradio import gr</import>
+	<make>mxlgs.ax25_packetization($start_tx_delay, $end_tx_delay, $bit_oversampling, $interp, $decim)</make>
+	<callback></callback>
+
+	<param>
+		<name>Start Tx Delay</name>
+		<key>start_tx_delay</key>
+		<value>2500</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>End Tx Delay</name>
+		<key>end_tx_delay</key>
+		<value>100</value>
+		<type>int</type>
+	</param>
+
+	<param>
+		<name>Bit Oversampling</name>
+		<key>bit_oversampling</key>
+		<value>1.0</value>
+		<type>float</type>
+	</param>
+
+	<param>
+		<name>Decimation</name>
+		<key>decim</key>
+		<value>1.0</value>
+		<type>float</type>
+	</param>
+
+	<param>
+		<name>Interpolation</name>
+		<key>interp</key>
+		<value>1.0</value>
+		<type>float</type>
+	</param>
+
+	<sink>
+		<name>in</name>
+		<type>byte</type>
+	</sink>
+
+	<source>
+		<name>out</name>
+		<type>byte</type>
+	</source>
+</block>
