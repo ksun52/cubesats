@@ -45,9 +45,9 @@ def decode_RAP(data):
     print('current index: ' + str(dataBytes))
     currentIndex = currentIndex+dataBytes*2
 
-    checksum = data[currentIndex:currentIndex+4]
-    checksum = checksum[2:] + checksum[0:2] # converts to big endian
-    checksum_decimal = int(checksum,16)
+    checksum = data[currentIndex:currentIndex+4]    # little endian 
+    checksum_BE = checksum[2:] + checksum[0:2] # converts to big endian
+    checksum_decimal = int(checksum_BE,16)
     currentIndex = currentIndex+4
 
     # Fletcher 16 implementation for data checksum

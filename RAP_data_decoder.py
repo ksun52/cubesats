@@ -16,6 +16,15 @@ def little_to_big_endian(little_endian_hex):
     
     return big_endian_hex
 
+def unsigned_int(hex_string):
+    # Convert hexadecimal string to signed integer
+    signed_integer = int(hex_string, 16)
+
+    # Apply two's complement for negative values
+    bit_length = len(hex_string) * 4  # Calculate the number of bits in the hexadecimal string
+    if signed_integer & (1 << (bit_length - 1)):
+        signed_integer -= 1 << bit_length
+    return signed_integer
 
 def decode_data(data):
     # convert to big endian 
@@ -53,15 +62,18 @@ def decode_data(data):
 
     start = 150*2
     dist = 2*2
-    pos_Y_mag_X = int(little_to_big_endian(data[start:start+dist]), 16)
+    # pos_Y_mag_X = int(little_to_big_endian(data[start:start+dist]), 16)
+    pos_Y_mag_X = unsigned_int(little_to_big_endian(data[start:start+dist]))
 
     start = 152*2
     dist = 2*2
-    pos_Y_mag_Y = int(little_to_big_endian(data[start:start+dist]), 16)
+    # pos_Y_mag_Y = int(little_to_big_endian(data[start:start+dist]), 16)
+    pos_Y_mag_Y = unsigned_int(little_to_big_endian(data[start:start+dist]))
 
     start = 154*2
     dist = 2*2
-    pos_Y_mag_Z = int(little_to_big_endian(data[start:start+dist]), 16)
+    # pos_Y_mag_Z = int(little_to_big_endian(data[start:start+dist]), 16)
+    pos_Y_mag_Z = unsigned_int(little_to_big_endian(data[start:start+dist]))
 
 
     RTC_Unix_Time_conv = RTC_Unix_Time
