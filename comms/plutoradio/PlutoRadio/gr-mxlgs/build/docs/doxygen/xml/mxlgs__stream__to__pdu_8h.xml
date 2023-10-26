@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="mxlgs__stream__to__pdu_8h" kind="file" language="C++">
+    <compoundname>mxlgs_stream_to_pdu.h</compoundname>
+    <includes refid="api_8h" local="no">mxlgs/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">gnuradio/blocks/pdu.h</includes>
+    <includes local="no">assert.h</includes>
+    <incdepgraph>
+      <node id="49">
+        <label>assert.h</label>
+      </node>
+      <node id="45">
+        <label>mxlgs/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>gnuradio/blocks/pdu.h</label>
+      </node>
+      <node id="47">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="46">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="44">
+        <label>mxlgs_stream_to_pdu.h</label>
+        <link refid="mxlgs__stream__to__pdu_8h"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classmxlgs__stream__to__pdu" prot="public">mxlgs_stream_to_pdu</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="mxlgs__stream__to__pdu_8h_1a65f2af54195a74dd91a96ddb0254dbf8" prot="public" static="no">
+        <name>MAX_PACKET_LEN</name>
+        <initializer>16384</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="32" column="9" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mxlgs__stream__to__pdu_8h_1a2413cea4c55ac25061d43c1bd5e4aef0" prot="public" static="no">
+        <name>MIN_PACKET_LEN</name>
+        <initializer>17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="33" column="9" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mxlgs__stream__to__pdu_8h_1af8bfae90c5d6853fcfb487e05b9f50c8" prot="public" static="no">
+        <name>FLAG</name>
+        <initializer>0x7E</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="34" column="9" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mxlgs__stream__to__pdu_8h_1a88e45326a564ff7ecf94c743e374759f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> mxlgs_stream_to_pdu_sptr</type>
+        <definition>MXLGS_API mxlgs_stream_to_pdu_sptr mxlgs_make_stream_to_pdu</definition>
+        <argsstring>(bool mode)</argsstring>
+        <name>mxlgs_make_stream_to_pdu</name>
+        <param>
+          <type>bool</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="39" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h"/>
+  </compounddef>
+</doxygen>

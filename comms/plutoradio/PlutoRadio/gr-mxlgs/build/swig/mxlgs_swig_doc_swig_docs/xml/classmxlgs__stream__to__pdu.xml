@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classmxlgs__stream__to__pdu" kind="class" language="C++" prot="public">
+    <compoundname>mxlgs_stream_to_pdu</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sync_block</basecompoundref>
+    <includes refid="mxlgs__stream__to__pdu_8h" local="no">mxlgs_stream_to_pdu.h</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528ec" prot="private" static="no">
+        <name>state_t</name>
+        <enumvalue id="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca058bd38dae754c3948f9ba90af86725b" prot="private">
+          <name>STARTFLAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528ecae662d9df2eed24a81a3d94dc8699c750" prot="private">
+          <name>PACKET</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca59bfd4520378a832d99b1758b98f5f88" prot="private">
+          <name>ENDFLAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca80ffb48a511756c6d3ccd96e31a793c3" prot="private">
+          <name>LASTFLAGBIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca91061a97b73aca9b36a015d611b8c695" prot="private">
+          <name>END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="47" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a07b5a5f00c4fe79b202073b8bb6d0cee" prot="private" static="no" mutable="no">
+        <type>state_t</type>
+        <definition>state_t mxlgs_stream_to_pdu::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="48" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1aacf66818cdbf08e44eea654cb47b0899" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mxlgs_stream_to_pdu::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="49" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1adba879b42d3600bf6570fe70712dea96" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_stream_to_pdu::sr</definition>
+        <argsstring></argsstring>
+        <name>sr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a99b18da268136b6f2e2af62f75c2af6a" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_stream_to_pdu::bitctr</definition>
+        <argsstring></argsstring>
+        <name>bitctr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1ae096e4b87a94369eba229085c4139482" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_stream_to_pdu::ones</definition>
+        <argsstring></argsstring>
+        <name>ones</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a767cd955c812a9011e7c575e0abf7592" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_stream_to_pdu::prevbit</definition>
+        <argsstring></argsstring>
+        <name>prevbit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a0e74494df08e97a50dc70d01133b086c" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_stream_to_pdu::bit</definition>
+        <argsstring></argsstring>
+        <name>bit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a1faac07b493cd6c73dc3ec8d5556785d" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_stream_to_pdu::rbit</definition>
+        <argsstring></argsstring>
+        <name>rbit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a3026c9b2bc4ca2fd4585e7818b120d8d" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_stream_to_pdu::bytectr</definition>
+        <argsstring></argsstring>
+        <name>bytectr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="51" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a986d4610206c0451e69b773a78ee09e8" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_stream_to_pdu::descr</definition>
+        <argsstring></argsstring>
+        <name>descr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="51" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a66f2254d885c0fe4400b6a31e1bf85f7" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_stream_to_pdu::flagctr</definition>
+        <argsstring></argsstring>
+        <name>flagctr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="51" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a18723a8e0e90739d115750f345b63af8" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_stream_to_pdu::bytekissctr</definition>
+        <argsstring></argsstring>
+        <name>bytekissctr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="51" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a267742d1eec31bd5c6d5ee93563e4057" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mxlgs_stream_to_pdu::d_signalstatus</definition>
+        <argsstring></argsstring>
+        <name>d_signalstatus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="52" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a0325f7296c7bad42d2b9e56ba523f50c" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* mxlgs_stream_to_pdu::pktbuf</definition>
+        <argsstring></argsstring>
+        <name>pktbuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="54" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a26d0ff9f55ba4ecaafa39c4cc7a49fd3" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t * mxlgs_stream_to_pdu::pktptr</definition>
+        <argsstring></argsstring>
+        <name>pktptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="54" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a854d44122b90b6430cb31610bffb8db0" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* mxlgs_stream_to_pdu::pktkiss</definition>
+        <argsstring></argsstring>
+        <name>pktkiss</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="55" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1ae8c0bbcf8b474d187ce599aec9403d69" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mxlgs_stream_to_pdu::d_itemsize</definition>
+        <argsstring></argsstring>
+        <name>d_itemsize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="56" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a57f7a2210b5672741d826919a87212bb" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mxlgs_stream_to_pdu::d_pdu_length</definition>
+        <argsstring></argsstring>
+        <name>d_pdu_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="57" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a116f2c9d999b6910f16baa23ffdc4982" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mxlgs_stream_to_pdu::d_pdu_remain</definition>
+        <argsstring></argsstring>
+        <name>d_pdu_remain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="58" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a83b88b74819586fef29be024d5c16560" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mxlgs_stream_to_pdu::d_inpdu</definition>
+        <argsstring></argsstring>
+        <name>d_inpdu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="59" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1ae6b1ec1693fe563edfa74cb3963f444e" prot="private" static="no" mutable="no">
+        <type>gr::blocks::pdu::vector_type</type>
+        <definition>gr::blocks::pdu::vector_type mxlgs_stream_to_pdu::d_type</definition>
+        <argsstring></argsstring>
+        <name>d_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="60" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a128a7487a425fbe7ab935d4f4ed13730" prot="private" static="no" mutable="no">
+        <type>pmt::pmt_t</type>
+        <definition>pmt::pmt_t mxlgs_stream_to_pdu::d_pdu_meta</definition>
+        <argsstring></argsstring>
+        <name>d_pdu_meta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="61" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__stream__to__pdu_1a7018846ef0359fd3a239325c5d6c68fa" prot="private" static="no" mutable="no">
+        <type>pmt::pmt_t</type>
+        <definition>pmt::pmt_t mxlgs_stream_to_pdu::d_pdu_vector</definition>
+        <argsstring></argsstring>
+        <name>d_pdu_vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="62" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classmxlgs__stream__to__pdu_1a88e45326a564ff7ecf94c743e374759f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend <ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> <ref refid="mxlgs__stream__to__pdu_8h_1afc9e15f8256a43450772be19abfc4065" kindref="member">mxlgs_stream_to_pdu_sptr</ref></type>
+        <definition>MXLGS_API mxlgs_stream_to_pdu_sptr mxlgs_make_stream_to_pdu</definition>
+        <argsstring>(bool mode)</argsstring>
+        <name>mxlgs_make_stream_to_pdu</name>
+        <param>
+          <type>bool</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="44" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classmxlgs__stream__to__pdu_1a27cb9949cd6590f9dec1118fe2beb2ac" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_stream_to_pdu::mxlgs_stream_to_pdu</definition>
+        <argsstring>(bool mode)</argsstring>
+        <name>mxlgs_stream_to_pdu</name>
+        <param>
+          <type>bool</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="45" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmxlgs__stream__to__pdu_1a8b4880093e238912480389aa7e1d05e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mxlgs_stream_to_pdu::work</definition>
+        <argsstring>(int noutput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__stream__to__pdu_1aec4d8729dfa7ddc0bb56e705f4ebdccb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mxlgs_stream_to_pdu::send_message</definition>
+        <argsstring>()</argsstring>
+        <name>send_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="68" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="17">
+        <label>sync_block</label>
+      </node>
+      <node id="16">
+        <label>mxlgs_stream_to_pdu</label>
+        <link refid="classmxlgs__stream__to__pdu"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="19">
+        <label>sync_block</label>
+      </node>
+      <node id="18">
+        <label>mxlgs_stream_to_pdu</label>
+        <link refid="classmxlgs__stream__to__pdu"/>
+        <childnode refid="19" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" line="42" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_stream_to_pdu.h" bodystart="41" bodyend="70"/>
+    <listofallmembers>
+      <member refid="classmxlgs__stream__to__pdu_1a0e74494df08e97a50dc70d01133b086c" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>bit</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a99b18da268136b6f2e2af62f75c2af6a" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>bitctr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a3026c9b2bc4ca2fd4585e7818b120d8d" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>bytectr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a18723a8e0e90739d115750f345b63af8" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>bytekissctr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a83b88b74819586fef29be024d5c16560" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_inpdu</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1ae8c0bbcf8b474d187ce599aec9403d69" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_itemsize</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a57f7a2210b5672741d826919a87212bb" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_pdu_length</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a128a7487a425fbe7ab935d4f4ed13730" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_pdu_meta</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a116f2c9d999b6910f16baa23ffdc4982" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_pdu_remain</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a7018846ef0359fd3a239325c5d6c68fa" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_pdu_vector</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a267742d1eec31bd5c6d5ee93563e4057" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_signalstatus</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1ae6b1ec1693fe563edfa74cb3963f444e" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>d_type</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a986d4610206c0451e69b773a78ee09e8" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>descr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca91061a97b73aca9b36a015d611b8c695" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>END</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca59bfd4520378a832d99b1758b98f5f88" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>ENDFLAG</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a66f2254d885c0fe4400b6a31e1bf85f7" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>flagctr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca80ffb48a511756c6d3ccd96e31a793c3" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>LASTFLAGBIT</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1aacf66818cdbf08e44eea654cb47b0899" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>mode</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a88e45326a564ff7ecf94c743e374759f" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>mxlgs_make_stream_to_pdu</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a27cb9949cd6590f9dec1118fe2beb2ac" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>mxlgs_stream_to_pdu</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1ae096e4b87a94369eba229085c4139482" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>ones</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528ecae662d9df2eed24a81a3d94dc8699c750" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>PACKET</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a0325f7296c7bad42d2b9e56ba523f50c" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>pktbuf</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a854d44122b90b6430cb31610bffb8db0" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>pktkiss</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a26d0ff9f55ba4ecaafa39c4cc7a49fd3" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>pktptr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a767cd955c812a9011e7c575e0abf7592" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>prevbit</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1faac07b493cd6c73dc3ec8d5556785d" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>rbit</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1aec4d8729dfa7ddc0bb56e705f4ebdccb" prot="public" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>send_message</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1adba879b42d3600bf6570fe70712dea96" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>sr</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca058bd38dae754c3948f9ba90af86725b" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>STARTFLAG</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a07b5a5f00c4fe79b202073b8bb6d0cee" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>state</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528ec" prot="private" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>state_t</name></member>
+      <member refid="classmxlgs__stream__to__pdu_1a8b4880093e238912480389aa7e1d05e1" prot="public" virt="non-virtual"><scope>mxlgs_stream_to_pdu</scope><name>work</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

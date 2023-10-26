@@ -1,0 +1,575 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classmxlgs__ax25__packetization" kind="class" language="C++" prot="public">
+    <compoundname>mxlgs_ax25_packetization</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">block</basecompoundref>
+    <includes refid="mxlgs__ax25__packetization_8h" local="no">mxlgs_ax25_packetization.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a595592cd15018805564483838df1a0a2" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::d_start_tx_delay</definition>
+        <argsstring></argsstring>
+        <name>d_start_tx_delay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="40" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a2cc907a5648caa4ea64968fb613b7494" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::d_end_tx_delay</definition>
+        <argsstring></argsstring>
+        <name>d_end_tx_delay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="40" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1af7a670bccea86d888c688b15ec2bf5d6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gr::tag_t &gt;</type>
+        <definition>std::vector&lt;gr::tag_t&gt; mxlgs_ax25_packetization::d_tags</definition>
+        <argsstring></argsstring>
+        <name>d_tags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="41" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1af15d9c0c8a12441fe1954628f348b215" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gr::tag_t &gt;::iterator</type>
+        <definition>std::vector&lt;gr::tag_t&gt;::iterator mxlgs_ax25_packetization::d_tags_itr</definition>
+        <argsstring></argsstring>
+        <name>d_tags_itr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="42" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a6cb1348bbb3a3250d213721487c9c3ad" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mxlgs_ax25_packetization::d_display</definition>
+        <argsstring></argsstring>
+        <name>d_display</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="43" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1afff19bec2ea82e3ce82f72ca31bb7bc8" prot="private" static="no" mutable="no">
+        <type>gr::thread::mutex</type>
+        <definition>gr::thread::mutex mxlgs_ax25_packetization::d_mutex</definition>
+        <argsstring></argsstring>
+        <name>d_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="44" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1ad14c1a35d0072ce560814983b4333cb9" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* mxlgs_ax25_packetization::pktbuf</definition>
+        <argsstring></argsstring>
+        <name>pktbuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="45" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1ab53be44175c111f382a7ad676e76e067" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t * mxlgs_ax25_packetization::pktbufkiss</definition>
+        <argsstring></argsstring>
+        <name>pktbufkiss</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="45" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1abc8210d982ada60295ae791a98dbeccf" prot="private" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t * mxlgs_ax25_packetization::pktarray</definition>
+        <argsstring></argsstring>
+        <name>pktarray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="45" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1af4af923b2f66c2d7287033c7f193d2b2" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::pkt_len</definition>
+        <argsstring></argsstring>
+        <name>pkt_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="46" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a449942113b0d4955ecf991fccb8c4466" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::input_pkt_len</definition>
+        <argsstring></argsstring>
+        <name>input_pkt_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="47" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1aa57d2d76cd2739fefa00774a208490d8" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::input_pkt_lenkiss</definition>
+        <argsstring></argsstring>
+        <name>input_pkt_lenkiss</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="47" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a52f0977c00512f0f5e2b0e9cc9b9e105" prot="private" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* mxlgs_ax25_packetization::dest_id</definition>
+        <argsstring></argsstring>
+        <name>dest_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="49" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a52b70d19278412211fcdc612d12cad46" prot="private" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char * mxlgs_ax25_packetization::source_id</definition>
+        <argsstring></argsstring>
+        <name>source_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="49" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a34e2b664f4e4ae67c7733c1845d340e9" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::dest_length</definition>
+        <argsstring></argsstring>
+        <name>dest_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a7dd317be49cdfd7553c9478a482091f3" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::source_length</definition>
+        <argsstring></argsstring>
+        <name>source_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="50" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1aa120e0cca330705b162989451d236f03" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_ax25_packetization::control</definition>
+        <argsstring></argsstring>
+        <name>control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="51" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a8d805f6f0be7448bba261766e4d4fb1e" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_ax25_packetization::pid</definition>
+        <argsstring></argsstring>
+        <name>pid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="51" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1aa6bae76f1e59482c2542ab7468ccbc0e" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_ax25_packetization::fcshi</definition>
+        <argsstring></argsstring>
+        <name>fcshi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="52" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a59ac638cd380928aa7ccbd9f35bbf8e4" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_ax25_packetization::fcslo</definition>
+        <argsstring></argsstring>
+        <name>fcslo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="52" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1aa4cc8f66f81d6c3150fdff5445a1add0" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::noutput_cnt</definition>
+        <argsstring></argsstring>
+        <name>noutput_cnt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="54" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a7bd96e9487f5223029e175b9bf77e578" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_ax25_packetization::n_onebits</definition>
+        <argsstring></argsstring>
+        <name>n_onebits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="55" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1a4893830f3178b958769415b5cc51b0ee" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char mxlgs_ax25_packetization::bitout</definition>
+        <argsstring></argsstring>
+        <name>bitout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="56" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1adb6b80ebe82b8f7a019426bae85fb8ac" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float mxlgs_ax25_packetization::d_bit_oversampling</definition>
+        <argsstring></argsstring>
+        <name>d_bit_oversampling</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="57" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1aa6f35acd2439c9be4793d80cadd4cda5" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float mxlgs_ax25_packetization::d_interp</definition>
+        <argsstring></argsstring>
+        <name>d_interp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="58" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__ax25__packetization_1aa3cdad0b87290490b734d96aabd60c0e" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float mxlgs_ax25_packetization::d_decim</definition>
+        <argsstring></argsstring>
+        <name>d_decim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="59" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classmxlgs__ax25__packetization_1ac771bf995f151e75c7fcd9eedca3fb05" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend <ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> mxlgs_ax25_packetization_sptr</type>
+        <definition>MXLGS_API mxlgs_ax25_packetization_sptr mxlgs_make_ax25_packetization</definition>
+        <argsstring>(unsigned int start_tx_delay, unsigned int end_tx_delay, float bit_oversampling, float interp, float decim)</argsstring>
+        <name>mxlgs_make_ax25_packetization</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>start_tx_delay</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>end_tx_delay</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>bit_oversampling</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>interp</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>decim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="32" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classmxlgs__ax25__packetization_1a675b2d7e96a7d6f3493cf49975fdc549" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_ax25_packetization::mxlgs_ax25_packetization</definition>
+        <argsstring>(unsigned int start_tx_delay, unsigned int end_tx_delay, float bit_oversampling, float interp, float decim)</argsstring>
+        <name>mxlgs_ax25_packetization</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>start_tx_delay</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>end_tx_delay</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>bit_oversampling</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>interp</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>decim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="37" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmxlgs__ax25__packetization_1a73c83fff60c65c170fb95fe297c41c05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_ax25_packetization::~mxlgs_ax25_packetization</definition>
+        <argsstring>()</argsstring>
+        <name>~mxlgs_ax25_packetization</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__ax25__packetization_1abf843dfd32aa0c2f1dea4043e6c2e3d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; gr::tag_t &gt;</type>
+        <definition>std::vector&lt;gr::tag_t&gt; mxlgs_ax25_packetization::current_tags</definition>
+        <argsstring>()</argsstring>
+        <name>current_tags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="64" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__ax25__packetization_1ae70374ae3c24b11fc38c026ca23f63eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mxlgs_ax25_packetization::set_display</definition>
+        <argsstring>(bool d)</argsstring>
+        <name>set_display</name>
+        <param>
+          <type>bool</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="66" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__ax25__packetization_1aac6bc7bb2f444f5aa6e7bfc8f9831be5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mxlgs_ax25_packetization::make_packet</definition>
+        <argsstring>(unsigned char *pktarray, unsigned char *pktbufkiss)</argsstring>
+        <name>make_packet</name>
+        <param>
+          <type>unsigned char *</type>
+          <declname>pktarray</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>pktbufkiss</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__ax25__packetization_1a72ed46fe032f76f48f0e7e2ceaec3b58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mxlgs_ax25_packetization::general_work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>general_work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="69" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="0">
+        <label>mxlgs_ax25_packetization</label>
+        <link refid="classmxlgs__ax25__packetization"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>gr::block</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mxlgs_ax25_packetization</label>
+        <link refid="classmxlgs__ax25__packetization"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>gr::block</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" line="30" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_ax25_packetization.h" bodystart="29" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classmxlgs__ax25__packetization_1a4893830f3178b958769415b5cc51b0ee" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>bitout</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aa120e0cca330705b162989451d236f03" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>control</name></member>
+      <member refid="classmxlgs__ax25__packetization_1abf843dfd32aa0c2f1dea4043e6c2e3d3" prot="public" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>current_tags</name></member>
+      <member refid="classmxlgs__ax25__packetization_1adb6b80ebe82b8f7a019426bae85fb8ac" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_bit_oversampling</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aa3cdad0b87290490b734d96aabd60c0e" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_decim</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a6cb1348bbb3a3250d213721487c9c3ad" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_display</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a2cc907a5648caa4ea64968fb613b7494" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_end_tx_delay</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aa6f35acd2439c9be4793d80cadd4cda5" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_interp</name></member>
+      <member refid="classmxlgs__ax25__packetization_1afff19bec2ea82e3ce82f72ca31bb7bc8" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_mutex</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a595592cd15018805564483838df1a0a2" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_start_tx_delay</name></member>
+      <member refid="classmxlgs__ax25__packetization_1af7a670bccea86d888c688b15ec2bf5d6" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_tags</name></member>
+      <member refid="classmxlgs__ax25__packetization_1af15d9c0c8a12441fe1954628f348b215" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>d_tags_itr</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a52f0977c00512f0f5e2b0e9cc9b9e105" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>dest_id</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a34e2b664f4e4ae67c7733c1845d340e9" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>dest_length</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aa6bae76f1e59482c2542ab7468ccbc0e" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>fcshi</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a59ac638cd380928aa7ccbd9f35bbf8e4" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>fcslo</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a72ed46fe032f76f48f0e7e2ceaec3b58" prot="public" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>general_work</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a449942113b0d4955ecf991fccb8c4466" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>input_pkt_len</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aa57d2d76cd2739fefa00774a208490d8" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>input_pkt_lenkiss</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aac6bc7bb2f444f5aa6e7bfc8f9831be5" prot="public" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>make_packet</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a675b2d7e96a7d6f3493cf49975fdc549" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>mxlgs_ax25_packetization</name></member>
+      <member refid="classmxlgs__ax25__packetization_1ac771bf995f151e75c7fcd9eedca3fb05" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>mxlgs_make_ax25_packetization</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a7bd96e9487f5223029e175b9bf77e578" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>n_onebits</name></member>
+      <member refid="classmxlgs__ax25__packetization_1aa4cc8f66f81d6c3150fdff5445a1add0" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>noutput_cnt</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a8d805f6f0be7448bba261766e4d4fb1e" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>pid</name></member>
+      <member refid="classmxlgs__ax25__packetization_1af4af923b2f66c2d7287033c7f193d2b2" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>pkt_len</name></member>
+      <member refid="classmxlgs__ax25__packetization_1abc8210d982ada60295ae791a98dbeccf" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>pktarray</name></member>
+      <member refid="classmxlgs__ax25__packetization_1ad14c1a35d0072ce560814983b4333cb9" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>pktbuf</name></member>
+      <member refid="classmxlgs__ax25__packetization_1ab53be44175c111f382a7ad676e76e067" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>pktbufkiss</name></member>
+      <member refid="classmxlgs__ax25__packetization_1ae70374ae3c24b11fc38c026ca23f63eb" prot="public" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>set_display</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a52b70d19278412211fcdc612d12cad46" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>source_id</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a7dd317be49cdfd7553c9478a482091f3" prot="private" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>source_length</name></member>
+      <member refid="classmxlgs__ax25__packetization_1a73c83fff60c65c170fb95fe297c41c05" prot="public" virt="non-virtual"><scope>mxlgs_ax25_packetization</scope><name>~mxlgs_ax25_packetization</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

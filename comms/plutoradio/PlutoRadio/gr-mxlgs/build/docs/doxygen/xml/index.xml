@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
+  <compound refid="classmxlgs__ax25__packetization" kind="class"><name>mxlgs_ax25_packetization</name>
+    <member refid="classmxlgs__ax25__packetization_1a595592cd15018805564483838df1a0a2" kind="variable"><name>d_start_tx_delay</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a2cc907a5648caa4ea64968fb613b7494" kind="variable"><name>d_end_tx_delay</name></member>
+    <member refid="classmxlgs__ax25__packetization_1af7a670bccea86d888c688b15ec2bf5d6" kind="variable"><name>d_tags</name></member>
+    <member refid="classmxlgs__ax25__packetization_1af15d9c0c8a12441fe1954628f348b215" kind="variable"><name>d_tags_itr</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a6cb1348bbb3a3250d213721487c9c3ad" kind="variable"><name>d_display</name></member>
+    <member refid="classmxlgs__ax25__packetization_1afff19bec2ea82e3ce82f72ca31bb7bc8" kind="variable"><name>d_mutex</name></member>
+    <member refid="classmxlgs__ax25__packetization_1ad14c1a35d0072ce560814983b4333cb9" kind="variable"><name>pktbuf</name></member>
+    <member refid="classmxlgs__ax25__packetization_1ab53be44175c111f382a7ad676e76e067" kind="variable"><name>pktbufkiss</name></member>
+    <member refid="classmxlgs__ax25__packetization_1abc8210d982ada60295ae791a98dbeccf" kind="variable"><name>pktarray</name></member>
+    <member refid="classmxlgs__ax25__packetization_1af4af923b2f66c2d7287033c7f193d2b2" kind="variable"><name>pkt_len</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a449942113b0d4955ecf991fccb8c4466" kind="variable"><name>input_pkt_len</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aa57d2d76cd2739fefa00774a208490d8" kind="variable"><name>input_pkt_lenkiss</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a52f0977c00512f0f5e2b0e9cc9b9e105" kind="variable"><name>dest_id</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a52b70d19278412211fcdc612d12cad46" kind="variable"><name>source_id</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a34e2b664f4e4ae67c7733c1845d340e9" kind="variable"><name>dest_length</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a7dd317be49cdfd7553c9478a482091f3" kind="variable"><name>source_length</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aa120e0cca330705b162989451d236f03" kind="variable"><name>control</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a8d805f6f0be7448bba261766e4d4fb1e" kind="variable"><name>pid</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aa6bae76f1e59482c2542ab7468ccbc0e" kind="variable"><name>fcshi</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a59ac638cd380928aa7ccbd9f35bbf8e4" kind="variable"><name>fcslo</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aa4cc8f66f81d6c3150fdff5445a1add0" kind="variable"><name>noutput_cnt</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a7bd96e9487f5223029e175b9bf77e578" kind="variable"><name>n_onebits</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a4893830f3178b958769415b5cc51b0ee" kind="variable"><name>bitout</name></member>
+    <member refid="classmxlgs__ax25__packetization_1adb6b80ebe82b8f7a019426bae85fb8ac" kind="variable"><name>d_bit_oversampling</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aa6f35acd2439c9be4793d80cadd4cda5" kind="variable"><name>d_interp</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aa3cdad0b87290490b734d96aabd60c0e" kind="variable"><name>d_decim</name></member>
+    <member refid="classmxlgs__ax25__packetization_1ac771bf995f151e75c7fcd9eedca3fb05" kind="friend"><name>mxlgs_make_ax25_packetization</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a675b2d7e96a7d6f3493cf49975fdc549" kind="function"><name>mxlgs_ax25_packetization</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a73c83fff60c65c170fb95fe297c41c05" kind="function"><name>~mxlgs_ax25_packetization</name></member>
+    <member refid="classmxlgs__ax25__packetization_1abf843dfd32aa0c2f1dea4043e6c2e3d3" kind="function"><name>current_tags</name></member>
+    <member refid="classmxlgs__ax25__packetization_1ae70374ae3c24b11fc38c026ca23f63eb" kind="function"><name>set_display</name></member>
+    <member refid="classmxlgs__ax25__packetization_1aac6bc7bb2f444f5aa6e7bfc8f9831be5" kind="function"><name>make_packet</name></member>
+    <member refid="classmxlgs__ax25__packetization_1a72ed46fe032f76f48f0e7e2ceaec3b58" kind="function"><name>general_work</name></member>
+  </compound>
+  <compound refid="classmxlgs__doppler__correction__cc" kind="class"><name>mxlgs_doppler_correction_cc</name>
+    <member refid="classmxlgs__doppler__correction__cc_1a79b2981296c4ec23ca1d4179580a5c9b" kind="variable"><name>d_sampling_freq</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a6821792364e68abe89f7f95a9c0c3100" kind="variable"><name>d_int_freq</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1ad24990880c85e27480e4c1722a7cebb1" kind="variable"><name>d_port</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a0eea46a58764a39f03d1f8f33598ebd0" kind="variable"><name>d_dir</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a75311fb0cf7380f7dc35b14edee4fd8f" kind="variable"><name>d_local_freq</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a090ca12fe3875793b90ca27acca6de7f" kind="variable"><name>d_doppler</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a568e5f8d6b6c4c610fba56432c1d1183" kind="variable"><name>d_rxfreq</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1add53b5124be5b023aaaa59f6ad234990" kind="variable"><name>d_nco</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a75e6984c4af8676da52facd8a90a7b52" kind="variable"><name>socket_thread</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a1a79edc089b46a4d82d4d34073aac588" kind="friend"><name>mxlgs_make_doppler_correction_cc</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a3d55c6d98bbf1eeb6886df53db3f08ae" kind="function"><name>mxlgs_doppler_correction_cc</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1af813c0fce0cf3f9b2a0714838267695c" kind="function"><name>start_thread</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a4eed5e89f2db8fc46208879add8912f3" kind="function"><name>~mxlgs_doppler_correction_cc</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a0bf1a2b9794611109e7d5f14e3d15a57" kind="function"><name>socket_thread_work</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a9f96e8a7c0836d5573f8d9e6c57773e0" kind="function"><name>process_command</name></member>
+    <member refid="classmxlgs__doppler__correction__cc_1a043af58707c0202c4b3ba5abc9bddf7f" kind="function"><name>work</name></member>
+  </compound>
+  <compound refid="classmxlgs__evmest__cf" kind="class"><name>mxlgs_evmest_cf</name>
+    <member refid="classmxlgs__evmest__cf_1a10410540bee4acf0d129f4411c5c78d8" kind="variable"><name>d_cnst</name></member>
+    <member refid="classmxlgs__evmest__cf_1ab6fe7bfd24c5587cb296f057cdbf57e5" kind="variable"><name>d_Ps</name></member>
+    <member refid="classmxlgs__evmest__cf_1ad633d06cc196d2e27ec32543808c3412" kind="variable"><name>d_Pe</name></member>
+    <member refid="classmxlgs__evmest__cf_1a58cd37e364ee1626defe40c731595382" kind="variable"><name>d_evm</name></member>
+    <member refid="classmxlgs__evmest__cf_1a48c3a8c554ebdee4a1d5452cd0384f88" kind="variable"><name>d_npoints</name></member>
+    <member refid="classmxlgs__evmest__cf_1a395a8c1d9324ce2aae96ee0d110d19ee" kind="variable"><name>d_lvec</name></member>
+    <member refid="classmxlgs__evmest__cf_1a3953a65aa7c642cc11bde85f8a506223" kind="variable"><name>num_points</name></member>
+    <member refid="classmxlgs__evmest__cf_1aab7c764a9940aea3d27359c07ea1d590" kind="variable"><name>emin</name></member>
+    <member refid="classmxlgs__evmest__cf_1a4e35fc31235544690af15f04c4def8d4" kind="variable"><name>constellation</name></member>
+    <member refid="classmxlgs__evmest__cf_1a3931316ae7712383f725925ecbd5d869" kind="variable"><name>constellation_scaled</name></member>
+    <member refid="classmxlgs__evmest__cf_1afba7cdba99c5238ce1b8f8553c41ad8c" kind="variable"><name>error</name></member>
+    <member refid="classmxlgs__evmest__cf_1ae8c36623010df067875d3eed4110af9a" kind="friend"><name>mxlgs_make_evmest_cf</name></member>
+    <member refid="classmxlgs__evmest__cf_1add4b44ce9c6a19c442441a5d826026dc" kind="function"><name>mxlgs_evmest_cf</name></member>
+    <member refid="classmxlgs__evmest__cf_1addc5fcfaa83fc81adb4e4736bc852037" kind="function"><name>~mxlgs_evmest_cf</name></member>
+    <member refid="classmxlgs__evmest__cf_1a9031766442c91474bbe1807fbe734d6d" kind="function"><name>work</name></member>
+  </compound>
+  <compound refid="classgr_1_1mxlgs_1_1mxlgs__rx__hierblock" kind="class"><name>gr::mxlgs::mxlgs_rx_hierblock</name>
+    <member refid="classgr_1_1mxlgs_1_1mxlgs__rx__hierblock_1a1b6e86dc6bc82348798e1afcecceee66" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1mxlgs_1_1mxlgs__rx__hierblock_1ae8889895ac1be602dc3448761cc1e8c7" kind="function"><name>mxlgs_rx_hierblock</name></member>
+    <member refid="classgr_1_1mxlgs_1_1mxlgs__rx__hierblock_1ae11ce395e62bfcec0c8bca8f72cb9c88" kind="function"><name>~mxlgs_rx_hierblock</name></member>
+    <member refid="classgr_1_1mxlgs_1_1mxlgs__rx__hierblock_1a19aae9ded27edc643620c8dd09967332" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="classmxlgs__stream__to__pdu" kind="class"><name>mxlgs_stream_to_pdu</name>
+    <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528ec" kind="enum"><name>state_t</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca058bd38dae754c3948f9ba90af86725b" kind="enumvalue"><name>STARTFLAG</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528ecae662d9df2eed24a81a3d94dc8699c750" kind="enumvalue"><name>PACKET</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca59bfd4520378a832d99b1758b98f5f88" kind="enumvalue"><name>ENDFLAG</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca80ffb48a511756c6d3ccd96e31a793c3" kind="enumvalue"><name>LASTFLAGBIT</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a1bfca94a0ed0456c0dfb6314d01528eca91061a97b73aca9b36a015d611b8c695" kind="enumvalue"><name>END</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a07b5a5f00c4fe79b202073b8bb6d0cee" kind="variable"><name>state</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1aacf66818cdbf08e44eea654cb47b0899" kind="variable"><name>mode</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1adba879b42d3600bf6570fe70712dea96" kind="variable"><name>sr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a99b18da268136b6f2e2af62f75c2af6a" kind="variable"><name>bitctr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1ae096e4b87a94369eba229085c4139482" kind="variable"><name>ones</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a767cd955c812a9011e7c575e0abf7592" kind="variable"><name>prevbit</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a0e74494df08e97a50dc70d01133b086c" kind="variable"><name>bit</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a1faac07b493cd6c73dc3ec8d5556785d" kind="variable"><name>rbit</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a3026c9b2bc4ca2fd4585e7818b120d8d" kind="variable"><name>bytectr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a986d4610206c0451e69b773a78ee09e8" kind="variable"><name>descr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a66f2254d885c0fe4400b6a31e1bf85f7" kind="variable"><name>flagctr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a18723a8e0e90739d115750f345b63af8" kind="variable"><name>bytekissctr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a267742d1eec31bd5c6d5ee93563e4057" kind="variable"><name>d_signalstatus</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a0325f7296c7bad42d2b9e56ba523f50c" kind="variable"><name>pktbuf</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a26d0ff9f55ba4ecaafa39c4cc7a49fd3" kind="variable"><name>pktptr</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a854d44122b90b6430cb31610bffb8db0" kind="variable"><name>pktkiss</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1ae8c0bbcf8b474d187ce599aec9403d69" kind="variable"><name>d_itemsize</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a57f7a2210b5672741d826919a87212bb" kind="variable"><name>d_pdu_length</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a116f2c9d999b6910f16baa23ffdc4982" kind="variable"><name>d_pdu_remain</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a83b88b74819586fef29be024d5c16560" kind="variable"><name>d_inpdu</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1ae6b1ec1693fe563edfa74cb3963f444e" kind="variable"><name>d_type</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a128a7487a425fbe7ab935d4f4ed13730" kind="variable"><name>d_pdu_meta</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a7018846ef0359fd3a239325c5d6c68fa" kind="variable"><name>d_pdu_vector</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a88e45326a564ff7ecf94c743e374759f" kind="friend"><name>mxlgs_make_stream_to_pdu</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a27cb9949cd6590f9dec1118fe2beb2ac" kind="function"><name>mxlgs_stream_to_pdu</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1a8b4880093e238912480389aa7e1d05e1" kind="function"><name>work</name></member>
+    <member refid="classmxlgs__stream__to__pdu_1aec4d8729dfa7ddc0bb56e705f4ebdccb" kind="function"><name>send_message</name></member>
+  </compound>
+  <compound refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock" kind="class"><name>gr::mxlgs::mxlgs_tx_hierblock</name>
+    <member refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a5091cd5bfc6d47964a6603e773216a64" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a62af6792346ade7fe542f187ac7b52d1" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="namespacegr" kind="namespace"><name>gr</name>
+  </compound>
+  <compound refid="namespacegr_1_1mxlgs" kind="namespace"><name>gr::mxlgs</name>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="api_8h" kind="file"><name>api.h</name>
+    <member refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kind="define"><name>MXLGS_API</name></member>
+  </compound>
+  <compound refid="group__defs_8dox" kind="file"><name>group_defs.dox</name>
+  </compound>
+  <compound refid="main__page_8dox" kind="file"><name>main_page.dox</name>
+  </compound>
+  <compound refid="mxlgs__ax25__packetization_8h" kind="file"><name>mxlgs_ax25_packetization.h</name>
+    <member refid="mxlgs__ax25__packetization_8h_1a65f2af54195a74dd91a96ddb0254dbf8" kind="define"><name>MAX_PACKET_LEN</name></member>
+    <member refid="mxlgs__ax25__packetization_8h_1a2413cea4c55ac25061d43c1bd5e4aef0" kind="define"><name>MIN_PACKET_LEN</name></member>
+    <member refid="mxlgs__ax25__packetization_8h_1af8bfae90c5d6853fcfb487e05b9f50c8" kind="define"><name>FLAG</name></member>
+    <member refid="mxlgs__ax25__packetization_8h_1ac771bf995f151e75c7fcd9eedca3fb05" kind="function"><name>mxlgs_make_ax25_packetization</name></member>
+  </compound>
+  <compound refid="mxlgs__doppler__correction__cc_8h" kind="file"><name>mxlgs_doppler_correction_cc.h</name>
+    <member refid="mxlgs__doppler__correction__cc_8h_1a1a79edc089b46a4d82d4d34073aac588" kind="function"><name>mxlgs_make_doppler_correction_cc</name></member>
+  </compound>
+  <compound refid="mxlgs__evmest__cf_8h" kind="file"><name>mxlgs_evmest_cf.h</name>
+    <member refid="mxlgs__evmest__cf_8h_1ae8c36623010df067875d3eed4110af9a" kind="function"><name>mxlgs_make_evmest_cf</name></member>
+  </compound>
+  <compound refid="mxlgs__rx__hierblock_8h" kind="file"><name>mxlgs_rx_hierblock.h</name>
+  </compound>
+  <compound refid="mxlgs__stream__to__pdu_8h" kind="file"><name>mxlgs_stream_to_pdu.h</name>
+    <member refid="mxlgs__stream__to__pdu_8h_1a65f2af54195a74dd91a96ddb0254dbf8" kind="define"><name>MAX_PACKET_LEN</name></member>
+    <member refid="mxlgs__stream__to__pdu_8h_1a2413cea4c55ac25061d43c1bd5e4aef0" kind="define"><name>MIN_PACKET_LEN</name></member>
+    <member refid="mxlgs__stream__to__pdu_8h_1af8bfae90c5d6853fcfb487e05b9f50c8" kind="define"><name>FLAG</name></member>
+    <member refid="mxlgs__stream__to__pdu_8h_1a88e45326a564ff7ecf94c743e374759f" kind="function"><name>mxlgs_make_stream_to_pdu</name></member>
+  </compound>
+  <compound refid="mxlgs__tx__hierblock_8h" kind="file"><name>mxlgs_tx_hierblock.h</name>
+  </compound>
+  <compound refid="group__block" kind="group"><name>block</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_a8366ab0bf87e2dae30b60577823766c" kind="dir"><name>mxlgs</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

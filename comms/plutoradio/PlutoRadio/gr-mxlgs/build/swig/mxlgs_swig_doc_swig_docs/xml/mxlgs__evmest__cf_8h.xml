@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="mxlgs__evmest__cf_8h" kind="file" language="C++">
+    <compoundname>mxlgs_evmest_cf.h</compoundname>
+    <includes refid="api_8h" local="no">mxlgs/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">gnuradio/digital/constellation.h</includes>
+    <includes local="no">math.h</includes>
+    <incdepgraph>
+      <node id="29">
+        <label>mxlgs/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="32">
+        <label>gnuradio/digital/constellation.h</label>
+      </node>
+      <node id="30">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="33">
+        <label>math.h</label>
+      </node>
+      <node id="28">
+        <label>/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h</label>
+        <link refid="mxlgs__evmest__cf_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classmxlgs__evmest__cf" prot="public">mxlgs_evmest_cf</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classmxlgs__evmest__cf" kindref="compound">mxlgs_evmest_cf</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;mxlgs_evmest_cf&gt; mxlgs_evmest_cf_sptr</definition>
+        <argsstring></argsstring>
+        <name>mxlgs_evmest_cf_sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="16" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mxlgs__evmest__cf_8h_1ae8c36623010df067875d3eed4110af9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> <ref refid="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" kindref="member">mxlgs_evmest_cf_sptr</ref></type>
+        <definition>MXLGS_API mxlgs_evmest_cf_sptr mxlgs_make_evmest_cf</definition>
+        <argsstring>(unsigned int npoints, unsigned int lvec, gr::digital::constellation_sptr cnst)</argsstring>
+        <name>mxlgs_make_evmest_cf</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>npoints</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>lvec</declname>
+        </param>
+        <param>
+          <type>gr::digital::constellation_sptr</type>
+          <declname>cnst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="17" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*This<sp/>block<sp/>measures<sp/>the<sp/>Average<sp/>Error<sp/>Vector<sp/>Magnitude<sp/>(EVM)<sp/>over<sp/>10000<sp/>samples.</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*MXLab,<sp/>University<sp/>of<sp/>Michigan,<sp/>Ann<sp/>Arbor</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*Srinagesh<sp/>Sharma</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>INCLUDED_MXLGS_EVMEST_CF_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INCLUDED_MXLGS_EVMEST_CF_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&lt;gnuradio/core_api.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="api_8h" kindref="compound">mxlgs/api.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gnuradio/sync_block.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gnuradio/digital/constellation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmxlgs__evmest__cf" kindref="compound">mxlgs_evmest_cf</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::shared_ptr&lt;mxlgs_evmest_cf&gt;<sp/><ref refid="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" kindref="member">mxlgs_evmest_cf_sptr</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref><sp/><ref refid="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" kindref="member">mxlgs_evmest_cf_sptr</ref><sp/><ref refid="mxlgs__evmest__cf_8h_1ae8c36623010df067875d3eed4110af9a" kindref="member">mxlgs_make_evmest_cf</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>npoints,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lvec,<sp/>gr::digital::constellation_sptr<sp/>cnst);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classmxlgs__evmest__cf" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref><sp/><ref refid="classmxlgs__evmest__cf" kindref="compound">mxlgs_evmest_cf</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>gr::sync_block</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref><sp/><ref refid="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" kindref="member">mxlgs_evmest_cf_sptr</ref><sp/><ref refid="mxlgs__evmest__cf_8h_1ae8c36623010df067875d3eed4110af9a" kindref="member">mxlgs_make_evmest_cf</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>npoints,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lvec,<sp/>gr::digital::constellation_sptr<sp/>cnst);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="classmxlgs__evmest__cf" kindref="compound">mxlgs_evmest_cf</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>npoints,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lvec,<sp/>gr::digital::constellation_sptr<sp/>cnst);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">gr::digital::constellation_sptr<sp/>d_cnst;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_Ps;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_Pe;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_evm;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_npoints;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_lvec;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_points;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">gr_complex<sp/>emin;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">std::vector&lt;gr_complex&gt;<sp/>constellation;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">std::vector&lt;gr_complex&gt;<sp/>constellation_scaled;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">std::vector&lt;gr_complex&gt;<sp/>error;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">~<ref refid="classmxlgs__evmest__cf" kindref="compound">mxlgs_evmest_cf</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>work<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>noutput_items,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gr_vector_const_void_star<sp/>&amp;input_items,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gr_vector_void_star<sp/>&amp;output_items);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h"/>
+  </compounddef>
+</doxygen>
