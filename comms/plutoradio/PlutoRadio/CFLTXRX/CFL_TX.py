@@ -37,7 +37,8 @@ def send():
 
         # Creates a socket object to communicate with the radio software. 127.0.0.1 is your local
         #   computer's IP. 12600 is the TCP port the radio software is listening on
-        sock = create_connection(('127.0.0.1', 12600))
+        # Amal's computer's current IP address
+        sock = create_connection(('127.0.0.1', 631))
         kiss_port = 1
         
         # Adding kiss_framing
