@@ -1,10 +1,9 @@
 import smbus2
 import time
 
-def magnetometer_data():
-            
-    # I2C address of the RM3100 magnetometer
-    i2c_address = 0x20
+# specify I2C address of the RM3100 magnetometer
+# ours are 0x20 and 0x
+def magnetometer_data(i2c_address):
 
     # Register addresses for RM3100 magnetometer
     REG_DATA_X = 0x00
