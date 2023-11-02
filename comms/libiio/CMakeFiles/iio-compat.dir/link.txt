@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -O2 -g -DNDEBUG  -shared  -o libiio.so.0 CMakeFiles/iio-compat.dir/compat.c.o CMakeFiles/iio-compat.dir/dynamic-unix.c.o  -ldl 

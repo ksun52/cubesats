@@ -1,0 +1,1 @@
+/usr/bin/cc -O2 -g -DNDEBUG   CMakeFiles/iio_attr.dir/iio_attr.c.o  -o iio_attr  -Wl,-rpath,/home/pi/code/team-papa/comms/libiio libiio_tests_helper.a ../libiio.so.1.0 

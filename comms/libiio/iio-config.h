@@ -1,0 +1,53 @@
+#ifndef IIO_CONFIG_H
+#define IIO_CONFIG_H
+
+#define LIBIIO_VERSION_MAJOR	1
+#define LIBIIO_VERSION_MINOR	0
+#define LIBIIO_VERSION_GIT	"v1.0"
+
+#define LOG_LEVEL Info_L
+#define DEFAULT_LOG_LEVEL 4
+
+#define IIO_MODULES_DIR ""
+#define IIO_LIBRARY_SUFFIX ".so"
+
+#define IF_ENABLED(cfg, ptr) ((cfg) ? (ptr) : NULL)
+
+#define LIBIIO_SCAN_BACKENDS	"usb,local,ip"
+
+#define WITH_LOCAL_BACKEND 1
+#define WITH_XML_BACKEND 1
+#define WITH_NETWORK_BACKEND 1
+#define WITH_USB_BACKEND 1
+#define WITH_SERIAL_BACKEND 0
+
+#define WITH_MODULES 0
+#define WITH_NETWORK_BACKEND_DYNAMIC 0
+#define WITH_SERIAL_BACKEND_DYNAMIC 0
+#define WITH_USB_BACKEND_DYNAMIC 0
+
+#define WITH_NETWORK_EVENTFD 1
+#define WITH_IIOD_USBD 1
+#define WITH_IIOD_SERIAL 1
+#define WITH_LOCAL_CONFIG 1
+#define WITH_LOCAL_DMABUF_API 1
+#define WITH_LOCAL_MMAP_API 1
+#define WITH_HWMON 1
+#define WITH_AIO 1
+#define HAVE_DNS_SD 1
+#define HAVE_AVAHI 1
+#define WITH_ZSTD 1
+
+/* #undef HAS_PIPE2 */
+#define HAS_STRDUP
+#define HAS_STRNDUP
+#define HAS_STRTOK_R
+#define HAS_STRERROR_R
+#define HAS_NEWLOCALE
+#define HAS_PTHREAD_SETNAME_NP
+#define HAVE_IPV6
+/* #undef NO_THREADS */
+
+#define IF_ENABLED(cfg, ptr) ((cfg) ? (ptr) : NULL)
+
+#endif /* IIO_CONFIG_H */

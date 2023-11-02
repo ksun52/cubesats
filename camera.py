@@ -22,7 +22,7 @@ def camera_run():
         videofile = f"videos/{filenum}_{str(int(timestamp))}.h264"
         camera.start_recording(videofile)
         print("video starting")
-        camera.wait_recording(10)
+        camera.wait_recording(100)
         camera.stop_recording()
         print("video ending")
 
@@ -31,5 +31,5 @@ def camera_run():
 
 
 
-    if __name__ == "__main__":
-        camera_run()
+if __name__ == "__main__":
+  camera_run()
