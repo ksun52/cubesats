@@ -61,14 +61,13 @@ def apply_conversion(expression, X):
 
 # Populate dictionary with the hex data, with the conversion function applied
 
-beacon = ''
+beacon = b''
 
 for outer_key, inner_dict in data_dict.items():
     #inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
     inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
     inner_dict['Encoded X'] = int(inner_dict['Encoded X'])
     inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
-    beacon = beacon + (inner_dict['Encoded X']).decode()
-    print(inner_dict['Encoded X'])
+    beacon = beacon + inner_dict['Encoded X']
 
 print(beacon)
