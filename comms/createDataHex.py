@@ -22,20 +22,20 @@ with open('CFL_beacon_def.csv', 'r') as csv_file:
         encode_conversion_function = row['Encode Conversion Function']
         unit = row['Unit']
         comments = row['Comments']
-        example_encoded_X = row['Example of Encoded X']
-        unencoded_X = row['Unencoded X']
+        example_unencoded_X = row['Example of Unencoded X']
+        encoded_X = row['Encoded X']
 
         data_dict[title] = {
             "Type": data_type,
-            "Offset": int(offset),
+            "Offset": offset,
             "Size": int(size),
-            "Signed": int(signed),
+            "Signed": signed,
             "Decoding Conversion": decode_conversion_function,
             "Encoding Conversion": encode_conversion_function,
             "Unit": unit,
             "Comments": comments,
-            "Encoded X": float(example_encoded_X),
-            "Unencoded X": eval(unencoded_X)
+            "Unencoded X": float(example_unencoded_X),
+            "Encoded X": 0
         }
 
 # Printing the resulting dictionary
@@ -47,27 +47,28 @@ with open('CFL_beacon_def.csv', 'r') as csv_file:
 def apply_conversion(expression, X):
     try:
         result = eval(expression, {'X': X})
-        return int(result)
+        return result
     except Exception as e:
         return f"Error: {e}"
 
 # start placing characters into the packet list starting from the back 
-def place_bytes(packet_list, value, beacon_offset, data_length):
-    end_position = beacon_offset*2 + data_length * 2 - 1
+# def place_bytes(packet_list, value, beacon_offset, data_length):
+#     end_position = beacon_offset*2 + data_length * 2 - 1
 
-    for char in value[::-1]:
-        packet_list[end_position] = char
-        end_position -= 1
+#     for char in value[::-1]:
+#         packet_list[end_position] = char
+#         end_position -= 1
 
 # Populate dictionary with the hex data, with the conversion function applied
 
-
+beacon = ''
 
 for outer_key, inner_dict in data_dict.items():
-    inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
+    #inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
     inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
-    inner_dict['Encoded X'] = hex(inner_dict['Encoded X'])
+    inner_dict['Encoded X'] = int(inner_dict['Encoded X'])
+    inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+    beacon = beacon + (inner_dict['Encoded X']).decode()
     print(inner_dict['Encoded X'])
 
-
-
+print(beacon)
