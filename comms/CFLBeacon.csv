@@ -1,0 +1,44 @@
+Title,Data Type,Offset,Size,Signed,Conversion Function,Unit,Comments
+Unix Time,int,0,4,0,X,,
+Packet Count,int,4,2,0,X,,
+Gyro X,int,6,2,1,X/32.8,dps,
+Gyro Y,int,8,2,1,X/32.8,dps,
+Gyro Z,int,10,2,1,X/32.8,dps,
+Accel X,int,12,2,1,X/8192,m/s^2,
+Accel Y,int,14,2,1,X/8192,m/s^2,
+Accel Z,int,16,2,1,X/8192,m/s^2,
+Mag X,int,18,2,1,X*0.15,uT,
+Mag Y,int,20,2,1,X*0.15,uT,
+Mag Z,int,22,2,1,X*0.15,uT,
+Battery Temp 1,int,24,4,1,X/10000,Celsius,
+Battery Temp 2,int,28,4,1,X/10000,Celsius,
+BME Temp,int,32,2,1,X/100,Celsius,
+BME Pressure,int,34,4,0,X,Pascals,
+BME Humidity,int,38,4,0,X/1000,%,
+Used Ram,int,42,2,0,X/100,%,
+Free Memory,int,44,4,0,X*10,,
+CPU Load,int,48,2,0,X/100,%,
+CPU Temp,int,50,2,1,X/10,Celsius,
+Batt Raw Voltage,int,52,2,0,X/1000,V,
+Batt Raw Current,int,54,2,0,X/10000,A,
+V 3v3,int,56,2,0,X/1000,V,
+I 3v3,int,58,2,0,X/10000,A,
+V 5v0,int,60,2,0,X/1000,V,
+I 5v0,int,62,2,0,X/10000,A,
+V vBatt,int,64,2,0,X/1000,V,
+I vBatt,int,66,2,0,X/10000,A,
+Reg Temp 3v3,int,68,2,1,X/100,Celsius,
+Reg Temp 5v0,int,70,2,1,X/100,Celsius,
+GPS Lat,int,72,4,0,X/10000,deg,0-99
+GPS Lat NS,int,76,1,0,X,,"0 = N, 1 = S"
+GPS Lon,int,77,4,0,X/10000,deg,deg
+GPS Lon EW,int,81,1,0,X,,"0 = E, 1 = W"
+GPS Alt,int,82,4,0,X/10,m,m
+GPS Velocity,int,86,2,0,X/10,km/h,km/h
+GPS SNR,int,88,1,0,X,dB,dB 0-99
+Mag1 X,int,89,4,1,X/1000,uT,
+Mag1 Y,int,93,4,1,X/1000,uT,
+Mag1 Z,int,97,4,1,X/1000,uT,
+Mag2 X,int,101,4,1,X/1000,uT,
+Mag2 Y,int,105,4,1,X/1000,uT,
+Mag2 Z,int,109,4,1,X/1000,uT

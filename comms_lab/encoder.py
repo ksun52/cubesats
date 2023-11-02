@@ -94,7 +94,10 @@ def encode(data):
     
     # put hex values into the right positions 
     # data length and beacon_offset are in bytes 
+  
+    # pre_data_bytes = 11 <--change back to this
     pre_data_bytes = 11
+    
     place_bytes(packet_list, value=RTC_unix_time_hex, beacon_offset=pre_data_bytes+0, data_length=4)
     place_bytes(packet_list, value=Num_resets_hex, beacon_offset=pre_data_bytes+4, data_length=2)
     place_bytes(packet_list, value=tot_Mem_hex, beacon_offset=pre_data_bytes+18, data_length=2)
