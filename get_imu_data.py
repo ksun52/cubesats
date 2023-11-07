@@ -58,14 +58,14 @@ def get_imu_dict(data_dict):
     # data_dict["MagZ"] ='{: 06d}'.format(IMU.mzRaw)
     IMU.getAgmt()
     data_dict["AccelX"] = IMU.axRaw
-    data_dict["AccelY"] = IMU.ayRaw()
-    data_dict["AccelZ"] = IMU.azRaw()
-    data_dict["GyroX"] = IMU.gxRaw()
-    data_dict["GyroY"] = IMU.gyRaw()
-    data_dict["GyroZ"] = IMU.gzRaw()
-    data_dict["MagX"] = IMU.mxRaw()
-    data_dict["MagY"] = IMU.myRaw()
-    data_dict["MagZ"] = IMU.mzRaw()
+    data_dict["AccelY"] = IMU.ayRaw
+    data_dict["AccelZ"] = IMU.azRaw
+    data_dict["GyroX"] = IMU.gxRaw
+    data_dict["GyroY"] = IMU.gyRaw
+    data_dict["GyroZ"] = IMU.gzRaw
+    data_dict["MagX"] = IMU.mxRaw
+    data_dict["MagY"] = IMU.myRaw
+    data_dict["MagZ"] = IMU.mzRaw
 
 # def runExample():
 
