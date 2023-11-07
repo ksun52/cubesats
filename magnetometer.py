@@ -9,18 +9,17 @@ def get_mag_data(device_address):
     # Instantiate Objects
     pni_rm3100_device = pni_rm3100.PniRm3100()
 
-    match device_address:
-        case 0x20:
-            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LL #0x20
-        case 0x21:
-            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_HL #0x21
-        case 0x22:
-            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LH #0x22
-        case 0x23:
-            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_HH #0x23
-        case _: # default case
-            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LL #0x20
-
+    if device_address == 0x20:
+        address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LL #0x20
+    elif device_address == 0x21:
+        address = pni_rm3100_device.DeviceAddress.I2C_ADDR_HL #0x21
+    elif device_address == 0x22:
+        address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LH #0x22
+    elif device_address == 0x23:
+        address = pni_rm3100_device.DeviceAddress.I2C_ADDR_HH #0x23
+    else:
+        address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LL #0x20
+        
     # Assign PNI Device Address
     # Default is I2C_ADDR_LL (0x20)
     # Note: this line is only necessary if you want to change from the default values --> see execute_continuous_measurements_with_default_config(),
