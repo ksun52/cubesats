@@ -26,7 +26,8 @@ def get_mag_data(device_address):
     #       (it is still good to be explicit in your code/documentation!)
     pni_rm3100_device.assign_device_addr(address)
 
-   
+    pni_rm3100_device.write_config()
+    
     magnetometer_readings = pni_rm3100_device.read_meas()
 
     x_mag = magnetometer_readings[0]
