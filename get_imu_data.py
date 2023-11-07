@@ -56,11 +56,11 @@ def runExample():
 
 	IMU.begin()
 
-	while True:
-		if IMU.dataReady():
+	# while True:
+	if IMU.dataReady():
 			IMU.getAgmt() # read all axis and temp from sensor, note this also updates all instance variables
 			print(\
-			 '{: 06d}'.format(IMU.axRaw)\
+			'{: 06d}'.format(IMU.axRaw)\
 			, '\t', '{: 06d}'.format(IMU.ayRaw)\
 			, '\t', '{: 06d}'.format(IMU.azRaw)\
 			, '\t', '{: 06d}'.format(IMU.gxRaw)\
@@ -71,7 +71,7 @@ def runExample():
 			, '\t', '{: 06d}'.format(IMU.mzRaw)\
 			)
 			time.sleep(0.03)
-		else:
+	else:
 			print("Waiting for data")
 			time.sleep(0.5)
 
