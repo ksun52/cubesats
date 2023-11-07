@@ -5,14 +5,27 @@ import pni_rm3100
 
 # pass in magnetometer device_address - ours are 0x21 and 0x23
 def get_mag_data(device_address):
+    
     # Instantiate Objects
     pni_rm3100_device = pni_rm3100.PniRm3100()
+
+    match device_address:
+        case 0x20:
+            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LL #0x20
+        case 0x21:
+            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_HL #0x21
+        case 0x22:
+            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LH #0x22
+        case 0x23:
+            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_HH #0x23
+        case _: # default case
+            address = pni_rm3100_device.DeviceAddress.I2C_ADDR_LL #0x20
 
     # Assign PNI Device Address
     # Default is I2C_ADDR_LL (0x20)
     # Note: this line is only necessary if you want to change from the default values --> see execute_continuous_measurements_with_default_config(),
     #       (it is still good to be explicit in your code/documentation!)
-    pni_rm3100_device.assign_device_addr(device_address)
+    pni_rm3100_device.assign_device_addr(address)
 
    
     magnetometer_readings = pni_rm3100_device.read_meas()
