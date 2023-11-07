@@ -5,7 +5,7 @@
 
 import time
 import smbus2
-from qwiic_tmp102 import QwiicTmp102Sensor
+# from qwiic_tmp102 import QwiicTmp102Sensor
 
 """Qwiic Version"""
 # def sensor_temp():
