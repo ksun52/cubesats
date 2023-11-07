@@ -14,7 +14,7 @@ def main():
     starttime = time.time()
     value = datetime.datetime.fromtimestamp(starttime)
     date = value.strftime('%Y-%m-%d_%H:%M:%S')
-    filename = f"telemetry_{date}.csv"
+    filename = f"telemetry_{date}"
 
     csv_file = create_file(filename) # returns a path to the CSV file we need to write to 
 
@@ -137,9 +137,13 @@ def main():
         # WRITE TO CSV 
         write_line(data_dict, csv_file)
 
+        # ADD DATA TO BEACON EVERY 30 SECONDS 
+        if i % 3 == 0:
+            create_beacon_data(data_dict)
+
         # data collection runs once every 10 seconds
         # remove the time taken by code to execute 
-        time.sleep(4.0 - ((time.time() - starttime) % 4.0))
+        time.sleep(10.0 - ((time.time() - starttime) % 10.0))
 
         i += 1 
 
@@ -213,11 +217,11 @@ def strip_shell_result(shell_result):
 
 
 def create_file(filename):
-    csv_file = Path("telemetry", filename)
+    csv_file = Path("telemetry", f'{filename}.csv')
     counter = 1
     
     while csv_file.exists():
-        new_name = f"{filename}_({counter})"
+        new_name = f"{filename}_({counter}).csv"
         csv_file = Path("telemetry", new_name)
         counter += 1
 
@@ -233,6 +237,27 @@ def create_file(filename):
             "CPUTemp", "BattRawVoltage", "BattRawCurrent", "V3v3", "I3v3", "V5v0", "I5v0", "VvBatt", "IvBatt", "RegTemp3v3","RegTemp5v0",
             "GPSLat", "GPSLatNS", "GPSLn", "GPSLonEW","GPSAlt", "GPSVelocity","GPSSNR","Mag1X","Mag1Y","Mag1Z","Mag2X", "Mag2Y", "Mag2Z" ])
     return csv_file
+
+def create_beacon_data(data_dict):
+    curtime = time.time()
+    value = datetime.datetime.fromtimestamp(curtime)
+    date = value.strftime('%Y-%m-%d_%H:%M:%S')
+
+    filename = f'telemetry_{date}'
+    csv_file = Path("downlink_telem", f'{filename}.csv')
+
+    counter = 1
+    
+    while csv_file.exists():
+        new_name = f"{filename}_({counter}).csv"
+        csv_file = Path("telemetry", new_name)
+        counter += 1
+
+    with open(csv_file, 'w', newline='') as csvfile:
+        # Write the header row
+        csvwriter = csv.writer(csvfile)
+        new_data = list(data_dict.values())
+        csvwriter.writerow(["None" if data is None else data for data in new_data])
 
 if __name__ == "__main__":
     main()
