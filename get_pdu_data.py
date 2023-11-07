@@ -1,5 +1,20 @@
 from eddy_pdu import EddyEps
 
+def get_eps_dict(data_dict):
+    eps = EddyEps(smbus_num=1)
+    
+    data_dict["BattRawVoltage"] = eps.get_voltage_vbatt_raw()
+    data_dict["BattRawCurrent"] = eps.get_current_vbatt_raw()
+    data_dict["V3v3"] = eps.get_voltage_3v3()
+    data_dict["I3v3"] = eps.get_current_3v3()
+    data_dict["V5v0"] = eps.get_voltage_5v0()
+    data_dict["I5v0"] = eps.get_current_5v0()
+    data_dict["VvBatt"] = eps.get_voltage_vbatt()
+    data_dict["IvBatt"] = eps.get_current_vbatt()
+    data_dict["RegTemp3v3"] = eps.get_temp_3v3_reg()
+    data_dict["RegTemp5v0"] = eps.get_temp_5v0_reg()
+    
+
 def eps_data_organization():
     eps = EddyEps(smbus_num=1)
     # eps.print_measurement_table()

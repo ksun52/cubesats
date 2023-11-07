@@ -15,12 +15,13 @@ import smbus2
 
 
 """Custom Version"""
-def sensor_temperature():
+def sensor_temperature(desired_i2c_address):
 
     i2c_ch = 1
 
     # TMP102 address on the I2C bus
-    i2c_address = 0x48
+    # 0x48 or 0x49
+    i2c_address = desired_i2c_address
 
     # Register addresses
     reg_temp = 0x00

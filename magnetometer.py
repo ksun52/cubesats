@@ -1,8 +1,32 @@
 
 import smbus2
 import time
+import pni_rm3100
 
-# specify I2C address of the RM3100 magnetometer
+# pass in magnetometer device_address - ours are 0x21 and 0x23
+def get_mag_data(device_address):
+    # Instantiate Objects
+    pni_rm3100_device = pni_rm3100.PniRm3100()
+
+    # Assign PNI Device Address
+    # Default is I2C_ADDR_LL (0x20)
+    # Note: this line is only necessary if you want to change from the default values --> see execute_continuous_measurements_with_default_config(),
+    #       (it is still good to be explicit in your code/documentation!)
+    pni_rm3100_device.assign_device_addr(device_address)
+
+   
+    magnetometer_readings = pni_rm3100_device.read_meas()
+
+    x_mag = magnetometer_readings[0]
+    y_mag = magnetometer_readings[1]
+    z_mag = magnetometer_readings[2]
+
+    return x_mag, y_mag, z_mag
+
+
+
+# custom code - wrong 
+"""# specify I2C address of the RM3100 magnetometer
 # ours are 0x20 and 0x
 def magnetometer_data(i2c_address):
 
@@ -39,3 +63,4 @@ if __name__ == "__main__":
     print(magnetometer_data(0x21))
 
 
+"""

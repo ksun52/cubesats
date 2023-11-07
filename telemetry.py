@@ -7,6 +7,7 @@ import temperature
 # import gps
 from pathlib import Path
 import get_pdu_data
+import magnetometer
 
 def main():
     starttime = time.time()
@@ -18,45 +19,119 @@ def main():
 
     i = 0
     while(True):
+        data_dict = {
+            "UnixTime": None,
+            "PacketCount": None,
+            "GyroX": None,
+            "GyroY": None,
+            "GyroZ": None,
+            "AccelX": None,
+            "AccelY": None,
+            "AccelZ": None,
+            "MagX": None,
+            "MagY": None,
+            "MagZ": None,
+            "BatteryTemp1": None,
+            "BatteryTemp2": None,
+            "BMETemp": None,
+            "BMEPressure": None,
+            "BMEHumidity": None,
+            "UsedRam": None,
+            "FreeMemory": None,
+            "CPULoad": None,
+            "CPUTemp": None,
+            "BattRawVoltage": None,
+            "BattRawCurrent": None,
+            "V3v3": None,
+            "I3v3": None,
+            "V5v0": None,
+            "I5v0": None,
+            "VvBatt": None,
+            "IvBatt": None,
+            "RegTemp3v3": None,
+            "RegTemp5v0": None,
+            "GPSLat": None,
+            "GPSLatNS": None,
+            "GPSLn": None,
+            "GPSLonEW": None,
+            "GPSAlt": None,
+            "GPSVelocity": None,
+            "GPSSNR": None,
+            "Mag1X": None,
+            "Mag1Y": None,
+            "Mag1Z": None,
+            "Mag2X": None,
+            "Mag2Y": None,
+            "Mag2Z": None
+        }
+
         # TIME
-        timestamp = time.time()
+        try: 
+            UnixTime = time.time()
+        except:
+            UnixTime = None
+        data_dict["UnixTime"] = UnixTime
         
         #GET CPU TEMPERATURE (in celsius)
         try:
-            cpu_temp = cpu_temperature()
+            CPUTemp = cpu_temperature()
         except:
-            cpu_temp = None
+            CPUTemp = None
+        data_dict["CPUTemp"] = CPUTemp
         
-
         #GET MEMORY DATA 
         try:
-            total_mem, free_mem = mem_data()
+            UsedRam = mem_data()
         except:
-            total_mem, free_mem = None, None
+            UsedRam = None
+        data_dict["UsedRam"] = UsedRam
 
         # GET STORAGE DATA
         try:
-            total_storage, free_storage = storage_data()
+            FreeMemory = storage_data()
         except:
-            total_storage, free_storage = None
+            FreeMemory = None
+        data_dict["FreeMemory"] = FreeMemory
 
-        # GET SENSOR TEMP
+        # GET BATTERY TEMPS
         try:
-            sensor_temp = temperature.sensor_temp()
+            BatteryTemp1 = temperature.sensor_temp(0x48)
         except:
-            sensor_temp = None
+            BatteryTemp1 = None
+        try: 
+            BatteryTemp2 = temperature.sensor_temp(0x49)
+        except:
+            BatteryTemp2 = None
+
+        data_dict["BatteryTemp1"] = BatteryTemp1
+        data_dict["BatteryTemp2"] = BatteryTemp2
 
         # GET GPS DATA
         # lat, lon, vel = gps.gpsdata()
-        lat, lon, vel = None, None, None
+        GPSLat, GPSLatNS, GPSLn, GPSLonEW, GPSAlt, GPSVelocity = [None] * 6
+       
 
-        # GET EPS DATA    monica added all of this, might cause error
-        eps_telem_list = get_pdu_data.eps_data_organization()
+        # GET EPS DATA - pass in data_dict to add to it
+        get_pdu_data.get_eps_dicts(data_dict)
 
+        # GET MAGNETOMETER DATA
+        try:
+            Mag1X, Mag1Y, Mag1Z = magnetometer.get_mag_data(0x21)
+        except:
+            Mag1X, Mag1Y, Mag1Z = [None] * 3
+        try:
+            Mag2X, Mag2Y, Mag2Z = magnetometer.get_mag_data(0x23)
+        except:
+            Mag2X, Mag2Y, Mag2Z = [None] * 3
+        data_dict["Mag1X"] = Mag1X
+        data_dict["Mag1Y"] = Mag1Y
+        data_dict["Mag1Z"] = Mag1Z
+        data_dict["Mag2X"] = Mag2X
+        data_dict["Mag2Y"] = Mag2Y
+        data_dict["Mag2Z"] = Mag2Z
+        
         # WRITE TO CSV 
-        data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage, sensor_temp, lat, lon, vel]
-        data_line = data_line + eps_telem_list
-        write_line(data_line, csv_file)
+        write_line(data_dict, csv_file)
 
         # data collection runs once every 10 seconds
         # remove the time taken by code to execute 
@@ -65,13 +140,12 @@ def main():
         i += 1 
 
 
-def write_line(new_data, csv_file):
+def write_line(data_dict, csv_file):
     with open(csv_file, mode='a') as file:
-       writer = csv.writer(file)
-    #    writer.writerow(new_data)
-       writer.writerow(["None" if data is None else data for data in new_data])
+        writer = csv.writer(file)
+        new_data = list(data_dict)
+        writer.writerow(["None" if data is None else data for data in new_data])
     
-
 
 def cpu_temperature():
     command = "vcgencmd measure_temp | egrep -o '[0-9]*\.[0-9]*'"   # only pull out the number from string
@@ -81,31 +155,49 @@ def cpu_temperature():
 
 
 def mem_data():
-    command = "free -m"
+    command = "free -b" # returns RAM info in bytes 
     result = subprocess.check_output(command, shell=True, universal_newlines=True)
     # parse out the necessary data
     data = strip_shell_result(result)
     total_mem = float(data[1])
-    free_mem = float(data[3])
-    #print(Total_Mem)
-    #print(Free_Mem)
+    used_mem = float(data[2])
+    # free_mem = float(data[3])
 
-    return total_mem, free_mem
+    return round(used_mem/total_mem * 100, 5)
 
-
-"""
-TO DO - just use df and free and figure out what unit those are in (that is just the raw data)
-"""
 def storage_data():
-    command = 'df -h'
+    command = 'df'  # returns storage info in bytes 
     result = subprocess.check_output(command, shell=True, universal_newlines=True)
     data = strip_shell_result(result)
-    total_storage = data[1]
+    # total_storage = data[1]
     free_storage = data[3]
-    #print(total_storage)
-    #print(free_storage)
+    # used_percentage = data[4]
+    
+    return free_storage #, total_storage
 
-    return total_storage, free_storage
+def get_BME_temp():
+    try:
+        sensor_temp1 = temperature.sensor_temp(0x48)
+    except:
+        sensor_temp1 = None
+    try: 
+        sensor_temp2 = temperature.sensor_temp(0x49)
+    except:
+        sensor_temp2 = None
+
+    BMEtemp = 0
+    num_valid = 0
+    if sensor_temp1 is not None:
+        BMEtemp += sensor_temp1
+        num_valid += 1
+    if sensor_temp2 is not None: 
+        BMEtemp += sensor_temp1
+        num_valid += 1
+    BMEtemp = None if num_valid == 0 else BMEtemp/num_valid
+    
+    return BMEtemp
+
+
 
 
 # used for memory and storage data
@@ -128,9 +220,14 @@ def create_file(filename):
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
         csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(["time", "temp_result", "total_mem", "free_mem", "total_storage", "free_storage", "vol_vbatt_raw",
-                            "curr_vbatt_raw", "vol_3v3", "curr_3v3", "vol_5v0", "curr_5v0", "volt_vbatt", "curr_vbatt", "reg_temp_3v3_C", "reg_temp_3v3_F", "reg_temp_5v0_C", "reg_temp_5v0_F"]) 
-
+        # csvwriter.writerow(["time", "temp_result", "total_mem", "free_mem", "total_storage", "free_storage", "vol_vbatt_raw",
+                            # "curr_vbatt_raw", "vol_3v3", "curr_3v3", "vol_5v0", "curr_5v0", "volt_vbatt", "curr_vbatt", "reg_temp_3v3_C", "reg_temp_3v3_F", "reg_temp_5v0_C", "reg_temp_5v0_F"]) 
+        
+        csvwriter.writerow(
+            ["UnixTime", "PacketCount", "GyroX", "GyroY", "GyroZ", "AccelX", "AccelY", "AccelZ", "MagX", "MagY", "MagZ",
+            "BatteryTemp1", "BatteryTemp2", "BMETemp", "BMEPressure", "BMEHumidity", "UsedRam", "FreeMemory", "CPULoad",
+            "CPUTemp", "BattRawVoltage", "BattRawCurrent", "V3v3", "I3v3", "V5v0", "I5v0", "VvBatt", "IvBatt", "RegTemp3v3","RegTemp5v0",
+            "GPSLat", "GPSLatNS", "GPSLn", "GPSLonEW","GPSAlt", "GPSVelocity","GPSSNR","Mag1X","Mag1Y","Mag1Z","Mag2X", "Mag2Y", "Mag2Z" ])
     return csv_file
 
 if __name__ == "__main__":
