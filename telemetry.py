@@ -7,6 +7,7 @@ import temperature
 # import gps
 from pathlib import Path
 import get_pdu_data
+import get_imu_data
 import magnetometer
 
 def main():
@@ -113,6 +114,9 @@ def main():
 
         # GET EPS DATA - pass in data_dict to add to it
         get_pdu_data.get_eps_dict(data_dict)
+
+        # GET IMU DATA - pass in data_dict to add to it
+        get_imu_data.get_imu_dict(data_dict)
 
         # GET MAGNETOMETER DATA
         try:

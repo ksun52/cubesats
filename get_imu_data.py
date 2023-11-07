@@ -44,43 +44,56 @@ import qwiic_icm20948
 import time
 import sys
 
-def runExample():
+def get_imu_dict(data_dict):
+    IMU = qwiic_icm20948.QwiicIcm20948()
 
-	print("\nSparkFun 9DoF ICM-20948 Sensor  Example 1\n")
-	IMU = qwiic_icm20948.QwiicIcm20948()
+    data_dict["AccelX"] = IMU.axRaw()
+    data_dict["AccelY"] = IMU.ayRaw()
+    data_dict["AccelZ"] = IMU.azRaw()
+    data_dict["GyroX"] = IMU.gxRaw()
+    data_dict["GyroY"] = IMU.gyRaw()
+    data_dict["GyroZ"] = IMU.gzRaw()
+    data_dict["MagX"] = IMU.mxRaw()
+    data_dict["MagY"] = IMU.myRaw()
+    data_dict["MagZ"] = IMU.mzRaw()
 
-	if IMU.connected == False:
-		print("The Qwiic ICM20948 device isn't connected to the system. Please check your connection", \
-			file=sys.stderr)
-		return
 
-	IMU.begin()
+# def runExample():
+
+#	print("\nSparkFun 9DoF ICM-20948 Sensor  Example 1\n")
+#	IMU = qwiic_icm20948.QwiicIcm20948()
+
+#	if IMU.connected == False:
+#		print("The Qwiic ICM20948 device isn't connected to the system. Please check your connection", \
+#			file=sys.stderr)
+#		return
+
+#	IMU.begin()
 
 #	while True:
-	if IMU.dataReady():
-		IMU.getAgmt() # read all axis and temp from sensor, note this also updates all instance variables
-		print(\
-		 '{: 06d}'.format(IMU.axRaw)\
-		, '\t', '{: 06d}'.format(IMU.ayRaw)\
-		, '\t', '{: 06d}'.format(IMU.azRaw)\
-		, '\t', '{: 06d}'.format(IMU.gxRaw)\
-		, '\t', '{: 06d}'.format(IMU.gyRaw)\
-		, '\t', '{: 06d}'.format(IMU.gzRaw)\
-		, '\t', '{: 06d}'.format(IMU.mxRaw)\
-		, '\t', '{: 06d}'.format(IMU.myRaw)\
-		, '\t', '{: 06d}'.format(IMU.mzRaw)\
-		)
-		time.sleep(0.03)
-	else:
-		print("Waiting for data")
-		time.sleep(0.5)
+#	if IMU.dataReady():
+#		IMU.getAgmt() # read all axis and temp from sensor, note this also updates all instance variables
+#		 '{: 06d}'.format(IMU.axRaw)\
+#		, '\t', '{: 06d}'.format(IMU.ayRaw)\
+#		, '\t', '{: 06d}'.format(IMU.azRaw)\
+#		, '\t', '{: 06d}'.format(IMU.gxRaw)\
+#		, '\t', '{: 06d}'.format(IMU.gyRaw)\
+#		, '\t', '{: 06d}'.format(IMU.gzRaw)\
+#		, '\t', '{: 06d}'.format(IMU.mxRaw)\
+#		, '\t', '{: 06d}'.format(IMU.myRaw)\
+#		, '\t', '{: 06d}'.format(IMU.mzRaw)\
+#		)
+#		time.sleep(0.03)
+#	else:
+#		print("Waiting for data")
+#		time.sleep(0.5)
 
 
-if __name__ == '__main__':
-	try:
-		runExample()
-	except (KeyboardInterrupt, SystemExit) as exErr:
-		print("\nEnding Example 1")
-		sys.exit(0)
+# if __name__ == '__main__':
+#	try:
+#		runExample()
+#	except (KeyboardInterrupt, SystemExit) as exErr:
+#		print("\nEnding Example 1")
+#		sys.exit(0)
 
 
