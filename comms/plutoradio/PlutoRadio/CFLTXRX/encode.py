@@ -13,7 +13,7 @@ RAP_FOOT_LENGTH = 6
 
 # Your payload's spacecraft ID
 PID = '495'
-SID = '0'
+SID = '16'
 
 def checksum(data):
     # This calculates the Fletcher-16 checksum of your passed bytearray
@@ -64,7 +64,7 @@ def encode_rap(flag, data):
     buffer[2] = pidArray[0]
     buffer[3] = pidArray[1]
 
-    sidArray = int_to_bytes(SID, 2)
+    sidArray = int_to_bytes(SID, 2, 'big')
     buffer[4] = sidArray[0]
     buffer[5] = sidArray[1]
 

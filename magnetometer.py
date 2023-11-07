@@ -1,3 +1,4 @@
+
 import smbus2
 import time
 
@@ -23,12 +24,18 @@ def magnetometer_data(i2c_address):
     magnetic_field_z = data_z * 0.15
 
     bus.close()
+    return [magnetic_field_x, magnetic_field_y, magnetic_field_z]
 
 
 def read_magnetometer_data(register, bus, i2c_address):
     # Read 2 bytes of data from the specified register (little-endian format)
-    data = bus.read_word_data(i2c_address, register)
+    data = bus.read_word_data(i2c_address, register, 2)
     # RM3100 outputs 16-bit signed data, so we need to convert it to a signed integer
     data = ((data << 8) & 0xFF00) | (data >> 8)
     return data
+
+if __name__ == "__main__":
+    print(magnetometer_data(0x20))
+    print(magnetometer_data(0x21))
+
 

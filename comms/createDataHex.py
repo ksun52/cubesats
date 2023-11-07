@@ -5,7 +5,6 @@ import ast
  Structure:
  1. determine if DAP we are transmitting is for telem (PID = 1) or thumbnail (PID = 2)
  2. DAP has PID, length, file number, file part, total parts in file, and data
-
 '''
 
 data_dict = {}

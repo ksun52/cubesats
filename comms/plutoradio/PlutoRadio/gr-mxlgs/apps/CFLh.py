@@ -79,7 +79,7 @@ class CFLh(gr.top_block):
                 taps=(filter.design_filter(I_decimation, I_interpolation,0.4)),
                 fractional_bw=None,
         )
-        self.plutoSDR_sink = iio.pluto_sink('ip:192.168.2.1', int(txfreq+int(intFreq)), int(samp_rate), int(samp_rate), buffer_size, False, 38, '', True)
+        self.plutoSDR_sink = iio.pluto_sink('ip:192.168.2.1', int(txfreq+int(intFreq)), int(samp_rate), int(samp_rate), buffer_size, False, 0, '', True)
         self.mxlgs_doppler_correction_cc_1 = mxlgs.doppler_correction_cc(samp_rate, 12900, -1, -int(intFreq), int(txfreq))
         self.mxlgs_doppler_correction_cc_0 = mxlgs.doppler_correction_cc(samp_rate, 12800, 1, int(intFreq), int(rxfreq))
         self.mxlgs_ax25_packetization_0 = mxlgs.ax25_packetization(tx_delay, 5, bit_oversampling, I_decimation, I_interpolation)
