@@ -6,6 +6,7 @@ import subprocess
 import temperature
 # import gps
 from pathlib import Path
+import get_pdu_data
 
 def main():
     starttime = time.time()
@@ -49,8 +50,12 @@ def main():
         # lat, lon, vel = gps.gpsdata()
         lat, lon, vel = None, None, None
 
+        # GET EPS DATA    monica added all of this, might cause error
+        eps_telem_list = get_pdu_data.eps_data_organization()
+
         # WRITE TO CSV 
         data_line = [timestamp, cpu_temp, total_mem, free_mem, total_storage, free_storage, sensor_temp, lat, lon, vel]
+        data_line = data_line + eps_telem_list
         write_line(data_line, csv_file)
 
         # data collection runs once every 10 seconds
@@ -123,7 +128,8 @@ def create_file(filename):
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
         csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(["time", "temp_result", "total_mem", "free_mem", "total_storage", "free_storage"]) 
+        csvwriter.writerow(["time", "temp_result", "total_mem", "free_mem", "total_storage", "free_storage", "vol_vbatt_raw",
+                            "curr_vbatt_raw", "vol_3v3", "curr_3v3", "vol_5v0", "curr_5v0", "volt_vbatt", "curr_vbatt", "reg_temp_3v3_C", "reg_temp_3v3_F", "reg_temp_5v0_C", "reg_temp_5v0_F"]) 
 
     return csv_file
 
