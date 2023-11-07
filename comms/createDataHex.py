@@ -1,5 +1,28 @@
 import csv
 import ast
+import os
+import glob
+
+# Specify the directory path where your CSV files are located
+directory_path = '/home/pi/code/team-papa/downlink_telem'
+
+# Define a pattern to match CSV files (e.g., *.csv)
+file_pattern = '*.csv'
+
+# Use glob to list CSV files in the directory
+csv_files = glob.glob(os.path.join(directory_path, file_pattern))
+
+# Check if any CSV files were found
+if csv_files:
+    # Sort the list of CSV files by modification time (newest first)
+    csv_files.sort(key=os.path.getmtime, reverse=True)
+
+    # Get the path of the most recent CSV file
+    most_recent_csv = csv_files[0]
+
+    print("The most recent CSV file is:", most_recent_csv)
+else:
+    print("No CSV files found in the specified directory.")
 
 '''
  Structure:
@@ -7,11 +30,13 @@ import ast
  2. DAP has PID, length, file number, file part, total parts in file, and data
 '''
 
-data_dict = {}
+data_dict = {}        
 
-with open('CFL_beacon_def.csv', 'r') as csv_file:
+with open('CFL_beacon_def.csv', 'r', newline='') as csv_file, open(most_recent_csv, 'r', newline='') as csv_file2:
     csv_reader = csv.DictReader(csv_file)
-    for row in csv_reader:
+    csv_reader2 = csv.DictReader(csv_file2)
+
+    for row, row2 in zip(csv_reader, csv_reader2):
         title = row['Title']
         data_type = row['Data Type']
         offset = row['Offset']
@@ -21,8 +46,10 @@ with open('CFL_beacon_def.csv', 'r') as csv_file:
         encode_conversion_function = row['Encode Conversion Function']
         unit = row['Unit']
         comments = row['Comments']
-        example_unencoded_X = row['Example of Unencoded X']
+        example_unencoded_X = row2['Data']
+        print(example_unencoded_X)
         encoded_X = row['Encoded X']
+
 
         data_dict[title] = {
             "Type": data_type,
