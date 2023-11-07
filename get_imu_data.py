@@ -56,6 +56,7 @@ def get_imu_dict(data_dict):
     # data_dict["MagX"] = '{: 06d}'.format(IMU.mxRaw)
     # data_dict["MagY"] = '{: 06d}'.format(IMU.myRaw)
     # data_dict["MagZ"] ='{: 06d}'.format(IMU.mzRaw)
+    IMU.begin()
     IMU.getAgmt()
     data_dict["AccelX"] = '{: 06d}'.format(IMU.axRaw)
     data_dict["AccelY"] = '{: 06d}'.format(IMU.ayRaw)
