@@ -257,7 +257,8 @@ def create_beacon_data(data_dict):
         # Write the header row
         csvwriter = csv.writer(csvfile)
         new_data = list(data_dict.values())
-        csvwriter.writerow(["None" if data is None else data for data in new_data])
+        for data in new_data:
+            csvwriter.writerow(0 if data is None else data)
 
 if __name__ == "__main__":
     main()
