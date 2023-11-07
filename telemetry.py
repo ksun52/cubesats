@@ -112,7 +112,7 @@ def main():
        
 
         # GET EPS DATA - pass in data_dict to add to it
-        get_pdu_data.get_eps_dicts(data_dict)
+        get_pdu_data.get_eps_dict(data_dict)
 
         # GET MAGNETOMETER DATA
         try:
@@ -143,7 +143,7 @@ def main():
 def write_line(data_dict, csv_file):
     with open(csv_file, mode='a') as file:
         writer = csv.writer(file)
-        new_data = list(data_dict)
+        new_data = list(data_dict.values())
         writer.writerow(["None" if data is None else data for data in new_data])
     
 
