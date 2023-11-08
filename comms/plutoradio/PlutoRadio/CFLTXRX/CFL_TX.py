@@ -1,6 +1,9 @@
 import time
 from socket import create_connection
 from encode import encode_rap
+import sys
+sys.path.append('/pi/code/team-papa/comms/createDataHex.py')
+from createDataHex import createDataHexfunc
 
 # Socket-level communications between the radio and the beaconing program uses KISS protocol. These
 #   constants are header and footer bytes for packets sent to the radio software
@@ -30,7 +33,10 @@ def send():
         # Example beacon. You can mdo the code here and elsewhere as necessary, to customize your
         #   team's beacon
         # beacon = bytearray(b'\x53\x74\x72\x61\x74\x6f\x53\x61\x74')
-        beacon = bytearray(b'\xd1\x916eG\x00\xbe\xfb\xaf\xfb\xec\xfc\x80\xfe\x80\x00\x10\x08\xda\xffN\x00E\x01e\x81\x00\x00u\xa8\x00\x00\xf8\xfe\x0c\x00\x00\x00N\x01\x00\x00h\x10\x99\x89_.\xa0#\xf0\x01\x14,\x7f\r\xe8\x0ct\x01y\x13\xd1\x16\x0f,f\r\xe8\x04>\x06\xbas\x06\x00\x00\xbb\xc5\x0c\x00\x01`=\x03\x00d\x006\xe0\x15\x00\x00\xe3\xf1\xff\xff\xc5\xb5\x00\x00h\xf2\xff\xff\xb89\xff\xff\x98\xea\xff\xff')
+        # beacon = bytearray(b'\xd1\x916eG\x00\xbe\xfb\xaf\xfb\xec\xfc\x80\xfe\x80\x00\x10\x08\xda\xffN\x00E\x01e\x81\x00\x00u\xa8\x00\x00\xf8\xfe\x0c\x00\x00\x00N\x01\x00\x00h\x10\x99\x89_.\xa0#\xf0\x01\x14,\x7f\r\xe8\x0ct\x01y\x13\xd1\x16\x0f,f\r\xe8\x04>\x06\xbas\x06\x00\x00\xbb\xc5\x0c\x00\x01`=\x03\x00d\x006\xe0\x15\x00\x00\xe3\xf1\xff\xff\xc5\xb5\x00\x00h\xf2\xff\xff\xb89\xff\xff\x98\xea\xff\xff')
+        beacon_created = createDataHexfunc()
+        beacon = bytearray(beacon_created)
+
         #beacon+= count.to_bytes(1, 'little')
 
         # Adding RAP packets
@@ -53,7 +59,8 @@ def send():
         print(count)
         count += 1
 
-        # Beacon frequency
-        time.sleep(1)
+        # Beacon frequency: sends beacons every 30 seconds 
+        time.sleep(30)
 
 send()
+
