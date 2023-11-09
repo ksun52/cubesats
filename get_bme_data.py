@@ -15,3 +15,10 @@ sensor.set_gas_heater_duration(150)
 sensor.select_gas_heater_profile(0)
 
 
+def get_bme_dict(data_dict):
+    BME = bme680.BME680()
+    BME.get_sensor_data()
+
+    data_dict["BMETemp"] = BME.data.temperature # celcius
+    data_dict["BMEPressure"] = BME.data.pressure # mbar
+    data_dict["BMEHumidity"] = BME.data.humidity # relative hum.
