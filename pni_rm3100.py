@@ -296,6 +296,9 @@ class PniRm3100:
     def change_i2c_bus(self, bus=None, force=None):
         self._i2c_bus = smbus.SMBus(bus, force)
     
+    def close_i2c_bus(self):
+        self._i2c_bus.close()
+    
     """
     assign_device_addr() "Assign Device Address"
         Input: 

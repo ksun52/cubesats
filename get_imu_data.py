@@ -44,6 +44,7 @@ import qwiic_icm20948
 import time
 import sys
 
+
 def get_imu_dict(data_dict):
     IMU = qwiic_icm20948.QwiicIcm20948()
 

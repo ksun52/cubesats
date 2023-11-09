@@ -44,6 +44,8 @@ def sensor_temperature(desired_i2c_address):
     # Convert registers value to temperature (C)
     temp_c = temp_c * 0.0625
 
+    bus.close()
+
     return round(temp_c, 2)    # returns temperature in degrees Celsius 
    
 

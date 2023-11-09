@@ -34,6 +34,8 @@ def get_mag_data(device_address):
     y_mag = magnetometer_readings[1]
     z_mag = magnetometer_readings[2]
 
+    pni_rm3100_device.close_i2c_bus()
+
     return x_mag, y_mag, z_mag
 
 

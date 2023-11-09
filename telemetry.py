@@ -117,27 +117,49 @@ def main():
         get_pdu_data.get_eps_dict(data_dict)
 
         # GET IMU DATA - pass in data_dict to add to it
-        get_imu_data.get_imu_dict(data_dict)
-
+        # get_imu_data.get_imu_dict(data_dict)
+        with open('mag_data/recent_mag.csv', 'r') as csvfile:
+            csv_reader = csv.reader(csvfile)
+            for row in csv_reader:
+                data_dict["AccelX"] = row[0]
+                data_dict["AccelY"] = row[1]
+                data_dict["AccelZ"] = row[2]
+                data_dict["GyroX"] = row[3]
+                data_dict["GyroY"] = row[4]
+                data_dict["GyroZ"] = row[5]
+                data_dict["MagX"] = row[6]
+                data_dict["MagY"] = row[7]
+                data_dict["MagZ"] = row[8]
+                
         # GET BME DATA - pass in data_dict to add to it
         get_bme_data.get_bme_dict(data_dict)
 
         # GET MAGNETOMETER DATA
-        try:
-            Mag1X, Mag1Y, Mag1Z = magnetometer.get_mag_data(0x21)
-        except:
-            Mag1X, Mag1Y, Mag1Z = [None] * 3
-        try:
-            Mag2X, Mag2Y, Mag2Z = magnetometer.get_mag_data(0x23)
-        except:
-            Mag2X, Mag2Y, Mag2Z = [None] * 3
-        data_dict["Mag1X"] = Mag1X
-        data_dict["Mag1Y"] = Mag1Y
-        data_dict["Mag1Z"] = Mag1Z
-        data_dict["Mag2X"] = Mag2X
-        data_dict["Mag2Y"] = Mag2Y
-        data_dict["Mag2Z"] = Mag2Z
-        
+        # try:
+        #     Mag1X, Mag1Y, Mag1Z = magnetometer.get_mag_data(0x21)
+        # except:
+        #     Mag1X, Mag1Y, Mag1Z = [None] * 3
+        # try:
+        #     Mag2X, Mag2Y, Mag2Z = magnetometer.get_mag_data(0x23)
+        # except:
+        #     Mag2X, Mag2Y, Mag2Z = [None] * 3
+        # data_dict["Mag1X"] = Mag1X
+        # data_dict["Mag1Y"] = Mag1Y
+        # data_dict["Mag1Z"] = Mag1Z
+        # data_dict["Mag2X"] = Mag2X
+        # data_dict["Mag2Y"] = Mag2Y
+        # data_dict["Mag2Z"] = Mag2Z
+        with open('mag_data/recent_mag.csv', 'r') as csvfile:
+            csv_reader = csv.reader(csvfile)
+            for row in csv_reader:
+                data_dict["Mag1X"] = row[0]
+                data_dict["Mag1Y"] = row[1]
+                data_dict["Mag1Z"] = row[2]
+                data_dict["Mag2X"] = row[3]
+                data_dict["Mag2Y"] = row[4]
+                data_dict["Mag2Z"] = row[5]
+            
+                
         # WRITE TO CSV 
         write_line(data_dict, csv_file)
 
