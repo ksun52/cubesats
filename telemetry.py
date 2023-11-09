@@ -97,11 +97,11 @@ def main():
 
         # GET BATTERY TEMPS
         try:
-            BatteryTemp1 = temperature.sensor_temp(0x48)
+            BatteryTemp1 = temperature.sensor_temperature(0x48)
         except:
             BatteryTemp1 = None
         try: 
-            BatteryTemp2 = temperature.sensor_temp(0x49)
+            BatteryTemp2 = temperature.sensor_temperature(0x49)
         except:
             BatteryTemp2 = None
 

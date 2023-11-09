@@ -28,7 +28,12 @@ def main():
     ten_second_counter = time.time() - 11
     thirty_second_counter = time.time()
 
-    csv_file = create_mag_all_file("all_mag_data")
+    starttime = time.time()
+    value = datetime.datetime.fromtimestamp(starttime)
+    date = value.strftime('%Y-%m-%d_%H:%M:%S')
+    filename = f"all_imu_data_{date}"
+
+    csv_file = create_mag_all_file(filename)
 
     while True:
 
