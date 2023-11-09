@@ -4,6 +4,10 @@ from encode import encode_rap
 import sys
 sys.path.append('/pi/code/team-papa/comms/createDataHex.py')
 from createDataHex import createDataHexfunc
+import sys
+sys.path.append('/pi/code/team-papa/comms/createCamHex.py')
+from createCamHex import createCamfunc
+
 
 # Socket-level communications between the radio and the beaconing program uses KISS protocol. These
 #   constants are header and footer bytes for packets sent to the radio software
@@ -60,7 +64,8 @@ def send():
         count += 1
 
         # Beacon frequency: sends beacons every 30 seconds 
-        time.sleep(30)
+        time.sleep(10)
+
 
 send()
 
