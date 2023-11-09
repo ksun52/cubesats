@@ -118,7 +118,7 @@ def main():
 
         # GET IMU DATA - pass in data_dict to add to it
         # get_imu_data.get_imu_dict(data_dict)
-        with open('mag_data/recent_mag.csv', 'r') as csvfile:
+        with open('imu_data/recent_imu.csv', 'r') as csvfile:
             csv_reader = csv.reader(csvfile)
             for row in csv_reader:
                 data_dict["AccelX"] = row[0]

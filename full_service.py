@@ -19,3 +19,5 @@ def main():
     imu_thread.join()
     telemetry_thread.join() 
 
+if __name__ == "__main__":
+    main()

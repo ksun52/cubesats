@@ -33,7 +33,7 @@ def createDataHexfunc() :
 
     data_dict = {}        
 
-    with open('CFL_beacon_def.csv', 'r', newline='') as csv_file, open(most_recent_csv, 'r', newline='') as csv_file2:
+    with open('/home/pi/code/team-papa/comms/CFL_beacon_def.csv', 'r', newline='') as csv_file, open(most_recent_csv, 'r', newline='') as csv_file2:
         csv_reader = csv.DictReader(csv_file)
         csv_reader2 = csv.DictReader(csv_file2)
 
@@ -94,7 +94,6 @@ def createDataHexfunc() :
         #inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
         inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
         inner_dict['Encoded X'] = int(inner_dict['Encoded X'])
-        print(outer_key)
         inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
         beacon = beacon + inner_dict['Encoded X']
 

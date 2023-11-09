@@ -67,15 +67,6 @@ def createCamfunc():
 
     image_bytes = bytearray(image_data)
     print(len(image_bytes))
-    createChunks(image_bytes)
-
-    # image_bytes = pickle.dumps(byte_array)
-    # print(image_bytes)
-
-    # CHUNK into rows of bytes <1013
-
-def createChunks(image_bytes):
-
     # Split the RGB hex array into chunks
     chunks = []
     # Maximum byte array size for each chunk
@@ -85,6 +76,13 @@ def createChunks(image_bytes):
         chunk = image_bytes[i:i + max_chunk_size * 2]
         chunks.append(chunk)
     return chunks
+
+    # image_bytes = pickle.dumps(byte_array)
+    # print(image_bytes)
+
+    # CHUNK into rows of bytes <1013
+
+    
 
 
 # print(len(image_bytes))
