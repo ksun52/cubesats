@@ -47,26 +47,18 @@ import sys
 def get_imu_dict(data_dict):
     IMU = qwiic_icm20948.QwiicIcm20948()
 
-    # data_dict["AccelX"] = '{: 06d}'.format(IMU.axRaw())
-    # data_dict["AccelY"] = '{: 06d}'.format(IMU.ayRaw)
-    # data_dict["AccelZ"] = '{: 06d}'.format(IMU.azRaw)
-    # data_dict["GyroX"] = '{: 06d}'.format(IMU.gxRaw)
-    # data_dict["GyroY"] = '{: 06d}'.format(IMU.gyRaw)
-    # data_dict["GyroZ"] = '{: 06d}'.format(IMU.gzRaw)
-    # data_dict["MagX"] = '{: 06d}'.format(IMU.mxRaw)
-    # data_dict["MagY"] = '{: 06d}'.format(IMU.myRaw)
-    # data_dict["MagZ"] ='{: 06d}'.format(IMU.mzRaw)
     IMU.begin()
     IMU.getAgmt()
-    data_dict["AccelX"] = '{: 07d}'.format(IMU.axRaw)
-    data_dict["AccelY"] = '{: 07d}'.format(IMU.ayRaw)
-    data_dict["AccelZ"] = '{: 07d}'.format(IMU.azRaw)
-    data_dict["GyroX"] = '{: 07d}'.format(IMU.gxRaw)
-    data_dict["GyroY"] = '{: 07d}'.format(IMU.gyRaw)
-    data_dict["GyroZ"] = '{: 07d}'.format(IMU.gzRaw)
-    data_dict["MagX"] = '{: 07d}'.format(IMU.mxRaw)
-    data_dict["MagY"] = '{: 07d}'.format(IMU.myRaw)
-    data_dict["MagZ"] = '{: 07d}'.format(IMU.mzRaw)
+
+    data_dict["AccelX"] = IMU.axRaw
+    data_dict["AccelY"] = IMU.ayRaw
+    data_dict["AccelZ"] = IMU.azRaw
+    data_dict["GyroX"] = IMU.gxRaw
+    data_dict["GyroY"] = IMU.gyRaw
+    data_dict["GyroZ"] = IMU.gzRaw
+    data_dict["MagX"] = IMU.mxRaw
+    data_dict["MagY"] = IMU.myRaw
+    data_dict["MagZ"] = IMU.mzRaw
 
 # def runExample():
 
