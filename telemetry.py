@@ -8,7 +8,7 @@ import temperature
 from pathlib import Path
 import get_pdu_data
 import get_imu_data
-# import get_bme_data
+import get_bme_data
 import magnetometer
 
 def main():
