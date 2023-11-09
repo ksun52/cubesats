@@ -8,7 +8,7 @@ import temperature
 from pathlib import Path
 import get_pdu_data
 import get_imu_data
-import get_bme_data
+# import get_bme_data
 import magnetometer
 
 def main():
@@ -119,8 +119,8 @@ def main():
         # GET IMU DATA - pass in data_dict to add to it
         get_imu_data.get_imu_dict(data_dict)
 
-        # GET BME DATA - pass in data_dict to add to it
-        get_bme_data.get_bme_dict(data_dict)
+        # # GET BME DATA - pass in data_dict to add to it
+        # get_bme_data.get_bme_dict(data_dict)
 
         # GET MAGNETOMETER DATA
         try:
