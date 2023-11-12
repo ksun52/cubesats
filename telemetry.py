@@ -130,6 +130,11 @@ def main():
                 data_dict["MagX"] = row[6]
                 data_dict["MagY"] = row[7]
                 data_dict["MagZ"] = row[8]
+
+        # DELETE
+        data_dict["AccelX"] = 0
+        data_dict["AccelY"] = 0
+        data_dict["AccelZ"] = 0
                 
         # GET BME DATA - pass in data_dict to add to it
         get_bme_data.get_bme_dict(data_dict)

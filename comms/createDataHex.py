@@ -5,7 +5,8 @@ import glob
 
 def createDataHexfunc() :
     # Specify the directory path where your CSV files are located
-    directory_path = '/home/pi/code/team-papa/downlink_telem'
+    #directory_path = '/home/pi/code/team-papa/downlink_telem'
+    directory_path = '/home/pi/team-papa/downlink_telem'
 
     # Define a pattern to match CSV files (e.g., *.csv)
     file_pattern = '*.csv'
@@ -33,7 +34,8 @@ def createDataHexfunc() :
 
     data_dict = {}        
 
-    with open('/home/pi/code/team-papa/comms/CFL_beacon_def.csv', 'r', newline='') as csv_file, open(most_recent_csv, 'r', newline='') as csv_file2:
+    #with open('/home/pi/code/team-papa/comms/CFL_beacon_def.csv', 'r', newline='') as csv_file, open(most_recent_csv, 'r', newline='') as csv_file2:
+    with open('/home/pi/team-papa/comms/CFL_beacon_def.csv', 'r', newline='') as csv_file, open(most_recent_csv, 'r', newline='') as csv_file2:
         csv_reader = csv.DictReader(csv_file)
         csv_reader2 = csv.DictReader(csv_file2)
 
@@ -89,7 +91,6 @@ def createDataHexfunc() :
     # Populate dictionary with the hex data, with the conversion function applied
 
     beacon = b''
-
     for outer_key, inner_dict in data_dict.items():
         #inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
         inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
@@ -97,7 +98,7 @@ def createDataHexfunc() :
         inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
         beacon = beacon + inner_dict['Encoded X']
 
-    print(beacon)  
+    print(beacon)
     return beacon  
 
 
