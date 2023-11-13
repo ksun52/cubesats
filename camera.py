@@ -7,7 +7,10 @@ Record a 30 second video and then take a thumbnail picture
 """
 def camera_run():
     # TODO set proper camera resolution and framerate 
-    camera = picamera.PiCamera(resolution =(1440, 1080), framerate=10)
+
+    # camera res - 1664,1248
+    # framerate = 30.1
+    camera = picamera.PiCamera(resolution = (1440, 1080), framerate=10)
 
     time.sleep(2)
     i= 3
@@ -16,7 +19,10 @@ def camera_run():
         filenum = 1
         
         thumbnailfile = f"thumbnails/{filenum}_{str(int(timestamp))}.jpg"
-        camera.capture(thumbnailfile)
+        # we resize this for thumbnail
+        camera.capture(thumbnailfile, resize=(320,240))
+        # set a full res photo for saving onto storage 
+
         print("thumbnail captured")
 
         videofile = f"videos/{filenum}_{str(int(timestamp))}.h264"

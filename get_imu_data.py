@@ -61,6 +61,38 @@ def get_imu_dict(data_dict):
     data_dict["MagY"] = IMU.myRaw
     data_dict["MagZ"] = IMU.mzRaw
 
+def test_imu():
+    IMU = qwiic_icm20948.QwiicIcm20948()
+
+    IMU.begin()
+
+    # we need to set the full scale range and then convert the raw value based on the conversion
+    
+    # set range to max 
+    IMU.setFullScaleRangeAccel(qwiic_icm20948.gpm16)
+    IMU.setFullScaleRangeGyro(qwiic_icm20948.dps2000)
+    
+    IMU.getAgmt()
+
+    # sensitivities based on full scale range:
+    # accelerometer - 2048
+    # gyroscope - 16.4
+
+    acc_sensitivity = 2048
+    gyr_sensitivity = 16.4
+    mag_sensitivity = 0.15
+
+    print(IMU.axRaw / acc_sensitivity)
+    print(IMU.ayRaw / acc_sensitivity)
+    print(IMU.azRaw / acc_sensitivity)
+    print(IMU.gxRaw / gyr_sensitivity)
+    print(IMU.gyRaw / gyr_sensitivity)
+    print(IMU.gzRaw / gyr_sensitivity)
+    print(IMU.mxRaw * mag_sensitivity)
+    print(IMU.myRaw * mag_sensitivity)
+    print(IMU.mzRaw * mag_sensitivity)
+
+
 # def runExample():
 
 #	print("\nSparkFun 9DoF ICM-20948 Sensor  Example 1\n")
@@ -100,3 +132,5 @@ def get_imu_dict(data_dict):
 #		sys.exit(0)
 
 
+if __name__ == '__main__':
+    test_imu()

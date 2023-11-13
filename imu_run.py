@@ -10,17 +10,12 @@ import qwiic_icm20948
 def main():
     IMU = qwiic_icm20948.QwiicIcm20948()
     IMU.begin()
-
-
-    # data_dict["AccelX"] = IMU.axRaw
-    # data_dict["AccelY"] = IMU.ayRaw
-    # data_dict["AccelZ"] = IMU.azRaw
-    # data_dict["GyroX"] = IMU.gxRaw
-    # data_dict["GyroY"] = IMU.gyRaw
-    # data_dict["GyroZ"] = IMU.gzRaw
-    # data_dict["MagX"] = IMU.mxRaw
-    # data_dict["MagY"] = IMU.myRaw
-    # data_dict["MagZ"] = IMU.mzRaw
+    # set range to max 
+    IMU.setFullScaleRangeAccel(qwiic_icm20948.gpm16)
+    IMU.setFullScaleRangeGyro(qwiic_icm20948.dps2000)
+    acc_sensitivity = 2048 # divide
+    gyr_sensitivity = 16.4  # divide
+    mag_sensitivity = 0.15  # multiply
 
     accumulated_imu = []
     recent_imu = []
@@ -38,15 +33,28 @@ def main():
     while True:
         IMU.getAgmt()
         # get all IMU data 
-        recent_imu = [IMU.axRaw, IMU.ayRaw, IMU.azRaw, IMU.gxRaw, IMU.gyRaw, IMU.gzRaw, IMU.mxRaw, IMU.myRaw, IMU.mzRaw]
+        recent_imu = [IMU.gxRaw / gyr_sensitivity, 
+                      IMU.gyRaw / gyr_sensitivity, 
+                      IMU.gzRaw / gyr_sensitivity, 
+                      IMU.axRaw / acc_sensitivity, 
+                      IMU.ayRaw / acc_sensitivity,
+                      IMU.azRaw / acc_sensitivity, 
+                      IMU.mxRaw * mag_sensitivity, 
+                      IMU.myRaw * mag_sensitivity, 
+                      IMU.mzRaw * mag_sensitivity]
         accumulated_imu.append(recent_imu)
         
-        if time.time() - ten_second_counter > 10:
+        # TODO: change time 
+        if time.time() - ten_second_counter > 0.5:
             ten_second_counter = time.time()
 
             with open("imu_data/recent_imu.csv", mode='w') as file:
                 writer = csv.writer(file)
                 writer.writerow([0 if data is None else data for data in recent_imu])
+
+            # write watchdog status 
+            with open("watcher/imu_watch.txt", mode='w') as file:
+                file.write(str(time.time()))
 
         if time.time() - thirty_second_counter > 30:
             thirty_second_counter = time.time()
@@ -70,7 +78,7 @@ def create_imu_all_file(filename):
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(["ax", "ay", "az", "gx", "gy", "gz", "mx", "my", "mz"])
+        csvwriter.writerow(["gx", "gy", "gz", "ax", "ay", "az", "mx", "my", "mz"])
     
     return csv_file
 

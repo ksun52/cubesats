@@ -3,7 +3,7 @@ import ast
 import os
 import glob
 
-def createDataHexfunc() :
+def createDataHexfunc(count) :
     # Specify the directory path where your CSV files are located
     #directory_path = '/home/pi/code/team-papa/downlink_telem'
     directory_path = '/home/pi/team-papa/downlink_telem'
@@ -22,7 +22,7 @@ def createDataHexfunc() :
         # Get the path of the most recent CSV file
         most_recent_csv = csv_files[0]
 
-        print("The most recent CSV file is:", most_recent_csv)
+        # print("The most recent CSV file is:", most_recent_csv)
     else:
         print("No CSV files found in the specified directory.")
 
@@ -50,7 +50,7 @@ def createDataHexfunc() :
             unit = row['Unit']
             comments = row['Comments']
             example_unencoded_X = row2['Data']
-            print(example_unencoded_X)
+            # print(example_unencoded_X)
             encoded_X = row['Encoded X']
 
 
@@ -93,12 +93,18 @@ def createDataHexfunc() :
     beacon = b''
     for outer_key, inner_dict in data_dict.items():
         #inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
+        # print(outer_key + ": " + str(inner_dict['Unencoded X']))
         inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
         inner_dict['Encoded X'] = int(inner_dict['Encoded X'])
-        inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
-        beacon = beacon + inner_dict['Encoded X']
+        
+        if outer_key == 'Packet Count':
+            inner_dict['Encoded X'] = count.to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+            beacon = beacon + inner_dict['Encoded X']
+        else:
+            inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+            beacon = beacon + inner_dict['Encoded X']
 
-    print(beacon)
+    #print(beacon)
     return beacon  
 
 

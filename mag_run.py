@@ -31,7 +31,7 @@ def main():
     starttime = time.time()
     value = datetime.datetime.fromtimestamp(starttime)
     date = value.strftime('%Y-%m-%d_%H:%M:%S')
-    filename = f"all_imu_data_{date}"
+    filename = f"all_mag_data_{date}"
 
     csv_file = create_mag_all_file(filename)
 
@@ -50,12 +50,17 @@ def main():
         recent_mag = [x_mag1, y_mag1, z_mag1, x_mag2, y_mag2, z_mag2]
         accumulated_mag.append(recent_mag)
         
-        if time.time() - ten_second_counter > 10:
+        # TODO: change time 
+        if time.time() - ten_second_counter > 0.5:
             ten_second_counter = time.time()
 
             with open("mag_data/recent_mag.csv", mode='w') as file:
                 writer = csv.writer(file)
                 writer.writerow([0 if data is None else data for data in recent_mag])
+            
+            # write watchdog status 
+            with open("watcher/mag_watch.txt", mode='w') as file:
+                file.write(str(time.time()))
 
         if time.time() - thirty_second_counter > 30:
             thirty_second_counter = time.time()

@@ -121,20 +121,16 @@ def main():
         with open('imu_data/recent_imu.csv', 'r') as csvfile:
             csv_reader = csv.reader(csvfile)
             for row in csv_reader:
-                data_dict["AccelX"] = row[0]
-                data_dict["AccelY"] = row[1]
-                data_dict["AccelZ"] = row[2]
-                data_dict["GyroX"] = row[3]
-                data_dict["GyroY"] = row[4]
-                data_dict["GyroZ"] = row[5]
+                data_dict["GyroX"] = row[0]
+                data_dict["GyroY"] = row[1]
+                data_dict["GyroZ"] = row[2]
+                data_dict["AccelX"] = row[3]
+                data_dict["AccelY"] = row[4]
+                data_dict["AccelZ"] = row[5]
                 data_dict["MagX"] = row[6]
                 data_dict["MagY"] = row[7]
                 data_dict["MagZ"] = row[8]
 
-        # DELETE
-        data_dict["AccelX"] = 0
-        data_dict["AccelY"] = 0
-        data_dict["AccelZ"] = 0
                 
         # GET BME DATA - pass in data_dict to add to it
         get_bme_data.get_bme_dict(data_dict)
@@ -169,13 +165,19 @@ def main():
         write_line(data_dict, csv_file)
 
         # ADD DATA TO BEACON EVERY 30 SECONDS 
-        if i % 3 == 0:
+        # TODO: change timing
+        if i % 1 == 0:
             create_beacon_data(data_dict)
+
+        # write watchdog status 
+        with open("watcher/telem_watch.txt", mode='w') as file:
+            file.write(str(time.time()))
 
         # data collection runs once every 10 seconds
         # remove the time taken by code to execute 
-        time.sleep(10.0 - ((time.time() - starttime) % 10.0))
-
+        #TODO change time
+        # time.sleep(10.0 - ((time.time() - starttime) % 10.0))
+        time.sleep(1.0 - ((time.time() - starttime) % 1.0))
         i += 1 
 
 
@@ -275,14 +277,7 @@ def create_beacon_data(data_dict):
     date = value.strftime('%Y-%m-%d_%H:%M:%S')
 
     filename = f'telemetry_{date}'
-    csv_file = Path("downlink_telem", f'{filename}.csv')
-
-    counter = 1
-    
-    while csv_file.exists():
-        new_name = f"{filename}_({counter}).csv"
-        csv_file = Path("telemetry", new_name)
-        counter += 1
+    csv_file = Path("downlink_telem", "data.csv")
 
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
