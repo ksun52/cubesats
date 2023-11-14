@@ -4,52 +4,54 @@ import signal
 import pdb
 
 def watch_programs():
+
+    mode = "flight"
     
-    imu_last = run("imu_run", "imu_watch")
-    mag_last = run("mag_run", "mag_watch")
+    imu_last = run(runner="imu_run", watcher="imu_watch")
+    mag_last = run(runner="mag_run", watcher="mag_watch")
+    bme_last = run(runner="bme_run", watcher="bme_watch")
     time.sleep(0.5)
-    telem_last = run("telemetry", "telem_watch")
+    telem_last = run(runner="telemetry", watcher="telem_watch")
+    cam_last = run(runner="camera", watcher="cam_watch")
 
     starttime = time.time()
 
     while True:
         print("checking times")
-        with open('watcher/imu_watch.txt', 'r') as file:
-            imu_last = float(file.read().strip())
-        
-        with open('watcher/mag_watch.txt', 'r') as file:
-            mag_last = float(file.read().strip())
+        try:
+            imu_last = checktime(watcher="imu_watch")
+            mag_last = checktime(watcher="mag_watch")
+            bme_last = checktime(watcher="bme_watch")
+            telem_last = checktime(watcher="telem_watch")
+            cam_last = checktime(watcher="cam_watch")
+        except Exception as e:
+            print(f"error reading watchdog status: {e}")
 
-        with open('watcher/telem_watch.txt', 'r') as file:
-            telem_last = float(file.read().strip())
-
-
-        if time.time() - imu_last > 3:
-            print("starting new imu process")
-            subprocess.call(["pkill", "-15", "-f", "python3 /home/pi/team-papa/imu_run.py"])
-            imu_last = run("imu_run", "imu_watch")
-        
-        if time.time() - mag_last > 3:
-            print("starting new mag process")
-            subprocess.call(["pkill", "-15", "-f", "python3 /home/pi/team-papa/mag_run.py"])
-            mag_last = run("mag_run", "mag_watch")
-        
-        if time.time() - telem_last > 3:
-            print("starting new telemetry process")
-            subprocess.call(["pkill", "-15", "-f", "python3 /home/pi/team-papa/telemetry.py"])
-            telem_last = run("telemetry", "telem_watch")
+        imu_last = check_restart(last_known_time=imu_last, runner="imu_run", watcher="imu_watch")
+        mag_last = check_restart(last_known_time=mag_last, runner="mag_run", watcher="mag_watch")
+        bme_last = check_restart(last_known_time=bme_last, runner="bme_run", watcher="bme_watch")
+        telem_last = check_restart(last_known_time=telem_last, runner="telemetry", watcher="telem_watch")
+        cam_last = check_restart(last_known_time=cam_last, runner="camera", watcher="cam_watch")
         
         time.sleep((1 - (time.time() - starttime)) % 1)
 
-def run(name, watcher):
+def run(runner, watcher):
     curtime = time.time()
-    subprocess.Popen(["python3", f"/home/pi/team-papa/{name}.py"])
+    subprocess.Popen(["python3", f"/home/pi/team-papa/{runner}.py"])
     with open(f'watcher/{watcher}.txt', 'w') as file:
         file.write(str(curtime))
     
-    print("")
-    
     return curtime
+
+def checktime(watcher):
+    with open(f'watcher/{watcher}.txt', 'r') as file:
+        return float(file.read().strip())
+
+def check_restart(last_known_time, runner, watcher):
+    if time.time() - last_known_time > 3:
+        print(f"starting new {runner} process")
+        subprocess.call(["pkill", "-15", "-f", f"python3 /home/pi/team-papa/{runner}.py"])
+        return run(runner, watcher)
 
 if __name__ == "__main__":
     watch_programs()

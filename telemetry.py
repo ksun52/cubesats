@@ -7,9 +7,6 @@ import temperature
 # import gps
 from pathlib import Path
 import get_pdu_data
-import get_imu_data
-import get_bme_data
-import magnetometer
 
 def main():
     starttime = time.time()
@@ -21,6 +18,7 @@ def main():
 
     i = 0
     while(True):
+        # STORE RAW DATA, BEACON REAL UNITS 
         data_dict = {
             "UnixTime": None,
             "PacketCount": None,
@@ -70,40 +68,46 @@ def main():
         # TIME
         try: 
             UnixTime = time.time()
-        except:
+        except Exception as e:
             UnixTime = None
+            print("unix time error: {e}")
         data_dict["UnixTime"] = UnixTime
         
         #GET CPU TEMPERATURE (in celsius)
         try:
             CPUTemp = cpu_temperature()
-        except:
+        except Exception as e:
             CPUTemp = None
+            print(f"cpu temp error: {e}")
         data_dict["CPUTemp"] = CPUTemp
         
         #GET MEMORY DATA 
         try:
             UsedRam = mem_data()
-        except:
+        except Exception as e:
             UsedRam = None
+            print(f"used ram error: {e}")
         data_dict["UsedRam"] = UsedRam
 
         # GET STORAGE DATA
         try:
             FreeMemory = storage_data()
-        except:
+        except Exception as e:
             FreeMemory = None
+            print(f"free mem error: {e}")
         data_dict["FreeMemory"] = FreeMemory
 
         # GET BATTERY TEMPS
         try:
             BatteryTemp1 = temperature.sensor_temperature(0x48)
-        except:
+        except Exception as e:
             BatteryTemp1 = None
+            print(f"temp sensor 1 error: {e}")
         try: 
             BatteryTemp2 = temperature.sensor_temperature(0x49)
-        except:
+        except Exception as e:
             BatteryTemp2 = None
+            print(f"temp sensor 2 error: {e}")
 
         data_dict["BatteryTemp1"] = BatteryTemp1
         data_dict["BatteryTemp2"] = BatteryTemp2
@@ -114,52 +118,57 @@ def main():
        
 
         # GET EPS DATA - pass in data_dict to add to it
-        get_pdu_data.get_eps_dict(data_dict)
+        try:
+            get_pdu_data.get_eps_dict(data_dict)
+        except Exception as e:
+            print(f"eddy error: {e}")
 
         # GET IMU DATA - pass in data_dict to add to it
         # get_imu_data.get_imu_dict(data_dict)
-        with open('imu_data/recent_imu.csv', 'r') as csvfile:
-            csv_reader = csv.reader(csvfile)
-            for row in csv_reader:
-                data_dict["GyroX"] = row[0]
-                data_dict["GyroY"] = row[1]
-                data_dict["GyroZ"] = row[2]
-                data_dict["AccelX"] = row[3]
-                data_dict["AccelY"] = row[4]
-                data_dict["AccelZ"] = row[5]
-                data_dict["MagX"] = row[6]
-                data_dict["MagY"] = row[7]
-                data_dict["MagZ"] = row[8]
+        try:
+            with open('imu_data/recent_imu.csv', 'r') as csvfile:
+                csv_reader = csv.reader(csvfile)
+                for row in csv_reader:
+                    data_dict["GyroX"] = row[0]
+                    data_dict["GyroY"] = row[1]
+                    data_dict["GyroZ"] = row[2]
+                    data_dict["AccelX"] = row[3]
+                    data_dict["AccelY"] = row[4]
+                    data_dict["AccelZ"] = row[5]
+                    data_dict["MagX"] = row[6]
+                    data_dict["MagY"] = row[7]
+                    data_dict["MagZ"] = row[8]
+        except Exception as e:
+            print(f"imu data error: {e}")
 
-                
+
         # GET BME DATA - pass in data_dict to add to it
-        get_bme_data.get_bme_dict(data_dict)
+        # try:
+        #     get_bme_data.get_bme_dict(data_dict)
+        # except Exception as e:
+        #     print(f"bme error: {e}")
+        try:
+            with open('bme_data/recent_bme.csv', 'r') as csvfile:
+                csv_reader = csv.reader(csvfile)
+                for row in csv_reader:
+                    data_dict["BMETemp"] = row[0]
+                    data_dict["BMEPressure"] = row[1]
+                    data_dict["BMEHumidity"] = row[2]
+        except Exception as e:
+            print(f"bme data error: {e}")
 
-        # GET MAGNETOMETER DATA
-        # try:
-        #     Mag1X, Mag1Y, Mag1Z = magnetometer.get_mag_data(0x21)
-        # except:
-        #     Mag1X, Mag1Y, Mag1Z = [None] * 3
-        # try:
-        #     Mag2X, Mag2Y, Mag2Z = magnetometer.get_mag_data(0x23)
-        # except:
-        #     Mag2X, Mag2Y, Mag2Z = [None] * 3
-        # data_dict["Mag1X"] = Mag1X
-        # data_dict["Mag1Y"] = Mag1Y
-        # data_dict["Mag1Z"] = Mag1Z
-        # data_dict["Mag2X"] = Mag2X
-        # data_dict["Mag2Y"] = Mag2Y
-        # data_dict["Mag2Z"] = Mag2Z
-        with open('mag_data/recent_mag.csv', 'r') as csvfile:
-            csv_reader = csv.reader(csvfile)
-            for row in csv_reader:
-                data_dict["Mag1X"] = row[0]
-                data_dict["Mag1Y"] = row[1]
-                data_dict["Mag1Z"] = row[2]
-                data_dict["Mag2X"] = row[3]
-                data_dict["Mag2Y"] = row[4]
-                data_dict["Mag2Z"] = row[5]
-            
+        try:
+            with open('mag_data/recent_mag.csv', 'r') as csvfile:
+                csv_reader = csv.reader(csvfile)
+                for row in csv_reader:
+                    data_dict["Mag1X"] = row[0]
+                    data_dict["Mag1Y"] = row[1]
+                    data_dict["Mag1Z"] = row[2]
+                    data_dict["Mag2X"] = row[3]
+                    data_dict["Mag2Y"] = row[4]
+                    data_dict["Mag2Z"] = row[5]
+        except Exception as e:
+            print(f"mag data error: {e}")
                 
         # WRITE TO CSV 
         write_line(data_dict, csv_file)
@@ -216,29 +225,6 @@ def storage_data():
     
     return free_storage #, total_storage
 
-def get_BME_temp():
-    try:
-        sensor_temp1 = temperature.sensor_temp(0x48)
-    except:
-        sensor_temp1 = None
-    try: 
-        sensor_temp2 = temperature.sensor_temp(0x49)
-    except:
-        sensor_temp2 = None
-
-    BMEtemp = 0
-    num_valid = 0
-    if sensor_temp1 is not None:
-        BMEtemp += sensor_temp1
-        num_valid += 1
-    if sensor_temp2 is not None: 
-        BMEtemp += sensor_temp1
-        num_valid += 1
-    BMEtemp = None if num_valid == 0 else BMEtemp/num_valid
-    
-    return BMEtemp
-
-
 
 
 # used for memory and storage data
@@ -279,13 +265,39 @@ def create_beacon_data(data_dict):
     filename = f'telemetry_{date}'
     csv_file = Path("downlink_telem", "data.csv")
 
+    # CONVERT THE DOWNLINK DATA INTO THE REAL UNITS
+    gyr_sensitivity = 16.4  # divide
+    acc_sensitivity = 2048 # divide
+    imumag_sensitivity = 0.15  # multiply
+    realmag_sensitivity = 75 # divide
+
+    additional_conversions = [1] * 43
+    additional_conversions[2] = 1/gyr_sensitivity
+    additional_conversions[3] = 1/gyr_sensitivity
+    additional_conversions[4] = 1/gyr_sensitivity
+    
+    additional_conversions[5] = 1/acc_sensitivity
+    additional_conversions[6] = 1/acc_sensitivity
+    additional_conversions[7] = 1/acc_sensitivity
+
+    additional_conversions[8] = imumag_sensitivity
+    additional_conversions[9] = imumag_sensitivity
+    additional_conversions[10] = imumag_sensitivity
+
+    additional_conversions[37] = 1/realmag_sensitivity
+    additional_conversions[38] = 1/realmag_sensitivity
+    additional_conversions[39] = 1/realmag_sensitivity
+    additional_conversions[40] = 1/realmag_sensitivity
+    additional_conversions[41] = 1/realmag_sensitivity
+    additional_conversions[42] = 1/realmag_sensitivity
+
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
         csvwriter = csv.writer(csvfile)
         new_data = list(data_dict.values())
         csvwriter.writerow(["Data"])
-        for data in new_data:
-            csvwriter.writerow([0 if data is None else data])
+        for data, i in enumerate(new_data):
+            csvwriter.writerow([0 if data is None else data * additional_conversions[i]])
 
 if __name__ == "__main__":
     main()

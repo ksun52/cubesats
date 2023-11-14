@@ -8,13 +8,6 @@ import time
 import datetime
 from pathlib import Path
 
-#########################
-
-# TO DO: FIX FILENUM IN TX, CHANGE THUMBNAIL OUTPUT FOLDER, 
-
-#########################
-
-
 def extract_bytes(hex_string):
     # Convert the hex string to bytes
     hex_bytes = bytes.fromhex(hex_string)
@@ -49,10 +42,16 @@ class File:
         self.total_parts = total_parts
         self.all_file_parts = []
 
-def reconstructImage(file, filenum):
-    with open('reconstructed_image'+str(filenum)+'.jpg','wb') as image_file:
-        byte_array = b''.join(file.all_file_parts)
-        image_file.write(byte_array)
+def reconstructImage(file, filenum, full_image):
+    
+    if full_image == True:
+        with open('/home/pi/team-papa/comms/transmitted_thumbnails/reconstructed_image_FULL'+str(filenum)+'.jpg','wb') as image_file:
+            byte_array = b''.join(file.all_file_parts)
+            image_file.write(byte_array)
+    else:
+        with open('/home/pi/team-papa/comms/transmitted_thumbnails/reconstructed_image_INCOMPLETE'+str(filenum)+'.jpg','wb') as image_file:
+            byte_array = b''.join(file.all_file_parts)
+            image_file.write(byte_array)
 
 def create_file():
     
@@ -108,7 +107,7 @@ for byte_array in result:
     else:
         data_dict = {}        
 
-        with open('/Users/amal/Desktop/CubeSat/Code/team-papa/comms/CFL_beacon_def.csv', 'r') as csv_file:
+        with open('/home/pi/team-papa/comms/CFL_beacon_def.csv', 'r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
 
             # Function to actually do the conversion function
@@ -158,7 +157,9 @@ for byte_array in result:
 # Finally, go through all files in dictionary, and if we have any complete files, run reconstruct method and save down thumbnails
 for outer_key, inner_dict in image_dict.items():
     if len(inner_dict['file'].all_file_parts) == inner_dict['file'].total_parts:
-        reconstructImage(inner_dict['file'], outer_key)
+        reconstructImage(inner_dict['file'], outer_key,True)
+    else:
+        reconstructImage(inner_dict['file'], outer_key, False)
 
             
 #pdb.set_trace()

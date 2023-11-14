@@ -31,7 +31,7 @@ def gps_test():
         print("Listening for UBX Messages")
    
         try:
-            while not gps.geo_coords(wait_time=1000):
+            while gps.geo_coords(wait_time=1000) == None:
                 print("no lock")
             geo = gps.geo_coords()
             print(geo)
