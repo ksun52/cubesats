@@ -35,19 +35,20 @@ def main():
         csv_file = create_imu_all_file(filename)
 
         while True:
-            IMU.getAgmt()
+            get_Agmt_bytes(IMU)
             extract_time = time.time()
 
             # get all IMU data 
-            recent_imu = [IMU.gxRaw, 
-                            IMU.gyRaw, 
-                            IMU.gzRaw, 
-                            IMU.axRaw, 
-                            IMU.ayRaw,
-                            IMU.azRaw, 
-                            IMU.mxRaw, 
-                            IMU.myRaw, 
-                            IMU.mzRaw]
+            # print([IMU.gxRaw, IMU.gyRaw, IMU.gzRaw, IMU.axRaw, IMU.ayRaw, IMU.azRaw, IMU.mxRaw, IMU.myRaw, IMU.mzRaw])
+            recent_imu = [  to_hex_BE(IMU.gxRaw), 
+                            to_hex_BE(IMU.gyRaw), 
+                            to_hex_BE(IMU.gzRaw), 
+                            to_hex_BE(IMU.axRaw), 
+                            to_hex_BE(IMU.ayRaw),
+                            to_hex_BE(IMU.azRaw), 
+                            to_hex_LE(IMU.mxRaw), 
+                            to_hex_LE(IMU.myRaw), 
+                            to_hex_LE(IMU.mzRaw)]
             recent_imu.insert(0, extract_time)
             accumulated_imu.append(recent_imu)
             
@@ -74,6 +75,14 @@ def main():
     except Exception as e:
         LOGGER.info(f"imu error: {e}")
 
+def to_hex_BE(val):
+    # data comes in as unsigned
+    return val.to_bytes(length=2, byteorder='big', signed=False).hex()
+
+def to_hex_LE(val):
+    # data comes in as unsigned
+    return val.to_bytes(length=2, byteorder='little', signed=False).hex()
+
 
 def create_imu_all_file(filename):
     csv_file = Path("imu_data", f'{filename}.csv')
@@ -90,6 +99,47 @@ def create_imu_all_file(filename):
         csvwriter.writerow(["UnixTime", "gx", "gy", "gz", "ax", "ay", "az", "mx", "my", "mz"])
     
     return csv_file
+
+# ----------------------------------
+	# getAgmt()
+	#
+	# Reads and updates raw values from accel, gyro, mag and temp of the ICM90248 modul
+def get_Agmt_bytes(IMU):
+
+    """ 
+        Reads and updates raw values from accel, gyro, mag and temp of the ICM90248 module
+
+        :return: Returns True if I2C readBlock was successful, otherwise False.
+        :rtype: bool
+
+    """
+
+    # Read all of the readings starting at AGB0_REG_ACCEL_XOUT_H
+    numbytes = 14 + 9 # Read Accel, gyro, temp, and 9 bytes of mag
+    IMU.setBank(0)
+    buff = IMU._i2c.readBlock(IMU.address, IMU.AGB0_REG_ACCEL_XOUT_H, numbytes)
+
+    IMU.axRaw = ((buff[0] << 8) | (buff[1] & 0xFF))
+    IMU.ayRaw = ((buff[2] << 8) | (buff[3] & 0xFF))
+    IMU.azRaw = ((buff[4] << 8) | (buff[5] & 0xFF))
+
+    IMU.gxRaw = ((buff[6] << 8) | (buff[7] & 0xFF))
+    IMU.gyRaw = ((buff[8] << 8) | (buff[9] & 0xFF))
+    IMU.gzRaw = ((buff[10] << 8) | (buff[11] & 0xFF))
+
+    IMU.tmpRaw = ((buff[12] << 8) | (buff[13] & 0xFF))
+
+    IMU.magStat1 = buff[14]
+    IMU.mxRaw = ((buff[16] << 8) | (buff[15] & 0xFF)) # Mag data is read little endian
+    IMU.myRaw = ((buff[18] << 8) | (buff[17] & 0xFF))
+    IMU.mzRaw = ((buff[20] << 8) | (buff[19] & 0xFF))
+    IMU.magStat2 = buff[22]
+
+    # check for data read error
+    if buff:
+        return True
+    else:
+        return False
 
 if __name__ == "__main__":
     main()

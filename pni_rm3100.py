@@ -8,6 +8,7 @@
 import time
 from enum import IntEnum
 import smbus2 as smbus
+import pdb
 
 # from types import NoneType
 class PniRm3100:
@@ -976,9 +977,9 @@ class PniRm3100:
             if single_meas_x:
                 self.poll_byte &= ~self.PollRegister.POLL_PMX
         else:
-            x_mag_int = None
+            x_mag_unsigned = None
         
-        return x_mag_int
+        return x_mag_unsigned
 
 
     """
@@ -1046,9 +1047,9 @@ class PniRm3100:
             if single_meas_y:
                 self.poll_byte &= ~self.PollRegister.POLL_PMY
         else:
-            y_mag_int = None
+            y_mag_unsigned = None
         
-        return y_mag_int
+        return y_mag_unsigned
 
     """
     read_meas_z() reads Z-axis magnetometer and returns the value in microtesla (uT)
@@ -1087,7 +1088,7 @@ class PniRm3100:
             print("\t\tZ bytes: [{}]".format(', '.join(hex(val) for val in z_mag_bytes)), 
                   "\n\t\tZ Int Unsigned: ", hex(z_mag_unsigned), ", ", z_mag_unsigned, 
                   "\n\t\tZ Int: ", z_mag_int, "\tZ Value: ", z_mag_value)
-
+        
         return z_mag_value
 
     """
@@ -1115,9 +1116,10 @@ class PniRm3100:
             if single_meas_z:
                 self.poll_byte &= ~self.PollRegister.POLL_PMZ
         else:
-            z_mag_int = None
+            z_mag_unsigned = None
         
-        return z_mag_int
+        # pdb.set_trace()
+        return z_mag_unsigned
 
     """
     read_meas() reads X-,Y-,Z-axis magnetometers and returns a list of the values in microtesla (uT) [x,y,z]

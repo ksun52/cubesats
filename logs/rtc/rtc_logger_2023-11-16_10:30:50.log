@@ -1,0 +1,9 @@
+2023-11-16 10:30:50,532 [INFO] started up rtc_logger
+2023-11-16 10:30:50,533 [INFO] Starting Process to Sync RTC and Pi Time with GPS
+2023-11-16 10:30:50,535 [INFO] Listening for UBX Messages from GPS
+2023-11-16 10:30:50,535 [INFO] Trying to get GPS time
+2023-11-16 10:30:51,087 [INFO] GPS error: name 'rtc' is not defined
+2023-11-16 10:30:51,088 [INFO] Trying to get GPS time
+2023-11-16 10:30:53,595 [INFO] Trying to get GPS time
+2023-11-16 10:30:56,103 [INFO] Trying to get GPS time
+2023-11-16 10:30:58,613 [INFO] Trying to get GPS time

@@ -47,12 +47,12 @@ def main():
 
             extract_time = time.time()
 
-            x_mag1 = mag1_readings[0]
-            y_mag1 = mag1_readings[1]
-            z_mag1 = mag1_readings[2]
-            x_mag2 = mag2_readings[0]
-            y_mag2 = mag2_readings[1]
-            z_mag2 = mag2_readings[2]
+            x_mag1 = to_hex_BE(mag1_readings[0])
+            y_mag1 = to_hex_BE(mag1_readings[1])
+            z_mag1 = to_hex_BE(mag1_readings[2])
+            x_mag2 = to_hex_BE(mag2_readings[0])
+            y_mag2 = to_hex_BE(mag2_readings[1])
+            z_mag2 = to_hex_BE(mag2_readings[2])
             
             recent_mag = [x_mag1, y_mag1, z_mag1, x_mag2, y_mag2, z_mag2]
             recent_mag.insert(0, extract_time)
@@ -81,6 +81,10 @@ def main():
 
     except Exception as e:
         LOGGER.info(f"mag error: {e}")
+
+def to_hex_BE(val):
+    # data comes in as unsigned
+    return val.to_bytes(length=4, byteorder='big', signed=False).hex()
 
 
 def create_mag_all_file(filename):

@@ -10,6 +10,7 @@ import get_pdu_data
 import pdb
 import logging
 import utils
+import psutil
 import re
 
 def main():
@@ -87,6 +88,14 @@ def main():
             CPUTemp = None
             LOGGER.info(f"cpu temp error: {e}")
         data_dict["CPUTemp"] = CPUTemp
+
+        #GET CPU LOAD (in percent)
+        try:
+            CPULoad = get_cpu_load()
+        except Exception as e:
+            CPULoad = None
+            LOGGER.info(f"cpu load error: {e}")
+        data_dict["CPULoad"] = CPULoad
         
         #GET MEMORY DATA 
         try:
@@ -221,7 +230,9 @@ def cpu_temperature():
     temp_result = float(subprocess.check_output(command, shell=True, universal_newlines=True))
     return temp_result
 
-
+def get_cpu_load():
+    cpu_load = psutil.cpu_percent(interval=1)
+    return cpu_load
 
 def mem_data():
     command = "free -b" # returns RAM info in bytes 
@@ -326,12 +337,6 @@ def extract_gps_alt(alt_string):
         return 0
 
 
-# Example usage
-latitude_string = '4916.45 N'
-decimal_latitude = extract_and_convert_latitude(latitude_string)
-
-if decimal_latitude is not None:
-    print(f"Decimal Latitude: {decimal_latitude}")
 
 
 

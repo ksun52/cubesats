@@ -12,6 +12,7 @@ def write_line(data_dict):
 
     # Specify the directory path
     directory_path = '/home/pi/team-papa/comms/pluto_SNR'
+    # directory_path = '/home/pi/team-papa/comms/Unit tests'
 
     # Define a pattern to match
     file_pattern = '*.csv'
@@ -26,6 +27,7 @@ def write_line(data_dict):
 
         # Get the path of the most recent file
         most_recent_csv = csv_files[0]
+        # most_recent_csv = '/home/pi/team-papa/comms/Unit tests/datahex_test2.csv'
 
         #print("The most recent csv file is:", most_recent_csv)
         with open(most_recent_csv, mode='a') as file:
@@ -173,7 +175,7 @@ def createDataHexfunc(count) :
             inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
             beacon = beacon + inner_dict['Encoded X']
 
-    #print(beacon)
+    print(beacon)
 
     # Record the SNR to a CSV
 

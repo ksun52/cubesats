@@ -128,6 +128,8 @@ def UARTRead():
                 fix_quality = split_parts_2[6]
                 altitude = split_parts_2[9] + ' ' + split_parts_2[10] if (split_parts_2[9] != '' and split_parts_2[10] != '') else ''
 
+                # print(gngga_string)
+
             elif NMEA.startswith('$GPGSV'):
                 gpgsv_string = NMEA
                 split_parts_3 = gpgsv_string.split(',')
