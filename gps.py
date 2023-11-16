@@ -4,7 +4,7 @@ from ublox_gps import UbloxGps
 
 def gpsdata():
 
-    port = serial.Serial('/dev/tty1', baudrate=38400, timeout=5) #Baud could be 115200 instead
+    port = serial.Serial('/dev/ttyS0', baudrate=38400, timeout=5) #Baud could be 115200 instead
     gps = UbloxGps(port)
 
     try:

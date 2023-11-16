@@ -7,6 +7,7 @@ import binascii
 import pickle
 import ast
 import glob
+import pdb
 
 def createCamfunc(count):
     try:
@@ -53,7 +54,7 @@ def createCamfunc(count):
 
         # Resize the image
         # Define the new size (width and height)
-        scale_factor = 10
+        scale_factor = 1
 
         new_width = int(width/scale_factor)  # Set the new width in pixels
         new_height = int(height/scale_factor)  # Set the new height in pixels
@@ -94,10 +95,11 @@ def createCamfunc(count):
         # Maximum byte array size for each chunk
         max_chunk_size = 1012
         
-        for i in range(0, len(image_bytes), max_chunk_size * 2):
-            chunk = image_bytes[i:i + max_chunk_size * 2]
+        #pdb.set_trace()
+        for i in range(0, len(image_bytes), max_chunk_size):
+            chunk = image_bytes[i:i + max_chunk_size]
             chunks.append(chunk)
-        
+        #pdb.set_trace()
         # RECONSTRUCT IMAGE --> MOVE INTO SEPARATE FILE
         
         return chunks

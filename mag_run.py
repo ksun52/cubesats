@@ -4,10 +4,21 @@ import time
 from pathlib import Path
 import csv 
 import pni_rm3100
+import utils
 
 
 def main():
     try:
+        starttime = time.time()
+        value = datetime.datetime.fromtimestamp(starttime)
+        date = value.strftime('%Y-%m-%d_%H:%M:%S')
+        
+        LOGGER = utils.create_logger(logger_name="mag_logger", logfolder="mag", logfile_name=f"mag_logger_{date}")
+
+        # create data file 
+        filename = f"all_mag_data_{date}"
+        csv_file = create_mag_all_file(filename)
+
         # Instantiate Objects
         mag_device1 = pni_rm3100.PniRm3100()
         mag_device2 = pni_rm3100.PniRm3100()
@@ -28,17 +39,13 @@ def main():
         ten_second_counter = time.time() - 11
         thirty_second_counter = time.time()
 
-        starttime = time.time()
-        value = datetime.datetime.fromtimestamp(starttime)
-        date = value.strftime('%Y-%m-%d_%H:%M:%S')
-        filename = f"all_mag_data_{date}"
-
-        csv_file = create_mag_all_file(filename)
 
         while True:
 
-            mag1_readings = mag_device1.read_meas()
-            mag2_readings = mag_device2.read_meas()
+            mag1_readings = mag_device1.read_bytes()
+            mag2_readings = mag_device2.read_bytes()
+
+            extract_time = time.time()
 
             x_mag1 = mag1_readings[0]
             y_mag1 = mag1_readings[1]
@@ -48,11 +55,12 @@ def main():
             z_mag2 = mag2_readings[2]
             
             recent_mag = [x_mag1, y_mag1, z_mag1, x_mag2, y_mag2, z_mag2]
+            recent_mag.insert(0, extract_time)
             accumulated_mag.append(recent_mag)
             
             # TODO: change time 
-            if time.time() - ten_second_counter > 0.5:
-                ten_second_counter = time.time()
+            if extract_time - ten_second_counter > 0.5:
+                ten_second_counter = extract_time
 
                 with open("mag_data/recent_mag.csv", mode='w') as file:
                     writer = csv.writer(file)
@@ -62,8 +70,8 @@ def main():
                 with open("watcher/mag_watch.txt", mode='w') as file:
                     file.write(str(time.time()))
 
-            if time.time() - thirty_second_counter > 30:
-                thirty_second_counter = time.time()
+            if extract_time - thirty_second_counter > 30:
+                thirty_second_counter = extract_time
                 with open(csv_file, mode='a') as file:
                     writer = csv.writer(file)
                     for mag_dataset in accumulated_mag:
@@ -72,7 +80,7 @@ def main():
             time.sleep(0.027)   # 37 Hz 
 
     except Exception as e:
-        print(f"mag error: {e}")
+        LOGGER.info(f"mag error: {e}")
 
 
 def create_mag_all_file(filename):
@@ -87,7 +95,7 @@ def create_mag_all_file(filename):
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(["Mag1X", "Mag1Y", "Mag1Z", "Mag2X", "Mag2Y", "Mag2Z"])
+        csvwriter.writerow(["UnixTime", "Mag1X", "Mag1Y", "Mag1Z", "Mag2X", "Mag2Y", "Mag2Z"])
     
     return csv_file
 

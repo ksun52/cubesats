@@ -6,10 +6,17 @@ import csv
 
 import bme680
 import time
+import utils
 
 
 def main():
     try:
+        starttime = time.time()
+        value = datetime.datetime.fromtimestamp(starttime)
+        date = value.strftime('%Y-%m-%d_%H:%M:%S')
+
+        LOGGER = utils.create_logger(logger_name="bme_logger", logfolder="bme", logfile_name=f"bme_logger_{date}")
+        
         sensor = bme680.BME680(0x77)
 
         sensor.set_humidity_oversample(bme680.OS_2X)
@@ -28,25 +35,24 @@ def main():
         ten_second_counter = time.time() - 11
         thirty_second_counter = time.time()
 
-        starttime = time.time()
-        value = datetime.datetime.fromtimestamp(starttime)
-        date = value.strftime('%Y-%m-%d_%H:%M:%S')
         filename = f"all_bme_data_{date}"
-
         csv_file = create_bme_all_file(filename)
 
         while True:
             sensor.get_sensor_data()
+            extract_time = time.time()
+
             # get all BME data 
             temp = sensor.data.temperature # celcius
             pressure = sensor.data.pressure * 100 # mbar --> convert to Pascal 
             humidity = sensor.data.humidity # relative hum.
             recent_bme = [temp, pressure, humidity]
+            recent_bme.insert(0, extract_time)
             accumulated_bme.append(recent_bme)
             
             # TODO: change time 
-            if time.time() - ten_second_counter > 0.5:
-                ten_second_counter = time.time()
+            if extract_time - ten_second_counter > 0.5:
+                ten_second_counter = extract_time
 
                 with open("bme_data/recent_bme.csv", mode='w') as file:
                     writer = csv.writer(file)
@@ -56,8 +62,8 @@ def main():
                 with open("watcher/bme_watch.txt", mode='w') as file:
                     file.write(str(time.time()))
 
-            if time.time() - thirty_second_counter > 30:
-                thirty_second_counter = time.time()
+            if extract_time - thirty_second_counter > 30:
+                thirty_second_counter = extract_time
                 with open(csv_file, mode='a') as file:
                     writer = csv.writer(file)
                     for bme_dataset in accumulated_bme:
@@ -66,7 +72,7 @@ def main():
             time.sleep(0.1)
 
     except Exception as e:
-        print(f"bme error: {e}")
+        LOGGER.info(f"bme error: {e}")
 
 
 def create_bme_all_file(filename):
@@ -81,7 +87,7 @@ def create_bme_all_file(filename):
     with open(csv_file, 'w', newline='') as csvfile:
         # Write the header row
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(["gx", "gy", "gz", "ax", "ay", "az", "mx", "my", "mz"])
+        csvwriter.writerow(["UnixTime", "Temperature", "Pressure", "Humidity"])
     
     return csv_file
 

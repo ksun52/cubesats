@@ -49,6 +49,7 @@ def createDataHexfunc(count) :
     # Use glob to list CSV files in the directory
     csv_files = glob.glob(os.path.join(directory_path, file_pattern))
 
+    #pdb.set_trace()
     # Check if any CSV files were found
     if csv_files:
         # Sort the list of CSV files by modification time (newest first)

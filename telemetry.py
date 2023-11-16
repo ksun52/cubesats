@@ -7,13 +7,20 @@ import temperature
 # import gps
 from pathlib import Path
 import get_pdu_data
+import pdb
+import logging
+import utils
+import re
 
 def main():
+    # GET STARTTIME 
     starttime = time.time()
     value = datetime.datetime.fromtimestamp(starttime)
     date = value.strftime('%Y-%m-%d_%H:%M:%S')
-    filename = f"telemetry_{date}"
 
+    LOGGER = utils.create_logger(logger_name="telem_logger", logfolder="telem", logfile_name=f"telem_logger_{date}")
+    
+    filename = f"telemetry_{date}"
     csv_file = create_file(filename) # returns a path to the CSV file we need to write to 
 
     i = 0
@@ -56,7 +63,7 @@ def main():
             "GPSLonEW": None,
             "GPSAlt": None,
             "GPSVelocity": None,
-            "GPSSNR": None,
+            "GPSFixQual": None,
             "Mag1X": None,
             "Mag1Y": None,
             "Mag1Z": None,
@@ -70,7 +77,7 @@ def main():
             UnixTime = time.time()
         except Exception as e:
             UnixTime = None
-            print("unix time error: {e}")
+            LOGGER.info("unix time error: {e}")
         data_dict["UnixTime"] = UnixTime
         
         #GET CPU TEMPERATURE (in celsius)
@@ -78,7 +85,7 @@ def main():
             CPUTemp = cpu_temperature()
         except Exception as e:
             CPUTemp = None
-            print(f"cpu temp error: {e}")
+            LOGGER.info(f"cpu temp error: {e}")
         data_dict["CPUTemp"] = CPUTemp
         
         #GET MEMORY DATA 
@@ -86,7 +93,7 @@ def main():
             UsedRam = mem_data()
         except Exception as e:
             UsedRam = None
-            print(f"used ram error: {e}")
+            LOGGER.info(f"used ram error: {e}")
         data_dict["UsedRam"] = UsedRam
 
         # GET STORAGE DATA
@@ -94,7 +101,7 @@ def main():
             FreeMemory = storage_data()
         except Exception as e:
             FreeMemory = None
-            print(f"free mem error: {e}")
+            LOGGER.info(f"free mem error: {e}")
         data_dict["FreeMemory"] = FreeMemory
 
         # GET BATTERY TEMPS
@@ -102,26 +109,44 @@ def main():
             BatteryTemp1 = temperature.sensor_temperature(0x48)
         except Exception as e:
             BatteryTemp1 = None
-            print(f"temp sensor 1 error: {e}")
+            LOGGER.info(f"temp sensor 1 error: {e}")
         try: 
             BatteryTemp2 = temperature.sensor_temperature(0x49)
         except Exception as e:
             BatteryTemp2 = None
-            print(f"temp sensor 2 error: {e}")
+            LOGGER.info(f"temp sensor 2 error: {e}")
 
         data_dict["BatteryTemp1"] = BatteryTemp1
         data_dict["BatteryTemp2"] = BatteryTemp2
 
         # GET GPS DATA
         # lat, lon, vel = gps.gpsdata()
-        GPSLat, GPSLatNS, GPSLn, GPSLonEW, GPSAlt, GPSVelocity = [None] * 6
+        # GPSLat, GPSLatNS, GPSLn, GPSLonEW, GPSAlt, GPSVelocity = [None] * 6
+        GPS_SNR = 0
+        try:
+            with open('gps_data/recent_gps.csv', 'r') as csvfile:
+                csv_reader = csv.reader(csvfile)
+                for row in csv_reader:
+                    lat_results = extract_gps_lat(row[1])
+                    lon_results = extract_gps_lon(row[2])
+                    data_dict["GPSLat"] = lat_results[0]
+                    data_dict["GPSLatNS"] = lat_results[1]
+                    data_dict["GPSLn"] = lon_results[0]
+                    data_dict["GPSLonEW"] = lon_results[1]
+                    data_dict["GPSAlt"] = extract_gps_alt(row[5])
+                    data_dict["GPSVelocity"] = float(row[3]) if row[3] != '' else 0
+                    data_dict["GPSFixQual"] = float(row[4]) if row[4] != '' else 0
+                    GPS_SNR = float(row[6]) if row[6] != '' else 0
+
+        except Exception as e:
+            LOGGER.info(f"gps data error: {e}")
        
 
         # GET EPS DATA - pass in data_dict to add to it
         try:
             get_pdu_data.get_eps_dict(data_dict)
         except Exception as e:
-            print(f"eddy error: {e}")
+            LOGGER.info(f"eddy error: {e}")
 
         # GET IMU DATA - pass in data_dict to add to it
         # get_imu_data.get_imu_dict(data_dict)
@@ -129,46 +154,40 @@ def main():
             with open('imu_data/recent_imu.csv', 'r') as csvfile:
                 csv_reader = csv.reader(csvfile)
                 for row in csv_reader:
-                    data_dict["GyroX"] = row[0]
-                    data_dict["GyroY"] = row[1]
-                    data_dict["GyroZ"] = row[2]
-                    data_dict["AccelX"] = row[3]
-                    data_dict["AccelY"] = row[4]
-                    data_dict["AccelZ"] = row[5]
-                    data_dict["MagX"] = row[6]
-                    data_dict["MagY"] = row[7]
-                    data_dict["MagZ"] = row[8]
+                    data_dict["GyroX"] = float(row[0])
+                    data_dict["GyroY"] = float(row[1])
+                    data_dict["GyroZ"] = float(row[2])
+                    data_dict["AccelX"] = float(row[3])
+                    data_dict["AccelY"] = float(row[4])
+                    data_dict["AccelZ"] = float(row[5])
+                    data_dict["MagX"] = float(row[6])
+                    data_dict["MagY"] = float(row[7])
+                    data_dict["MagZ"] = float(row[8])
         except Exception as e:
-            print(f"imu data error: {e}")
+            LOGGER.info(f"imu data error: {e}")
 
-
-        # GET BME DATA - pass in data_dict to add to it
-        # try:
-        #     get_bme_data.get_bme_dict(data_dict)
-        # except Exception as e:
-        #     print(f"bme error: {e}")
         try:
             with open('bme_data/recent_bme.csv', 'r') as csvfile:
                 csv_reader = csv.reader(csvfile)
                 for row in csv_reader:
-                    data_dict["BMETemp"] = row[0]
-                    data_dict["BMEPressure"] = row[1]
-                    data_dict["BMEHumidity"] = row[2]
+                    data_dict["BMETemp"] = float(row[0])
+                    data_dict["BMEPressure"] = float(row[1])
+                    data_dict["BMEHumidity"] = float(row[2])
         except Exception as e:
-            print(f"bme data error: {e}")
+            LOGGER.info(f"bme data error: {e}")
 
         try:
             with open('mag_data/recent_mag.csv', 'r') as csvfile:
                 csv_reader = csv.reader(csvfile)
                 for row in csv_reader:
-                    data_dict["Mag1X"] = row[0]
-                    data_dict["Mag1Y"] = row[1]
-                    data_dict["Mag1Z"] = row[2]
-                    data_dict["Mag2X"] = row[3]
-                    data_dict["Mag2Y"] = row[4]
-                    data_dict["Mag2Z"] = row[5]
+                    data_dict["Mag1X"] = float(row[0])
+                    data_dict["Mag1Y"] = float(row[1])
+                    data_dict["Mag1Z"] = float(row[2])
+                    data_dict["Mag2X"] = float(row[3])
+                    data_dict["Mag2Y"] = float(row[4])
+                    data_dict["Mag2Z"] = float(row[5])
         except Exception as e:
-            print(f"mag data error: {e}")
+            LOGGER.info(f"mag data error: {e}")
                 
         # WRITE TO CSV 
         write_line(data_dict, csv_file)
@@ -234,6 +253,87 @@ def strip_shell_result(shell_result):
     data = lines[1].split()
     return data
 
+def extract_gps_lat(lat_info):
+    if lat_info == '':
+        return 0, -1
+
+    # Define a regular expression pattern to extract degrees, minutes, and hemisphere
+    pattern = re.compile(r'(\d{2})(\d{2}\.\d+) ([NS])')
+
+    # Use the regular expression to match the pattern in the input string
+    match = pattern.match(lat_info)
+
+    if match:
+        # Extract groups from the match
+        degrees, minutes, hemisphere = match.groups()
+
+        # Convert degrees and minutes to decimal
+        decimal_latitude = float(degrees) + (float(minutes) / 60)
+
+        # Adjust sign based on hemisphere
+        if hemisphere.upper() == 'S':
+            decimal_longitude *= -1
+
+        hemisphere_digit = 0 if hemisphere == "N" else 1
+        return decimal_latitude, hemisphere_digit
+    else:
+        LOGGER.info("invalid GPS latitude input format")
+        return 0, -1
+
+def extract_gps_lat(lon_info):
+    if lat_info == '':
+        return 0, -1
+        
+    # Define a regular expression pattern to extract degrees, minutes, and hemisphere
+    pattern = re.compile(r'(\d{3})(\d{2}\.\d+) ([EW])')
+
+    # Use the regular expression to match the pattern in the input string
+    match = pattern.match(lon_info)
+
+    if match:
+        # Extract groups from the match
+        degrees, minutes, hemisphere = match.groups()
+
+        # Convert degrees and minutes to decimal
+        decimal_longitude = float(degrees) + (float(minutes) / 60)
+
+        # Adjust sign based on hemisphere
+        if hemisphere.upper() == 'W':
+            decimal_longitude *= -1
+
+        hemisphere_digit = 0 if hemisphere == "E" else 1
+        return decimal_longitude
+    else:
+        LOGGER.info("invalid GPS longitude input format")
+        return 0, -1
+
+def extract_gps_alt(alt_string):
+    if alt_string == '':
+        return 0
+
+    # Define a regular expression pattern to extract a numeric value
+    pattern = re.compile(r'([\d.]+)')
+
+    # Use the regular expression to find the numeric value in the input string
+    match = pattern.search(input_string)
+
+    if match:
+        # Extract the numeric value
+        numeric_value = float(match.group())
+        return numeric_value
+    else:
+        LOGGER.info("invalid GPS altitude input format")
+        return 0
+
+
+# Example usage
+latitude_string = '4916.45 N'
+decimal_latitude = extract_and_convert_latitude(latitude_string)
+
+if decimal_latitude is not None:
+    print(f"Decimal Latitude: {decimal_latitude}")
+
+
 
 def create_file(filename):
     csv_file = Path("telemetry", f'{filename}.csv')
@@ -296,8 +396,9 @@ def create_beacon_data(data_dict):
         csvwriter = csv.writer(csvfile)
         new_data = list(data_dict.values())
         csvwriter.writerow(["Data"])
-        for data, i in enumerate(new_data):
-            csvwriter.writerow([0 if data is None else data * additional_conversions[i]])
+        for i, data in enumerate(new_data):
+            csvwriter.writerow([0 if data == None else data * additional_conversions[i]])
+
 
 if __name__ == "__main__":
     main()

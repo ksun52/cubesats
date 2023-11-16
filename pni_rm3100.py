@@ -952,6 +952,36 @@ class PniRm3100:
         return x_mag_value
 
     """
+    read_bytes_x() reads X-axis magnetometer and returns the value in LSB
+    """
+    def read_bytes_x(self):
+        # Check if a single measurement from either magnetometer has been requested
+        single_meas_x = self.poll_byte & self.PollRegister.POLL_PMX
+        
+        # Read from X Magnetometer    
+        if self.cmx or single_meas_x:
+            x_mag_bytes = self._i2c_bus.read_i2c_block_data(self.device_addr,
+                                                            self.MeasRegister.MEAS_REGISTER_ADDR,
+                                                            3)
+            
+            # Convert the unsigned 3-byte integer to a signed 3-byte integer
+            x_mag_unsigned = int.from_bytes(x_mag_bytes, "big")
+            x_mag_int = self.uint24_to_int24(x_mag_unsigned)
+
+            # DONT apply scaling because just want bytes 
+            # x_mag_value = x_mag_int * self.x_scaling
+
+            # If we're in single measurement mode and we just read the measurement, 
+            # then clear the single measurement bit
+            if single_meas_x:
+                self.poll_byte &= ~self.PollRegister.POLL_PMX
+        else:
+            x_mag_int = None
+        
+        return x_mag_int
+
+
+    """
     read_meas_y() reads Y-axis magnetometer and returns the value in microtesla (uT)
     """
     def read_meas_y(self):
@@ -990,6 +1020,35 @@ class PniRm3100:
                   "\n\t\tY Int: ", y_mag_int, "\tY Value: ", y_mag_value)
 
         return y_mag_value
+    
+    """
+    read_bytes_y() reads Y-axis magnetometer and returns the value in LSB
+    """
+    def read_bytes_y(self):
+        # Check if a single measurement from either magnetometer has been requested
+        single_meas_y = self.poll_byte & self.PollRegister.POLL_PMY
+        
+        # Read from Y Magnetometer    
+        if self.cmy or single_meas_y:
+            y_mag_bytes = self._i2c_bus.read_i2c_block_data(self.device_addr,
+                                                            self.MeasRegister.MEAS_REGISTER_ADDR + 0x03,
+                                                            3)
+            
+            # Convert the unsigned 3-byte integer to a signed 3-byte integer
+            y_mag_unsigned = int.from_bytes(y_mag_bytes, "big")
+            y_mag_int = self.uint24_to_int24(y_mag_unsigned)
+
+            # DONT apply scaling bc we just want bytes
+            # y_mag_value = y_mag_int * self.y_scaling
+
+            # If we're in single measurement mode and we just read the measurement, 
+            # then clear the single measurement bit
+            if single_meas_y:
+                self.poll_byte &= ~self.PollRegister.POLL_PMY
+        else:
+            y_mag_int = None
+        
+        return y_mag_int
 
     """
     read_meas_z() reads Z-axis magnetometer and returns the value in microtesla (uT)
@@ -1032,6 +1091,35 @@ class PniRm3100:
         return z_mag_value
 
     """
+    read_bytes_z() reads Z-axis magnetometer and returns the value in LSB
+    """
+    def read_bytes_z(self):
+        # Check if a single measurement from either magnetometer has been requested
+        single_meas_z = self.poll_byte & self.PollRegister.POLL_PMZ
+        
+        # Read from Z Magnetometer    
+        if self.cmy or single_meas_y:
+            z_mag_bytes = self._i2c_bus.read_i2c_block_data(self.device_addr,
+                                                            self.MeasRegister.MEAS_REGISTER_ADDR + 0x06,
+                                                            3)
+            
+            # Convert the unsigned 3-byte integer to a signed 3-byte integer
+            z_mag_unsigned = int.from_bytes(z_mag_bytes, "big")
+            z_mag_int = self.uint24_to_int24(z_mag_unsigned)
+
+            # DONT apply scaling bc we just want bytes 
+            # z_mag_value = z_mag_int * self.z_scaling
+
+            # If we're in single measurement mode and we just read the measurement, 
+            # then clear the single measurement bit
+            if single_meas_z:
+                self.poll_byte &= ~self.PollRegister.POLL_PMZ
+        else:
+            z_mag_int = None
+        
+        return z_mag_int
+
+    """
     read_meas() reads X-,Y-,Z-axis magnetometers and returns a list of the values in microtesla (uT) [x,y,z]
     """
     def read_meas(self):
@@ -1042,6 +1130,21 @@ class PniRm3100:
         # Print the Measurements
         if self.print_status_statements or self.print_debug_statements:
             print("read_meas()")
+            # if debug mode is on, all the lower level read_meas_<>() funcs will print
+
+        return [x_mag_value, y_mag_value, z_mag_value]
+    
+    """
+    read_bytes() reads X-,Y-,Z-axis magnetometers and returns a list of the values in LSB bytes [x,y,z]
+    """
+    def read_bytes(self):
+        x_mag_value = self.read_bytes_x()
+        y_mag_value = self.read_bytes_y()
+        z_mag_value = self.read_bytes_z()
+        
+        # Print the Measurements
+        if self.print_status_statements or self.print_debug_statements:
+            print("read_bytes()")
             # if debug mode is on, all the lower level read_meas_<>() funcs will print
 
         return [x_mag_value, y_mag_value, z_mag_value]
