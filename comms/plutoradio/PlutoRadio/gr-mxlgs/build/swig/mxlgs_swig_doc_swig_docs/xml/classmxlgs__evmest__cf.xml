@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classmxlgs__evmest__cf" kind="class" language="C++" prot="public">
+    <compoundname>mxlgs_evmest_cf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sync_block</basecompoundref>
+    <includes refid="mxlgs__evmest__cf_8h" local="no">mxlgs_evmest_cf.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a10410540bee4acf0d129f4411c5c78d8" prot="private" static="no" mutable="no">
+        <type>gr::digital::constellation_sptr</type>
+        <definition>gr::digital::constellation_sptr mxlgs_evmest_cf::d_cnst</definition>
+        <argsstring></argsstring>
+        <name>d_cnst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="25" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1ab6fe7bfd24c5587cb296f057cdbf57e5" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_evmest_cf::d_Ps</definition>
+        <argsstring></argsstring>
+        <name>d_Ps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="26" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1ad633d06cc196d2e27ec32543808c3412" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_evmest_cf::d_Pe</definition>
+        <argsstring></argsstring>
+        <name>d_Pe</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="27" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a58cd37e364ee1626defe40c731595382" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_evmest_cf::d_evm</definition>
+        <argsstring></argsstring>
+        <name>d_evm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="28" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a48c3a8c554ebdee4a1d5452cd0384f88" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_evmest_cf::d_npoints</definition>
+        <argsstring></argsstring>
+        <name>d_npoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="29" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a395a8c1d9324ce2aae96ee0d110d19ee" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_evmest_cf::d_lvec</definition>
+        <argsstring></argsstring>
+        <name>d_lvec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="30" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a3953a65aa7c642cc11bde85f8a506223" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_evmest_cf::num_points</definition>
+        <argsstring></argsstring>
+        <name>num_points</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="31" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1aab7c764a9940aea3d27359c07ea1d590" prot="private" static="no" mutable="no">
+        <type>gr_complex</type>
+        <definition>gr_complex mxlgs_evmest_cf::emin</definition>
+        <argsstring></argsstring>
+        <name>emin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="32" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a4e35fc31235544690af15f04c4def8d4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gr_complex &gt;</type>
+        <definition>std::vector&lt;gr_complex&gt; mxlgs_evmest_cf::constellation</definition>
+        <argsstring></argsstring>
+        <name>constellation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="33" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1a3931316ae7712383f725925ecbd5d869" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gr_complex &gt;</type>
+        <definition>std::vector&lt;gr_complex&gt; mxlgs_evmest_cf::constellation_scaled</definition>
+        <argsstring></argsstring>
+        <name>constellation_scaled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="34" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__evmest__cf_1afba7cdba99c5238ce1b8f8553c41ad8c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gr_complex &gt;</type>
+        <definition>std::vector&lt;gr_complex&gt; mxlgs_evmest_cf::error</definition>
+        <argsstring></argsstring>
+        <name>error</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="35" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classmxlgs__evmest__cf_1ae8c36623010df067875d3eed4110af9a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend <ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> <ref refid="mxlgs__evmest__cf_8h_1a8b3d7b9372060ee5a3d1e3c380bff85d" kindref="member">mxlgs_evmest_cf_sptr</ref></type>
+        <definition>MXLGS_API mxlgs_evmest_cf_sptr mxlgs_make_evmest_cf</definition>
+        <argsstring>(unsigned int npoints, unsigned int lvec, gr::digital::constellation_sptr cnst)</argsstring>
+        <name>mxlgs_make_evmest_cf</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>npoints</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>lvec</declname>
+        </param>
+        <param>
+          <type>gr::digital::constellation_sptr</type>
+          <declname>cnst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="22" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classmxlgs__evmest__cf_1add4b44ce9c6a19c442441a5d826026dc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_evmest_cf::mxlgs_evmest_cf</definition>
+        <argsstring>(unsigned int npoints, unsigned int lvec, gr::digital::constellation_sptr cnst)</argsstring>
+        <name>mxlgs_evmest_cf</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>npoints</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>lvec</declname>
+        </param>
+        <param>
+          <type>gr::digital::constellation_sptr</type>
+          <declname>cnst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="23" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmxlgs__evmest__cf_1addc5fcfaa83fc81adb4e4736bc852037" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_evmest_cf::~mxlgs_evmest_cf</definition>
+        <argsstring>()</argsstring>
+        <name>~mxlgs_evmest_cf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__evmest__cf_1a9031766442c91474bbe1807fbe734d6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mxlgs_evmest_cf::work</definition>
+        <argsstring>(int noutput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="40" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>mxlgs_evmest_cf</label>
+        <link refid="classmxlgs__evmest__cf"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>gr::sync_block</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10">
+        <label>mxlgs_evmest_cf</label>
+        <link refid="classmxlgs__evmest__cf"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>gr::sync_block</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" line="20" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_evmest_cf.h" bodystart="19" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classmxlgs__evmest__cf_1a4e35fc31235544690af15f04c4def8d4" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>constellation</name></member>
+      <member refid="classmxlgs__evmest__cf_1a3931316ae7712383f725925ecbd5d869" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>constellation_scaled</name></member>
+      <member refid="classmxlgs__evmest__cf_1a10410540bee4acf0d129f4411c5c78d8" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>d_cnst</name></member>
+      <member refid="classmxlgs__evmest__cf_1a58cd37e364ee1626defe40c731595382" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>d_evm</name></member>
+      <member refid="classmxlgs__evmest__cf_1a395a8c1d9324ce2aae96ee0d110d19ee" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>d_lvec</name></member>
+      <member refid="classmxlgs__evmest__cf_1a48c3a8c554ebdee4a1d5452cd0384f88" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>d_npoints</name></member>
+      <member refid="classmxlgs__evmest__cf_1ad633d06cc196d2e27ec32543808c3412" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>d_Pe</name></member>
+      <member refid="classmxlgs__evmest__cf_1ab6fe7bfd24c5587cb296f057cdbf57e5" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>d_Ps</name></member>
+      <member refid="classmxlgs__evmest__cf_1aab7c764a9940aea3d27359c07ea1d590" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>emin</name></member>
+      <member refid="classmxlgs__evmest__cf_1afba7cdba99c5238ce1b8f8553c41ad8c" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>error</name></member>
+      <member refid="classmxlgs__evmest__cf_1add4b44ce9c6a19c442441a5d826026dc" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>mxlgs_evmest_cf</name></member>
+      <member refid="classmxlgs__evmest__cf_1ae8c36623010df067875d3eed4110af9a" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>mxlgs_make_evmest_cf</name></member>
+      <member refid="classmxlgs__evmest__cf_1a3953a65aa7c642cc11bde85f8a506223" prot="private" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>num_points</name></member>
+      <member refid="classmxlgs__evmest__cf_1a9031766442c91474bbe1807fbe734d6d" prot="public" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>work</name></member>
+      <member refid="classmxlgs__evmest__cf_1addc5fcfaa83fc81adb4e4736bc852037" prot="public" virt="non-virtual"><scope>mxlgs_evmest_cf</scope><name>~mxlgs_evmest_cf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

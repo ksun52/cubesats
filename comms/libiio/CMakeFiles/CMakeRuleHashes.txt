@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+f2de26cdac70c5dbcb310f4c6fc4837e CMakeFiles/uninstall
+b6162b51a2f1525266efc03234869c9a iiod/lexer.c
+8e4ada986caf81280011b90f703e7a66 iiod/parser.c

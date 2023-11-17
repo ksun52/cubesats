@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<block>
+	<name>Stream to PDU</name>
+	<key>mxlgs_stream_to_pdu</key>
+	<category>MXLGS</category>
+	<import>import mxlgs</import>
+	<import>from gnuradio import blocks</import>
+	<make>mxlgs.stream_to_pdu($mode)</make>
+	<callback></callback>
+
+	<param>
+		<name>Mode</name>
+		<key>mode</key>
+		<type>bool</type>
+	</param>
+
+	<sink>
+		<name>in</name>
+		<type>byte</type>
+	</sink>
+
+	<source>
+		<name>pdus</name>
+		<type>message</type>
+	</source>
+</block>

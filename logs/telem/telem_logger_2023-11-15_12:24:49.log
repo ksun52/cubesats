@@ -1,0 +1,19 @@
+2023-11-15 12:24:49,485 [INFO] started up telem_logger
+2023-11-15 12:24:49,526 [INFO] temp sensor 1 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:49,527 [INFO] temp sensor 2 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:49,528 [INFO] eddy error: [Errno 121] Remote I/O error
+2023-11-15 12:24:50,515 [INFO] temp sensor 1 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:50,516 [INFO] temp sensor 2 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:50,517 [INFO] eddy error: [Errno 121] Remote I/O error
+2023-11-15 12:24:51,545 [INFO] temp sensor 1 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:51,546 [INFO] temp sensor 2 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:51,548 [INFO] eddy error: [Errno 121] Remote I/O error
+2023-11-15 12:24:52,554 [INFO] temp sensor 1 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:52,555 [INFO] temp sensor 2 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:52,557 [INFO] eddy error: [Errno 121] Remote I/O error
+2023-11-15 12:24:53,554 [INFO] temp sensor 1 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:53,556 [INFO] temp sensor 2 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:53,558 [INFO] eddy error: [Errno 121] Remote I/O error
+2023-11-15 12:24:54,522 [INFO] temp sensor 1 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:54,523 [INFO] temp sensor 2 error: [Errno 121] Remote I/O error
+2023-11-15 12:24:54,524 [INFO] eddy error: [Errno 121] Remote I/O error

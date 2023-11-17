@@ -1,0 +1,2 @@
+/usr/bin/ar qc libiiod-responder.a  CMakeFiles/iiod-responder.dir/iiod-responder.c.o
+/usr/bin/ranlib libiiod-responder.a

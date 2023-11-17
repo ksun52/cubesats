@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classmxlgs__doppler__correction__cc" kind="class" language="C++" prot="public">
+    <compoundname>mxlgs_doppler_correction_cc</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">sync_block</basecompoundref>
+    <includes refid="mxlgs__doppler__correction__cc_8h" local="no">mxlgs_doppler_correction_cc.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a79b2981296c4ec23ca1d4179580a5c9b" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_doppler_correction_cc::d_sampling_freq</definition>
+        <argsstring></argsstring>
+        <name>d_sampling_freq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="26" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a6821792364e68abe89f7f95a9c0c3100" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_doppler_correction_cc::d_int_freq</definition>
+        <argsstring></argsstring>
+        <name>d_int_freq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="27" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1ad24990880c85e27480e4c1722a7cebb1" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int mxlgs_doppler_correction_cc::d_port</definition>
+        <argsstring></argsstring>
+        <name>d_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="28" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a0eea46a58764a39f03d1f8f33598ebd0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mxlgs_doppler_correction_cc::d_dir</definition>
+        <argsstring></argsstring>
+        <name>d_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="29" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a75311fb0cf7380f7dc35b14edee4fd8f" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_doppler_correction_cc::d_local_freq</definition>
+        <argsstring></argsstring>
+        <name>d_local_freq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="30" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a090ca12fe3875793b90ca27acca6de7f" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mxlgs_doppler_correction_cc::d_doppler</definition>
+        <argsstring></argsstring>
+        <name>d_doppler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="31" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a568e5f8d6b6c4c610fba56432c1d1183" prot="private" static="no" mutable="no">
+        <type>long int</type>
+        <definition>long int mxlgs_doppler_correction_cc::d_rxfreq</definition>
+        <argsstring></argsstring>
+        <name>d_rxfreq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="32" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1add53b5124be5b023aaaa59f6ad234990" prot="private" static="no" mutable="no">
+        <type>gr::fxpt_nco</type>
+        <definition>gr::fxpt_nco mxlgs_doppler_correction_cc::d_nco</definition>
+        <argsstring></argsstring>
+        <name>d_nco</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="33" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmxlgs__doppler__correction__cc_1a75e6984c4af8676da52facd8a90a7b52" prot="private" static="no" mutable="no">
+        <type>pthread_t</type>
+        <definition>pthread_t mxlgs_doppler_correction_cc::socket_thread</definition>
+        <argsstring></argsstring>
+        <name>socket_thread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="34" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classmxlgs__doppler__correction__cc_1a1a79edc089b46a4d82d4d34073aac588" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend <ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> <ref refid="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" kindref="member">mxlgs_doppler_correction_cc_sptr</ref></type>
+        <definition>MXLGS_API mxlgs_doppler_correction_cc_sptr mxlgs_make_doppler_correction_cc</definition>
+        <argsstring>(double sampling_freq, unsigned int port, int dir, double int_freq, long int rxfreq)</argsstring>
+        <name>mxlgs_make_doppler_correction_cc</name>
+        <param>
+          <type>double</type>
+          <declname>sampling_freq</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>int_freq</declname>
+        </param>
+        <param>
+          <type>long int</type>
+          <declname>rxfreq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="23" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classmxlgs__doppler__correction__cc_1a3d55c6d98bbf1eeb6886df53db3f08ae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_doppler_correction_cc::mxlgs_doppler_correction_cc</definition>
+        <argsstring>(double sampling_freq, unsigned int port, int dir, double int_freq, long int rxfreq)</argsstring>
+        <name>mxlgs_doppler_correction_cc</name>
+        <param>
+          <type>double</type>
+          <declname>sampling_freq</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>int_freq</declname>
+        </param>
+        <param>
+          <type>long int</type>
+          <declname>rxfreq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="24" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classmxlgs__doppler__correction__cc_1af813c0fce0cf3f9b2a0714838267695c" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>static void* mxlgs_doppler_correction_cc::start_thread</definition>
+        <argsstring>(void *obj)</argsstring>
+        <name>start_thread</name>
+        <param>
+          <type>void *</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="36" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="36" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmxlgs__doppler__correction__cc_1a4eed5e89f2db8fc46208879add8912f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mxlgs_doppler_correction_cc::~mxlgs_doppler_correction_cc</definition>
+        <argsstring>()</argsstring>
+        <name>~mxlgs_doppler_correction_cc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__doppler__correction__cc_1a0bf1a2b9794611109e7d5f14e3d15a57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mxlgs_doppler_correction_cc::socket_thread_work</definition>
+        <argsstring>()</argsstring>
+        <name>socket_thread_work</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__doppler__correction__cc_1a9f96e8a7c0836d5573f8d9e6c57773e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mxlgs_doppler_correction_cc::process_command</definition>
+        <argsstring>(char *, char *)</argsstring>
+        <name>process_command</name>
+        <param>
+          <type>char *</type>
+        </param>
+        <param>
+          <type>char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmxlgs__doppler__correction__cc_1a043af58707c0202c4b3ba5abc9bddf7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mxlgs_doppler_correction_cc::work</definition>
+        <argsstring>(int noutput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="47" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>mxlgs_doppler_correction_cc</label>
+        <link refid="classmxlgs__doppler__correction__cc"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sync_block</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6">
+        <label>mxlgs_doppler_correction_cc</label>
+        <link refid="classmxlgs__doppler__correction__cc"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>sync_block</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="21" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="20" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classmxlgs__doppler__correction__cc_1a0eea46a58764a39f03d1f8f33598ebd0" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_dir</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a090ca12fe3875793b90ca27acca6de7f" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_doppler</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a6821792364e68abe89f7f95a9c0c3100" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_int_freq</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a75311fb0cf7380f7dc35b14edee4fd8f" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_local_freq</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1add53b5124be5b023aaaa59f6ad234990" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_nco</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1ad24990880c85e27480e4c1722a7cebb1" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_port</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a568e5f8d6b6c4c610fba56432c1d1183" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_rxfreq</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a79b2981296c4ec23ca1d4179580a5c9b" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>d_sampling_freq</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a3d55c6d98bbf1eeb6886df53db3f08ae" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>mxlgs_doppler_correction_cc</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a1a79edc089b46a4d82d4d34073aac588" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>mxlgs_make_doppler_correction_cc</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a9f96e8a7c0836d5573f8d9e6c57773e0" prot="public" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>process_command</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a75e6984c4af8676da52facd8a90a7b52" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>socket_thread</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a0bf1a2b9794611109e7d5f14e3d15a57" prot="public" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>socket_thread_work</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1af813c0fce0cf3f9b2a0714838267695c" prot="private" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>start_thread</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a043af58707c0202c4b3ba5abc9bddf7f" prot="public" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>work</name></member>
+      <member refid="classmxlgs__doppler__correction__cc_1a4eed5e89f2db8fc46208879add8912f3" prot="public" virt="non-virtual"><scope>mxlgs_doppler_correction_cc</scope><name>~mxlgs_doppler_correction_cc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1 @@
+/usr/bin/cc -O2 -g -DNDEBUG   CMakeFiles/iio_reg.dir/iio_reg.c.o  -o iio_reg  -Wl,-rpath,/home/pi/code/team-papa/comms/libiio libiio_tests_helper.a ../libiio.so.1.0 

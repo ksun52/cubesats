@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock" kind="class" language="C++" prot="public">
+    <compoundname>gr::mxlgs::mxlgs_tx_hierblock</compoundname>
+    <basecompoundref prot="public" virt="virtual">hier_block2</basecompoundref>
+    <includes refid="mxlgs__tx__hierblock_8h" local="no">mxlgs_tx_hierblock.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a5091cd5bfc6d47964a6603e773216a64" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock" kindref="compound">mxlgs_tx_hierblock</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;mxlgs_tx_hierblock&gt; gr::mxlgs::mxlgs_tx_hierblock::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_tx_hierblock.h" line="39" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_tx_hierblock.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a62af6792346ade7fe542f187ac7b52d1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a5091cd5bfc6d47964a6603e773216a64" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::mxlgs::mxlgs_tx_hierblock::make</definition>
+        <argsstring>()</argsstring>
+        <name>make</name>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock" kindref="compound">mxlgs::mxlgs_tx_hierblock</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock" kindref="compound">mxlgs::mxlgs_tx_hierblock</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a62af6792346ade7fe542f187ac7b52d1" kindref="member">mxlgs::mxlgs_tx_hierblock::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_tx_hierblock.h" line="49" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt;+description of block+&gt; </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="20">
+        <label>gr::mxlgs::mxlgs_tx_hierblock</label>
+        <link refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock"/>
+        <childnode refid="21" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>hier_block2</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="22">
+        <label>gr::mxlgs::mxlgs_tx_hierblock</label>
+        <link refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>hier_block2</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_tx_hierblock.h" line="37" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_tx_hierblock.h" bodystart="36" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a62af6792346ade7fe542f187ac7b52d1" prot="public" virt="non-virtual"><scope>gr::mxlgs::mxlgs_tx_hierblock</scope><name>make</name></member>
+      <member refid="classgr_1_1mxlgs_1_1mxlgs__tx__hierblock_1a5091cd5bfc6d47964a6603e773216a64" prot="public" virt="non-virtual"><scope>gr::mxlgs::mxlgs_tx_hierblock</scope><name>sptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

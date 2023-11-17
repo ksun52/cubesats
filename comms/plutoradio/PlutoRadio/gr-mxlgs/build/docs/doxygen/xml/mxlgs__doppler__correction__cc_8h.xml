@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="mxlgs__doppler__correction__cc_8h" kind="file" language="C++">
+    <compoundname>mxlgs_doppler_correction_cc.h</compoundname>
+    <includes refid="api_8h" local="no">mxlgs/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">gnuradio/fxpt_nco.h</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">pthread.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">sys/socket.h</includes>
+    <includes local="no">netinet/in.h</includes>
+    <incdepgraph>
+      <node id="30">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="22">
+        <label>mxlgs/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="23">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="26">
+        <label>fstream</label>
+      </node>
+      <node id="21">
+        <label>mxlgs_doppler_correction_cc.h</label>
+        <link refid="mxlgs__doppler__correction__cc_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>pthread.h</label>
+      </node>
+      <node id="28">
+        <label>sys/types.h</label>
+      </node>
+      <node id="29">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="25">
+        <label>gnuradio/fxpt_nco.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classmxlgs__doppler__correction__cc" prot="public">mxlgs_doppler_correction_cc</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mxlgs__doppler__correction__cc_8h_1a1a79edc089b46a4d82d4d34073aac588" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> mxlgs_doppler_correction_cc_sptr</type>
+        <definition>MXLGS_API mxlgs_doppler_correction_cc_sptr mxlgs_make_doppler_correction_cc</definition>
+        <argsstring>(double sampling_freq, unsigned int port, int dir, double int_freq, long int rxfreq)</argsstring>
+        <name>mxlgs_make_doppler_correction_cc</name>
+        <param>
+          <type>double</type>
+          <declname>sampling_freq</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>int_freq</declname>
+        </param>
+        <param>
+          <type>long int</type>
+          <declname>rxfreq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="18" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libiio_tests_helper.a  CMakeFiles/iio_tests_helper.dir/iio_common.c.o CMakeFiles/iio_tests_helper.dir/gen_code.c.o
+/usr/bin/ranlib libiio_tests_helper.a

@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/code/team-papa/comms/libiio/utils/iio_common.h
+stdbool.h
+-
+stdint.h
+-
+
+/home/pi/code/team-papa/comms/libiio/utils/iio_genxml.c
+getopt.h
+-
+iio/iio.h
+-
+stdio.h
+-
+string.h
+-
+iio_common.h
+/home/pi/code/team-papa/comms/libiio/utils/iio_common.h
+
+include/iio/iio.h
+limits.h
+-
+stdint.h
+-
+stdlib.h
+-
+stddef.h
+-
+stdio.h
+-
+sys/types.h
+-
+stdbool.h
+-
+

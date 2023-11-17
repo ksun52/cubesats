@@ -1,0 +1,9 @@
+2023-11-16 11:24:38,994 [INFO] started up rtc_logger
+2023-11-16 11:24:38,994 [INFO] Starting Process to Sync RTC and Pi Time with GPS
+2023-11-16 11:24:38,995 [INFO] Listening for UBX Messages from GPS
+2023-11-16 11:24:38,996 [INFO] Trying to get GPS time
+2023-11-16 11:24:39,098 [INFO] GPS Time Received, RTC Time Set
+2023-11-16 11:24:39,164 [INFO] Received RTC Time
+2023-11-16 11:24:39,173 [INFO] Setting Pi Time
+2023-11-16 11:24:39,178 [INFO] Error Setting Pi Time: name 'subprocess' is not defined
+2023-11-16 11:24:39,184 [INFO] Pi Time Successfully Set

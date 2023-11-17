@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="mxlgs__doppler__correction__cc_8h" kind="file" language="C++">
+    <compoundname>mxlgs_doppler_correction_cc.h</compoundname>
+    <includes refid="api_8h" local="no">mxlgs/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">gnuradio/fxpt_nco.h</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">pthread.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">sys/socket.h</includes>
+    <includes local="no">netinet/in.h</includes>
+    <incdepgraph>
+      <node id="26">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="18">
+        <label>mxlgs/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="19">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="22">
+        <label>fstream</label>
+      </node>
+      <node id="17">
+        <label>/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h</label>
+        <link refid="mxlgs__doppler__correction__cc_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>pthread.h</label>
+      </node>
+      <node id="24">
+        <label>sys/types.h</label>
+      </node>
+      <node id="25">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="21">
+        <label>gnuradio/fxpt_nco.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classmxlgs__doppler__correction__cc" prot="public">mxlgs_doppler_correction_cc</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classmxlgs__doppler__correction__cc" kindref="compound">mxlgs_doppler_correction_cc</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;mxlgs_doppler_correction_cc&gt; mxlgs_doppler_correction_cc_sptr</definition>
+        <argsstring></argsstring>
+        <name>mxlgs_doppler_correction_cc_sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="17" column="1" bodyfile="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mxlgs__doppler__correction__cc_8h_1a1a79edc089b46a4d82d4d34073aac588" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref> <ref refid="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" kindref="member">mxlgs_doppler_correction_cc_sptr</ref></type>
+        <definition>MXLGS_API mxlgs_doppler_correction_cc_sptr mxlgs_make_doppler_correction_cc</definition>
+        <argsstring>(double sampling_freq, unsigned int port, int dir, double int_freq, long int rxfreq)</argsstring>
+        <name>mxlgs_make_doppler_correction_cc</name>
+        <param>
+          <type>double</type>
+          <declname>sampling_freq</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>int_freq</declname>
+        </param>
+        <param>
+          <type>long int</type>
+          <declname>rxfreq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h" line="18" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>This<sp/>block<sp/>implements<sp/>a<sp/>doppler<sp/>correction<sp/>for<sp/>gnu<sp/>radio.<sp/>It<sp/>reads<sp/>frequency<sp/>from<sp/>a<sp/>local<sp/>port<sp/>and<sp/>interfaces<sp/>with<sp/>gpredict.<sp/>It<sp/>also<sp/>sets<sp/>a<sp/>source<sp/>with<sp/>a<sp/>complex<sp/>sinewave<sp/>with<sp/>this<sp/>frequency<sp/>and<sp/>mixes<sp/>it<sp/>with<sp/>the<sp/>input.<sp/>effectively<sp/>working<sp/>as<sp/>a<sp/>doppler<sp/>shift<sp/>system<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>INCLUDED_MXLGS_DOPPLER_CORRECTION_CC_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INCLUDED_MXLGS_DOPPLER_CORRECTION_CC_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&lt;gr_core_api.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="api_8h" kindref="compound">mxlgs/api.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gnuradio/sync_block.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gnuradio/fxpt_nco.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;netinet/in.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmxlgs__doppler__correction__cc" kindref="compound">mxlgs_doppler_correction_cc</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::shared_ptr&lt;mxlgs_doppler_correction_cc&gt;<sp/><ref refid="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" kindref="member">mxlgs_doppler_correction_cc_sptr</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref><sp/><ref refid="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" kindref="member">mxlgs_doppler_correction_cc_sptr</ref><sp/><ref refid="mxlgs__doppler__correction__cc_8h_1a1a79edc089b46a4d82d4d34073aac588" kindref="member">mxlgs_make_doppler_correction_cc</ref><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sampling_freq,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>int_freq,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rxfreq);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classmxlgs__doppler__correction__cc" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref><sp/><ref refid="classmxlgs__doppler__correction__cc" kindref="compound">mxlgs_doppler_correction_cc</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>gr::sync_block</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="api_8h_1a28bbb38cfbae98f1dca24d2354847a29" kindref="member">MXLGS_API</ref><sp/><ref refid="mxlgs__doppler__correction__cc_8h_1ae81b9411de2e41c64249cc4fd0978352" kindref="member">mxlgs_doppler_correction_cc_sptr</ref><sp/><ref refid="mxlgs__doppler__correction__cc_8h_1a1a79edc089b46a4d82d4d34073aac588" kindref="member">mxlgs_make_doppler_correction_cc</ref><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sampling_freq,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>int_freq,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rxfreq);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="classmxlgs__doppler__correction__cc" kindref="compound">mxlgs_doppler_correction_cc</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sampling_freq,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dir,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>int_freq,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rxfreq);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_sampling_freq;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_int_freq;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_port;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_dir;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_local_freq;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d_doppler;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_rxfreq;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">gr::fxpt_nco<sp/>d_nco;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">pthread_t<sp/>socket_thread;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*start_thread(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*obj){</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="classmxlgs__doppler__correction__cc" kindref="compound">mxlgs_doppler_correction_cc</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(obj)-&gt;socket_thread_work();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">~<ref refid="classmxlgs__doppler__correction__cc" kindref="compound">mxlgs_doppler_correction_cc</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>socket_thread_work();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>process_command(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>work<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>noutput_items,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gr_vector_const_void_star<sp/>&amp;input_items,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gr_vector_void_star<sp/>&amp;output_items);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/pi/plutoradio/PlutoRadio/gr-mxlgs/include/mxlgs/mxlgs_doppler_correction_cc.h"/>
+  </compounddef>
+</doxygen>
