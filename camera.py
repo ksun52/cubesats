@@ -2,6 +2,7 @@ import picamera
 import time
 import datetime
 import utils
+from pathlib import Path
 
 """
 Record a 30 second video and then take a thumbnail picture
@@ -16,50 +17,55 @@ def camera_run():
 
 
     # resolution and framerate given by team mike 
-    camera = picamera.PiCamera(resolution=(1664, 1248), framerate=30.1)
+    camera = picamera.PiCamera(resolution=(4056, 3050), framerate=30.1)
+
+    LOGGER.info("Started up camera")
 
     time.sleep(2)
 
     filenum = 0
     while True:
         timestamp = time.time()
-        filenum = 1
         
+
         # capture a thumbnail - resize to smaller 
-        thumbnailfile = f"thumbnails/{filenum}_{str(int(timestamp))}.jpg"
-        camera.capture(thumbnailfile, resize=(320,240))
-        LOGGER.info("thumbnail pic captured")
+        thumbnailfile = create_media_file("thumbnails", timestamp, ".jpg")
+        camera.capture(thumbnailfile, resolution=(320,240))
+        LOGGER.info("thumbnail pic at low resolution captured")
 
         # set a full res photo for saving onto storage 
-        # full resolution: 2592×1944
-        camera.resolution = (2592, 1944)
-        fullres_file = f"fullres_pics/{filenum}_{str(int(timestamp))}.jpg"
+        camera.resolution = (4056, 3050)
+        fullres_file = create_media_file("fullres_pics", timestamp, ".jpg")
         camera.capture(fullres_file)
         LOGGER.info("full resolution pic captured")
-        camera.resolution = (1664, 1248)  # change resolution back 
 
         # NOW RECORD VIDEO
-        videofile = f"videos/{filenum}_{str(int(timestamp))}.h264"
+        videofile = create_media_file("videos", timestamp, ".h264")
         
-        camera.start_recording(videofile)
+        camera.start_recording(videofile, resolution=(1664, 1248) )
         LOGGER.info("video starting")
-        camera.wait_recording(2)
+        camera.wait_recording(10)
 
         # write status for watchdog
         with open(f'watcher/cam_watch.txt', 'w') as file:
           file.write(str(time.time()))
+        LOGGER.info("write status to watchdog 1")
 
-        camera.wait_recording(2)
-
-        # write status for watchdog
-        with open(f'watcher/cam_watch.txt', 'w') as file:
-          file.write(str(time.time()))
-
-        camera.wait_recording(2)
+        camera.wait_recording(10)
 
         # write status for watchdog
         with open(f'watcher/cam_watch.txt', 'w') as file:
           file.write(str(time.time()))
+        
+        LOGGER.info("write status to watchdog 2")
+
+        camera.wait_recording(10)
+
+        # write status for watchdog
+        with open(f'watcher/cam_watch.txt', 'w') as file:
+          file.write(str(time.time()))
+        
+        LOGGER.info("write status to watchdog 3")
 
         camera.stop_recording()
         LOGGER.info("video ending")
@@ -68,6 +74,20 @@ def camera_run():
   except Exception as e:
     LOGGER.info(f"camera error: {e}")
 
+def create_media_file(folder, timestamp, extension):
+    # ex: f"thumbnails/{str(int(timestamp))}.jpg"
+
+    filepath = Path(folder, f"{int(timestamp)}{extension}")
+    counter = 1
+
+    if not filepath.exists():
+      return f"{folder}/{timestamp}{extension}"
+
+    while filepath.exists():
+        filepath = Path(folder, f"{int(timestamp)}_{counter}" , extension)
+        counter += 1
+    
+    return f"{folder}/{timestamp}_{counter}{extension}"
 
 
 if __name__ == "__main__":

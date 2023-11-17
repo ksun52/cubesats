@@ -15,9 +15,12 @@ def main():
         
         LOGGER = utils.create_logger(logger_name="mag_logger", logfolder="mag", logfile_name=f"mag_logger_{date}")
 
+        LOGGER.info("Starting up magnetometers")
+
         # create data file 
         filename = f"all_mag_data_{date}"
         csv_file = create_mag_all_file(filename)
+        LOGGER.info("Created magnetometer data file")
 
         # Instantiate Objects
         mag_device1 = pni_rm3100.PniRm3100()
@@ -32,11 +35,13 @@ def main():
         mag_device1.write_config()
         mag_device2.write_config()
 
+        LOGGER.info("Set special magnetomer settings")
+
 
         accumulated_mag = []
         recent_mag = []
 
-        ten_second_counter = time.time() - 11
+        update_data_counter = time.time()
         thirty_second_counter = time.time()
 
 
@@ -59,16 +64,20 @@ def main():
             accumulated_mag.append(recent_mag)
             
             # TODO: change time 
-            if extract_time - ten_second_counter > 0.5:
-                ten_second_counter = extract_time
+            if extract_time - update_data_counter > 5:
+                update_data_counter = extract_time
 
                 with open("mag_data/recent_mag.csv", mode='w') as file:
                     writer = csv.writer(file)
                     writer.writerow([0 if data is None else data for data in recent_mag])
                 
+                LOGGER.info("Wrote recent results to shared file")
+                
                 # write watchdog status 
                 with open("watcher/mag_watch.txt", mode='w') as file:
                     file.write(str(time.time()))
+                
+                LOGGER.info("Updated status to watchdog")
 
             if extract_time - thirty_second_counter > 30:
                 thirty_second_counter = extract_time
@@ -76,8 +85,10 @@ def main():
                     writer = csv.writer(file)
                     for mag_dataset in accumulated_mag:
                         writer.writerow([0 if data is None else data for data in mag_dataset])
+                
+                LOGGER.info("Dumped 30 seconds of magnetometer data to data file")
 
-            time.sleep(0.027)   # 37 Hz 
+            time.sleep(0.027 - (extract_time - time.time()) % 0.027) # 37 Hz 
 
     except Exception as e:
         LOGGER.info(f"mag error: {e}")

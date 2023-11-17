@@ -17,6 +17,8 @@ def main():
 
         IMU = qwiic_icm20948.QwiicIcm20948()
         IMU.begin()
+        LOGGER.info("Starting up IMU")
+
         # set range to max 
         IMU.setFullScaleRangeAccel(qwiic_icm20948.gpm16)
         IMU.setFullScaleRangeGyro(qwiic_icm20948.dps2000)
@@ -24,15 +26,18 @@ def main():
         gyr_sensitivity = 16.4  # divide
         mag_sensitivity = 0.15  # multiply
 
+        LOGGER.info("Set special IMU settings")
+
         accumulated_imu = []
         recent_imu = []
 
-        ten_second_counter = time.time() - 11
+        update_data_counter = time.time()
         thirty_second_counter = time.time()
 
         
         filename = f"all_imu_data_{date}"
         csv_file = create_imu_all_file(filename)
+        LOGGER.info("Created IMU Data File")
 
         while True:
             get_Agmt_bytes(IMU)
@@ -53,16 +58,20 @@ def main():
             accumulated_imu.append(recent_imu)
             
             # TODO: change time 
-            if extract_time - ten_second_counter > 0.5:
-                ten_second_counter = extract_time
+            if extract_time - update_data_counter > 5:
+                update_data_counter = extract_time
 
                 with open("imu_data/recent_imu.csv", mode='w') as file:
                     writer = csv.writer(file)
                     writer.writerow([0 if data is None else data for data in recent_imu])
 
+                LOGGER.info("Wrote recent results to shared file")
+
                 # write watchdog status 
                 with open("watcher/imu_watch.txt", mode='w') as file:
                     file.write(str(time.time()))
+
+                LOGGER.info("Updated status to watchdog")
 
             if extract_time - thirty_second_counter > 30:
                 thirty_second_counter = extract_time
@@ -71,9 +80,13 @@ def main():
                     for imu_dataset in accumulated_imu:
                         writer.writerow([0 if data is None else data for data in imu_dataset])
 
-            time.sleep(0.1)
+                LOGGER.info("Dumped 30 seconds of IMU data to data file")
+
+            time.sleep(0.1 - (extract_time - time.time()) % 0.1)
+
     except Exception as e:
         LOGGER.info(f"imu error: {e}")
+
 
 def to_hex_BE(val):
     # data comes in as unsigned

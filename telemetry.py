@@ -14,208 +14,245 @@ import psutil
 import re
 
 def main():
-    # GET STARTTIME 
-    starttime = time.time()
-    value = datetime.datetime.fromtimestamp(starttime)
-    date = value.strftime('%Y-%m-%d_%H:%M:%S')
+    try:
+        # GET STARTTIME 
+        starttime = time.time()
+        value = datetime.datetime.fromtimestamp(starttime)
+        date = value.strftime('%Y-%m-%d_%H:%M:%S')
 
-    LOGGER = utils.create_logger(logger_name="telem_logger", logfolder="telem", logfile_name=f"telem_logger_{date}")
-    
-    filename = f"telemetry_{date}"
-    csv_file = create_file(filename) # returns a path to the CSV file we need to write to 
+        LOGGER = utils.create_logger(logger_name="telem_logger", logfolder="telem", logfile_name=f"telem_logger_{date}")
 
-    i = 0
-    while(True):
-        # STORE RAW DATA, BEACON REAL UNITS 
-        data_dict = {
-            "UnixTime": None,
-            "PacketCount": None,
-            "GyroX": None,
-            "GyroY": None,
-            "GyroZ": None,
-            "AccelX": None,
-            "AccelY": None,
-            "AccelZ": None,
-            "MagX": None,
-            "MagY": None,
-            "MagZ": None,
-            "BatteryTemp1": None,
-            "BatteryTemp2": None,
-            "BMETemp": None,
-            "BMEPressure": None,
-            "BMEHumidity": None,
-            "UsedRam": None,
-            "FreeMemory": None,
-            "CPULoad": None,
-            "CPUTemp": None,
-            "BattRawVoltage": None,
-            "BattRawCurrent": None,
-            "V3v3": None,
-            "I3v3": None,
-            "V5v0": None,
-            "I5v0": None,
-            "VvBatt": None,
-            "IvBatt": None,
-            "RegTemp3v3": None,
-            "RegTemp5v0": None,
-            "GPSLat": None,
-            "GPSLatNS": None,
-            "GPSLn": None,
-            "GPSLonEW": None,
-            "GPSAlt": None,
-            "GPSVelocity": None,
-            "GPSFixQual": None,
-            "Mag1X": None,
-            "Mag1Y": None,
-            "Mag1Z": None,
-            "Mag2X": None,
-            "Mag2Y": None,
-            "Mag2Z": None
-        }
-
-        # TIME
-        try: 
-            UnixTime = time.time()
-        except Exception as e:
-            UnixTime = None
-            LOGGER.info("unix time error: {e}")
-        data_dict["UnixTime"] = UnixTime
+        LOGGER.info("Starting up telemetry program")
         
-        #GET CPU TEMPERATURE (in celsius)
-        try:
-            CPUTemp = cpu_temperature()
-        except Exception as e:
-            CPUTemp = None
-            LOGGER.info(f"cpu temp error: {e}")
-        data_dict["CPUTemp"] = CPUTemp
+        filename = f"telemetry_{date}"
+        csv_file = create_file(filename) # returns a path to the CSV file we need to write to 
+        LOGGER.info("Created telemetry file")
 
-        #GET CPU LOAD (in percent)
-        try:
-            CPULoad = get_cpu_load()
-        except Exception as e:
-            CPULoad = None
-            LOGGER.info(f"cpu load error: {e}")
-        data_dict["CPULoad"] = CPULoad
+        i = 0
+        while(True):
+            LOGGER.info("NEW TELEMETRY DATA CYCLE")
+
+            # STORE RAW DATA, BEACON REAL UNITS 
+            data_dict = {
+                "UnixTime": None,
+                "PacketCount": None,
+                "GyroX": None,
+                "GyroY": None,
+                "GyroZ": None,
+                "AccelX": None,
+                "AccelY": None,
+                "AccelZ": None,
+                "MagX": None,
+                "MagY": None,
+                "MagZ": None,
+                "BatteryTemp1": None,
+                "BatteryTemp2": None,
+                "BMETemp": None,
+                "BMEPressure": None,
+                "BMEHumidity": None,
+                "UsedRam": None,
+                "FreeMemory": None,
+                "CPULoad": None,
+                "CPUTemp": None,
+                "BattRawVoltage": None,
+                "BattRawCurrent": None,
+                "V3v3": None,
+                "I3v3": None,
+                "V5v0": None,
+                "I5v0": None,
+                "VvBatt": None,
+                "IvBatt": None,
+                "RegTemp3v3": None,
+                "RegTemp5v0": None,
+                "GPSLat": None,
+                "GPSLatNS": None,
+                "GPSLn": None,
+                "GPSLonEW": None,
+                "GPSAlt": None,
+                "GPSVelocity": None,
+                "GPSFixQual": None,
+                "Mag1X": None,
+                "Mag1Y": None,
+                "Mag1Z": None,
+                "Mag2X": None,
+                "Mag2Y": None,
+                "Mag2Z": None
+            }
+
+            # TIME
+            try: 
+                UnixTime = time.time()
+                LOGGER.info("got unix time")
+            except Exception as e:
+                UnixTime = None
+                LOGGER.info("unix time error: {e}")
+            data_dict["UnixTime"] = UnixTime
+
+            
+            #GET CPU TEMPERATURE (in celsius)
+            try:
+                CPUTemp = cpu_temperature()
+            except Exception as e:
+                CPUTemp = None
+                LOGGER.info(f"cpu temp error: {e}")
+            data_dict["CPUTemp"] = CPUTemp
+
+            #GET CPU LOAD (in percent)
+            try:
+                CPULoad = get_cpu_load()
+            except Exception as e:
+                CPULoad = None
+                LOGGER.info(f"cpu load error: {e}")
+            data_dict["CPULoad"] = CPULoad
+            
+            #GET MEMORY DATA 
+            try:
+                UsedRam = mem_data()
+            except Exception as e:
+                UsedRam = None
+                LOGGER.info(f"used ram error: {e}")
+            data_dict["UsedRam"] = UsedRam
+
+            # GET STORAGE DATA
+            try:
+                FreeMemory = storage_data()
+            except Exception as e:
+                FreeMemory = None
+                LOGGER.info(f"free mem error: {e}")
+            data_dict["FreeMemory"] = FreeMemory
+
+            LOGGER.info("got CPU info")
+
+            # GET BATTERY TEMPS
+            try:
+                BatteryTemp1 = temperature.sensor_temperature(0x48)
+                LOGGER.info("got battery1 temperature info")
+            except Exception as e:
+                BatteryTemp1 = None
+                LOGGER.info(f"temp sensor 1 error: {e}")
+            try: 
+                BatteryTemp2 = temperature.sensor_temperature(0x49)
+                LOGGER.info("got battery2 temperature info")
+            except Exception as e:
+                BatteryTemp2 = None
+                LOGGER.info(f"temp sensor 2 error: {e}")
+
+            data_dict["BatteryTemp1"] = BatteryTemp1
+            data_dict["BatteryTemp2"] = BatteryTemp2
+
+            
+
+            # GET GPS DATA
+            # lat, lon, vel = gps.gpsdata()
+            # GPSLat, GPSLatNS, GPSLn, GPSLonEW, GPSAlt, GPSVelocity = [None] * 6
+            GPS_SNR = 0
+            try:
+                with open('gps_data/recent_gps.csv', 'r') as csvfile:
+                    csv_reader = csv.reader(csvfile)
+                    for row in csv_reader:
+                        lat_results = extract_gps_lat(row[1])
+                        lon_results = extract_gps_lon(row[2])
+                        data_dict["GPSLat"] = lat_results[0]
+                        data_dict["GPSLatNS"] = lat_results[1]
+                        data_dict["GPSLn"] = lon_results[0]
+                        data_dict["GPSLonEW"] = lon_results[1]
+                        data_dict["GPSAlt"] = extract_gps_alt(row[5])
+                        data_dict["GPSVelocity"] = float(row[3]) if row[3] != '' else 0
+                        data_dict["GPSFixQual"] = float(row[4]) if row[4] != '' else 0
+                        GPS_SNR = float(row[6]) if row[6] != '' else 0
+                LOGGER.info("got gps info")
+            except Exception as e:
+                LOGGER.info(f"gps data error: {e}")
+
+
+            # GET EPS DATA - pass in data_dict to add to it
+            try:
+                get_pdu_data.get_eps_dict(data_dict)
+                LOGGER.info("got eddy PDU info")
+            except Exception as e:
+                LOGGER.info(f"eddy error: {e}")
         
-        #GET MEMORY DATA 
-        try:
-            UsedRam = mem_data()
-        except Exception as e:
-            UsedRam = None
-            LOGGER.info(f"used ram error: {e}")
-        data_dict["UsedRam"] = UsedRam
 
-        # GET STORAGE DATA
-        try:
-            FreeMemory = storage_data()
-        except Exception as e:
-            FreeMemory = None
-            LOGGER.info(f"free mem error: {e}")
-        data_dict["FreeMemory"] = FreeMemory
+            # GET IMU DATA - pass in data_dict to add to it
+            # get_imu_data.get_imu_dict(data_dict)
+            try:
+                with open('imu_data/recent_imu.csv', 'r') as csvfile:
+                    csv_reader = csv.reader(csvfile)
+                    for row in csv_reader:
+                        data_dict["GyroX"] = float(row[0])
+                        data_dict["GyroY"] = float(row[1])
+                        data_dict["GyroZ"] = float(row[2])
+                        data_dict["AccelX"] = float(row[3])
+                        data_dict["AccelY"] = float(row[4])
+                        data_dict["AccelZ"] = float(row[5])
+                        data_dict["MagX"] = float(row[6])
+                        data_dict["MagY"] = float(row[7])
+                        data_dict["MagZ"] = float(row[8])
+                LOGGER.info("got imu info")
+            except Exception as e:
+                LOGGER.info(f"imu data error: {e}")
+            
 
-        # GET BATTERY TEMPS
-        try:
-            BatteryTemp1 = temperature.sensor_temperature(0x48)
-        except Exception as e:
-            BatteryTemp1 = None
-            LOGGER.info(f"temp sensor 1 error: {e}")
-        try: 
-            BatteryTemp2 = temperature.sensor_temperature(0x49)
-        except Exception as e:
-            BatteryTemp2 = None
-            LOGGER.info(f"temp sensor 2 error: {e}")
+            try:
+                with open('bme_data/recent_bme.csv', 'r') as csvfile:
+                    csv_reader = csv.reader(csvfile)
+                    for row in csv_reader:
+                        data_dict["BMETemp"] = float(row[0])
+                        data_dict["BMEPressure"] = float(row[1])
+                        data_dict["BMEHumidity"] = float(row[2])
+                LOGGER.info("got bme info")
+            except Exception as e:
+                LOGGER.info(f"bme data error: {e}")
+            
 
-        data_dict["BatteryTemp1"] = BatteryTemp1
-        data_dict["BatteryTemp2"] = BatteryTemp2
+            try:
+                with open('mag_data/recent_mag.csv', 'r') as csvfile:
+                    csv_reader = csv.reader(csvfile)
+                    for row in csv_reader:
+                        data_dict["Mag1X"] = float(row[0])
+                        data_dict["Mag1Y"] = float(row[1])
+                        data_dict["Mag1Z"] = float(row[2])
+                        data_dict["Mag2X"] = float(row[3])
+                        data_dict["Mag2Y"] = float(row[4])
+                        data_dict["Mag2Z"] = float(row[5])
 
-        # GET GPS DATA
-        # lat, lon, vel = gps.gpsdata()
-        # GPSLat, GPSLatNS, GPSLn, GPSLonEW, GPSAlt, GPSVelocity = [None] * 6
-        GPS_SNR = 0
-        try:
-            with open('gps_data/recent_gps.csv', 'r') as csvfile:
-                csv_reader = csv.reader(csvfile)
-                for row in csv_reader:
-                    lat_results = extract_gps_lat(row[1])
-                    lon_results = extract_gps_lon(row[2])
-                    data_dict["GPSLat"] = lat_results[0]
-                    data_dict["GPSLatNS"] = lat_results[1]
-                    data_dict["GPSLn"] = lon_results[0]
-                    data_dict["GPSLonEW"] = lon_results[1]
-                    data_dict["GPSAlt"] = extract_gps_alt(row[5])
-                    data_dict["GPSVelocity"] = float(row[3]) if row[3] != '' else 0
-                    data_dict["GPSFixQual"] = float(row[4]) if row[4] != '' else 0
-                    GPS_SNR = float(row[6]) if row[6] != '' else 0
+                    LOGGER.info("got magnetometer info")
+            except Exception as e:
+                LOGGER.info(f"mag data error: {e}")
 
-        except Exception as e:
-            LOGGER.info(f"gps data error: {e}")
-       
+            
+            # WRITE TO CSV 
+            write_line(data_dict, csv_file)
+            LOGGER.info("wrote data to csv")
 
-        # GET EPS DATA - pass in data_dict to add to it
-        try:
-            get_pdu_data.get_eps_dict(data_dict)
-        except Exception as e:
-            LOGGER.info(f"eddy error: {e}")
+            # ADD DATA TO BEACON EVERY 30 SECONDS 
+            # TODO: change timing
+            try:
+                if i % 1 == 0:
+                    create_beacon_data(data_dict)
+                    LOGGER.info(f"Beaconing data")
+            except Exception as e:
+                LOGGER.info(f"Error with beaconing: {e}")
 
-        # GET IMU DATA - pass in data_dict to add to it
-        # get_imu_data.get_imu_dict(data_dict)
-        try:
-            with open('imu_data/recent_imu.csv', 'r') as csvfile:
-                csv_reader = csv.reader(csvfile)
-                for row in csv_reader:
-                    data_dict["GyroX"] = float(row[0])
-                    data_dict["GyroY"] = float(row[1])
-                    data_dict["GyroZ"] = float(row[2])
-                    data_dict["AccelX"] = float(row[3])
-                    data_dict["AccelY"] = float(row[4])
-                    data_dict["AccelZ"] = float(row[5])
-                    data_dict["MagX"] = float(row[6])
-                    data_dict["MagY"] = float(row[7])
-                    data_dict["MagZ"] = float(row[8])
-        except Exception as e:
-            LOGGER.info(f"imu data error: {e}")
+            # write watchdog status
+            try:
+                with open("watcher/telem_watch.txt", mode='w') as file:
+                    file.write(str(time.time()))
 
-        try:
-            with open('bme_data/recent_bme.csv', 'r') as csvfile:
-                csv_reader = csv.reader(csvfile)
-                for row in csv_reader:
-                    data_dict["BMETemp"] = float(row[0])
-                    data_dict["BMEPressure"] = float(row[1])
-                    data_dict["BMEHumidity"] = float(row[2])
-        except Exception as e:
-            LOGGER.info(f"bme data error: {e}")
+                LOGGER.info("updated watchdog status")
+            except Exception as e:
+                LOGGER.info(f"Error with updating watchdog: {e}")
 
-        try:
-            with open('mag_data/recent_mag.csv', 'r') as csvfile:
-                csv_reader = csv.reader(csvfile)
-                for row in csv_reader:
-                    data_dict["Mag1X"] = float(row[0])
-                    data_dict["Mag1Y"] = float(row[1])
-                    data_dict["Mag1Z"] = float(row[2])
-                    data_dict["Mag2X"] = float(row[3])
-                    data_dict["Mag2Y"] = float(row[4])
-                    data_dict["Mag2Z"] = float(row[5])
-        except Exception as e:
-            LOGGER.info(f"mag data error: {e}")
-                
-        # WRITE TO CSV 
-        write_line(data_dict, csv_file)
 
-        # ADD DATA TO BEACON EVERY 30 SECONDS 
-        # TODO: change timing
-        if i % 1 == 0:
-            create_beacon_data(data_dict)
+            # data collection runs once every 10 seconds
+            # remove the time taken by code to execute 
+            #TODO change time
+            # time.sleep(10.0 - ((time.time() - starttime) % 10.0))
+            time.sleep(5.0 - ((time.time() - starttime) % 5.0))
+            i += 1 
 
-        # write watchdog status 
-        with open("watcher/telem_watch.txt", mode='w') as file:
-            file.write(str(time.time()))
-
-        # data collection runs once every 10 seconds
-        # remove the time taken by code to execute 
-        #TODO change time
-        # time.sleep(10.0 - ((time.time() - starttime) % 10.0))
-        time.sleep(1.0 - ((time.time() - starttime) % 1.0))
-        i += 1 
+    except Exception as e:
+        LOGGER.info(f"Error with telemetry: {e}")
 
 
 def write_line(data_dict, csv_file):

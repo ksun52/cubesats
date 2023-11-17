@@ -74,6 +74,7 @@ def UARTRead():
 
         LOGGER = utils.create_logger(logger_name="gps_logger", logfolder="gps", logfile_name=f"gps_logger_{date}")
 
+        LOGGER.info("Starting up GPS")
         ser = serial.Serial("/dev/ttyS0", 38400)
         gps = ublox_gps.UbloxGps(ser)
 
@@ -91,11 +92,12 @@ def UARTRead():
         accumulated_gps = []
         recent_gps = [lon, lat, speed_kmh, fix_quality, altitude, snr]
 
-        ten_second_counter = time.time() - 11
+        update_data_counter = time.time()
         thirty_second_counter = time.time()
 
         filename = f"all_gps_data_{date}"
         csv_file = create_gps_all_file(filename)
+        LOGGER.info("Created GPS data file")
 
         while True:
             NMEA = gps.stream_nmea(wait_for_nmea = False)
@@ -103,6 +105,7 @@ def UARTRead():
             extract_time = time.time()
             # pdb.set_trace()
             if NMEA == None:
+                LOGGER.info("No NMEA - wait longer")
                 time.sleep(2)
                 continue
 
@@ -119,6 +122,7 @@ def UARTRead():
                 lat = split_parts[5] + ' ' + split_parts[6] if (split_parts[5] != '' and split_parts[6] != '') else ''
                 speed_knots = float(split_parts[7]) if split_parts[7] != "" else 0
                 speed_kmh = speed_knots * 1.852  # Convert knots to km/h
+                LOGGER.info("Getting info from $GNRMC NMEA")
 
             elif NMEA.startswith('$GNGGA'):
                 gngga_string = NMEA
@@ -129,6 +133,7 @@ def UARTRead():
                 altitude = split_parts_2[9] + ' ' + split_parts_2[10] if (split_parts_2[9] != '' and split_parts_2[10] != '') else ''
 
                 # print(gngga_string)
+                LOGGER.info("Getting info from $GNGGA NMEA")
 
             elif NMEA.startswith('$GPGSV'):
                 gpgsv_string = NMEA
@@ -136,29 +141,35 @@ def UARTRead():
 
                 # Extract the required parts
                 snr = split_parts_3[7]
+                LOGGER.info("Getting info from $GPGSV NMEA")
             
             recent_gps = [extract_time, lon, lat, speed_kmh, fix_quality, altitude, snr]
             accumulated_gps.append(recent_gps)
 
             # TODO: change time 
-            if extract_time - ten_second_counter > 0.5:
-                ten_second_counter = extract_time
+            if extract_time - update_data_counter > 5:
+                update_data_counter = extract_time
 
                 with open("gps_data/recent_gps.csv", mode='w') as file:
                     writer = csv.writer(file)
                     writer.writerow(recent_gps)
 
+                LOGGER.info("Wrote recent results to shared file")
+
                 # write watchdog status 
                 with open("watcher/gps_watch.txt", mode='w') as file:
                     file.write(str(time.time()))
+                
+                LOGGER.info("Updated status to watchdog")
 
             # pdb.set_trace()
-            if extract_time - thirty_second_counter > 5:
+            if extract_time - thirty_second_counter > 30:
                 thirty_second_counter = extract_time
                 with open(csv_file, mode='a') as file:
                     writer = csv.writer(file)
                     for gps_dataset in accumulated_gps:
                         writer.writerow(gps_dataset)
+                LOGGER.info("Dumped 30 seconds of gps data to data file")
 
             time.sleep(1.5)
     except Exception as e:
