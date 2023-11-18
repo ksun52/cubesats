@@ -7,7 +7,8 @@ from SNR import distance
 from SNR import getSNR
 from pathlib import Path
 import glob
-    
+import struct
+
 def write_line(data_dict):
 
     # Specify the directory path
@@ -71,11 +72,14 @@ def createDataHexfunc(count) :
 
         # Skip rows until you reach the 32nd row
         for _ in range(31):
-            next(csv_reader)
+            try:
+                next(csv_reader)
+            except Exception as e:
+                return f"Error: {e}"
 
         # Read the 32nd through 35th rows
         rows_32_to_35 = [next(csv_reader) for _ in range(4)]
-    
+        #pdb.set_trace()
     
     # Setup the Pluto SNR stuff
     lat_sign = int(rows_32_to_35[1][0])
@@ -120,7 +124,7 @@ def createDataHexfunc(count) :
             encode_conversion_function = row['Encode Conversion Function']
             unit = row['Unit']
             comments = row['Comments']
-            example_unencoded_X = row2['Data']
+            unencoded_X = row2['Data']
             encoded_X = row['Encoded X']
 
             data_dict[title] = {
@@ -132,7 +136,7 @@ def createDataHexfunc(count) :
                 "Encoding Conversion": encode_conversion_function,
                 "Unit": unit,
                 "Comments": comments,
-                "Unencoded X": float(example_unencoded_X),
+                "Unencoded X": unencoded_X,
                 "Encoded X": 0
             }
 
@@ -162,24 +166,45 @@ def createDataHexfunc(count) :
     beacon = b''
     for outer_key, inner_dict in data_dict.items():
         #inner_dict['Unencoded X'] = apply_conversion(inner_dict['Decoding Conversion'],inner_dict['Encoded X'])
-        # print(outer_key + ": " + str(inner_dict['Unencoded X']))
-        inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
-        inner_dict['Encoded X'] = int(inner_dict['Encoded X'])
+        #print(outer_key + ": " + str(inner_dict['Unencoded X']))
+
+        #UNCOMMENT NEXT TWO
+        #inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],inner_dict['Unencoded X'])
+        #inner_dict['Encoded X'] = int(inner_dict['Encoded X'])
 
         #pdb.set_trace()
 
         if outer_key == 'Packet Count':
-            inner_dict['Encoded X'] = count.to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
-            beacon = beacon + inner_dict['Encoded X']
+            try:
+                inner_dict['Encoded X'] = count.to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+                beacon = beacon + inner_dict['Encoded X']
+            except Exception as e:
+                beacon = beacon + (0).to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+        elif outer_key == 'Gyro X' or outer_key == 'Gyro Y' or outer_key == 'Gyro Z' or outer_key == 'Accel X'or outer_key == 'Accel Y'or outer_key == 'Accel Z' or outer_key == 'Mag X' or outer_key == 'Mag Y' or outer_key == 'Mag Z' or outer_key == 'Mag1 X' or outer_key == 'Mag1 Y' or outer_key == 'Mag1 Z' or outer_key == 'Mag2 X' or outer_key == 'Mag2 Y' or outer_key == 'Mag2 Z':
+            #pdb.set_trace()
+            # First, convert from big to little endian
+            try:
+                inner_dict['Encoded X'] = bytes.fromhex(inner_dict['Unencoded X'])
+                inner_dict['Encoded X'] = inner_dict['Encoded X'][::-1]
+                beacon = beacon + inner_dict['Encoded X']
+            except Exception as e:
+                beacon = beacon + (0).to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
         else:
-            inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
-            beacon = beacon + inner_dict['Encoded X']
-
-    print(beacon)
+            try:    
+                #pdb.set_trace()
+                #print(outer_key)
+                inner_dict['Encoded X'] = apply_conversion(inner_dict['Encoding Conversion'],float(inner_dict['Unencoded X']))
+                inner_dict['Encoded X'] = int(float(inner_dict['Encoded X']))
+                inner_dict['Encoded X'] = inner_dict['Encoded X'].to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+                beacon = beacon + inner_dict['Encoded X']
+            except Exception as e:
+                beacon = beacon + (0).to_bytes(inner_dict['Size'],'little',signed=inner_dict['Signed'])
+        
+    #print(beacon)
 
     # Record the SNR to a CSV
 
 
     return beacon  
 
-createDataHexfunc(1)
+#createDataHexfunc(1)

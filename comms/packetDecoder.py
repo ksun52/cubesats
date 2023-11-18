@@ -9,12 +9,11 @@ import datetime
 from pathlib import Path
 
 def extract_bytes(hex_string):
-    # Convert the hex string to bytes
     hex_bytes = bytes.fromhex(hex_string)
-    
+        
     # Extract bytes from [byte 12, -byte 6)
     extracted_bytes = hex_bytes[11:-6]
-    
+        
     return extracted_bytes
 
 def process_txt_file(file_path):
@@ -117,6 +116,14 @@ for byte_array in result:
                     return result
                 except Exception as e:
                     return f"Error: {e}"
+            
+            def gyro_conversion(lsb):
+                # Gyro Conversion Function
+                return lsb / 16.4  # ±2000 dps
+
+            def accel_conversion(lsb):
+                # Accel Conversion Function
+                return lsb / 2048.0  # ±16 g
 
             for row in csv_reader:
                 title = row['Title']
@@ -133,6 +140,15 @@ for byte_array in result:
                 #print(encoded_X)
                 #pdb.set_trace()
 
+                # Apply specific conversion for Gyro and Accel, general conversion for others
+                if title in ["Gyro X", "Gyro Y", "Gyro Z"]:
+                    unencoded_value = gyro_conversion(int.from_bytes(encoded_X, byteorder='little', signed=is_signed))
+                elif title in ["Accel X", "Accel Y", "Accel Z"]:
+                    unencoded_value = accel_conversion(int.from_bytes(encoded_X, byteorder='little', signed=is_signed))
+                else:
+                    unencoded_value = apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed))
+
+
                 data_dict[title] = {
                     "Type": data_type,
                     "Offset": offset,
@@ -142,7 +158,8 @@ for byte_array in result:
                     "Encoding Conversion": encode_conversion_function,
                     "Unit": unit,
                     "Comments": comments,
-                    "Unencoded X": apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed)),
+                    # "Unencoded X": apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed)),
+                    "Unencoded X": unencoded_value,
                     "Encoded X": encoded_X
                 }
                 #pdb.set_trace()
@@ -163,9 +180,6 @@ for outer_key, inner_dict in image_dict.items():
 
             
 #pdb.set_trace()
-
-
-
 
 
 

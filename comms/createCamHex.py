@@ -54,7 +54,7 @@ def createCamfunc(count):
 
         # Resize the image
         # Define the new size (width and height)
-        scale_factor = 2
+        scale_factor = 1
 
         new_width = int(width/scale_factor)  # Set the new width in pixels
         new_height = int(height/scale_factor)  # Set the new height in pixels

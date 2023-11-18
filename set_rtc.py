@@ -16,7 +16,7 @@ LOGGER = utils.create_logger(logger_name="rtc_logger", logfolder="rtc", logfile_
 
 LOGGER.info("Starting Process to Sync RTC and Pi Time with GPS")
 
-port = serial.Serial('/dev/serial0', baudrate=38400, timeout=1)
+port = serial.Serial('/dev/tty1', baudrate=38400, timeout=1)
 gps = UbloxGps(port)
 LOGGER.info("Listening for UBX Messages from GPS")
 

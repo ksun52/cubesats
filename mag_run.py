@@ -59,12 +59,11 @@ def main():
             y_mag2 = to_hex_BE(mag2_readings[1])
             z_mag2 = to_hex_BE(mag2_readings[2])
             
-            recent_mag = [x_mag1, y_mag1, z_mag1, x_mag2, y_mag2, z_mag2]
-            recent_mag.insert(0, extract_time)
+            recent_mag = [extract_time, x_mag1, y_mag1, z_mag1, x_mag2, y_mag2, z_mag2]
             accumulated_mag.append(recent_mag)
             
             # TODO: change time 
-            if extract_time - update_data_counter > 5:
+            if extract_time - update_data_counter > 1:
                 update_data_counter = extract_time
 
                 with open("mag_data/recent_mag.csv", mode='w') as file:
@@ -87,6 +86,14 @@ def main():
                         writer.writerow([0 if data is None else data for data in mag_dataset])
                 
                 LOGGER.info("Dumped 30 seconds of magnetometer data to data file")
+            
+            if (time.time() - starttime > 300):
+                starttime = time.time()
+                value = datetime.datetime.fromtimestamp(starttime)
+                date = value.strftime('%Y-%m-%d_%H:%M:%S')
+                filename = f"all_mag_data_{date}"
+                csv_file = create_mag_all_file(filename)
+                LOGGER.info("Created Additional Magnetometer Data File")
 
             time.sleep(0.027 - (extract_time - time.time()) % 0.027) # 37 Hz 
 

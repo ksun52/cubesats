@@ -5,6 +5,7 @@
 
 import time
 import smbus2
+import pdb
 # from qwiic_tmp102 import QwiicTmp102Sensor
 
 """Qwiic Version"""
@@ -31,6 +32,7 @@ def sensor_temperature(desired_i2c_address):
 
     # Read temperature registers
     val = bus.read_i2c_block_data(i2c_address, reg_temp, 2)
+    # pdb.set_trace()
     # NOTE: val[0] = MSB byte 1, val [1] = LSB byte 2
     #print ("!shifted val[0] = ", bin(val[0]), "val[1] = ", bin(val[1]))
 
@@ -54,3 +56,7 @@ def twos_comp(val, bits):
     if (val & (1 << (bits - 1))) != 0:
         val = val - (1 << bits)
     return val
+
+if __name__ == "__main__":
+    print(sensor_temperature(0x4a))
+    print(sensor_temperature(0x4b))

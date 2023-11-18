@@ -45,7 +45,8 @@ def main():
 
             # get all IMU data 
             # print([IMU.gxRaw, IMU.gyRaw, IMU.gzRaw, IMU.axRaw, IMU.ayRaw, IMU.azRaw, IMU.mxRaw, IMU.myRaw, IMU.mzRaw])
-            recent_imu = [  to_hex_BE(IMU.gxRaw), 
+            recent_imu = [  extract_time,
+                            to_hex_BE(IMU.gxRaw), 
                             to_hex_BE(IMU.gyRaw), 
                             to_hex_BE(IMU.gzRaw), 
                             to_hex_BE(IMU.axRaw), 
@@ -54,11 +55,10 @@ def main():
                             to_hex_LE(IMU.mxRaw), 
                             to_hex_LE(IMU.myRaw), 
                             to_hex_LE(IMU.mzRaw)]
-            recent_imu.insert(0, extract_time)
             accumulated_imu.append(recent_imu)
             
             # TODO: change time 
-            if extract_time - update_data_counter > 5:
+            if extract_time - update_data_counter > 1:
                 update_data_counter = extract_time
 
                 with open("imu_data/recent_imu.csv", mode='w') as file:
@@ -81,6 +81,14 @@ def main():
                         writer.writerow([0 if data is None else data for data in imu_dataset])
 
                 LOGGER.info("Dumped 30 seconds of IMU data to data file")
+            
+            if (time.time() - starttime > 300):
+                starttime = time.time()
+                value = datetime.datetime.fromtimestamp(starttime)
+                date = value.strftime('%Y-%m-%d_%H:%M:%S')
+                filename = f"all_imu_data_{date}"
+                csv_file = create_imu_all_file(filename)
+                LOGGER.info("Created Additional IMU Data File")
 
             time.sleep(0.1 - (extract_time - time.time()) % 0.1)
 

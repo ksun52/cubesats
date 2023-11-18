@@ -3,7 +3,7 @@ import datetime
 import time
 from pathlib import Path
 import csv 
-
+import pdb
 import bme680
 import time
 import utils
@@ -44,18 +44,18 @@ def main():
 
         while True:
             sensor.get_sensor_data()
+            # pdb.set_trace()
             extract_time = time.time()
 
             # get all BME data 
             temp = sensor.data.temperature # celcius
-            pressure = sensor.data.pressure * 100 # mbar --> convert to Pascal 
+            pressure = sensor.data.pressure # mbar --> convert to Pascal 
             humidity = sensor.data.humidity # relative hum.
-            recent_bme = [temp, pressure, humidity]
-            recent_bme.insert(0, extract_time)
+            recent_bme = [extract_time, temp, pressure, humidity]
             accumulated_bme.append(recent_bme)
             
             # TODO: change time 
-            if extract_time - update_data_counter > 5:
+            if extract_time - update_data_counter > 1:
                 update_data_counter = extract_time
 
                 with open("bme_data/recent_bme.csv", mode='w') as file:
@@ -78,6 +78,14 @@ def main():
                         writer.writerow([0 if data is None else data for data in bme_dataset])
                 
                 LOGGER.info("Dumped 30 seconds of BME data to data file")
+            
+            if (time.time() - starttime > 600):
+                starttime = time.time()
+                value = datetime.datetime.fromtimestamp(starttime)
+                date = value.strftime('%Y-%m-%d_%H:%M:%S')
+                filename = f"all_bme_data_{date}"
+                csv_file = create_bme_all_file(filename)
+                LOGGER.info("Created Additional BME Data File")
 
             time.sleep(0.1 - (extract_time - time.time()) % 0.1)
 

@@ -75,7 +75,7 @@ def UARTRead():
         LOGGER = utils.create_logger(logger_name="gps_logger", logfolder="gps", logfile_name=f"gps_logger_{date}")
 
         LOGGER.info("Starting up GPS")
-        ser = serial.Serial("/dev/ttyS0", 38400)
+        ser = serial.Serial("/dev/tty1", 38400)
         gps = ublox_gps.UbloxGps(ser)
 
         gnrmc_string = ""
@@ -147,7 +147,7 @@ def UARTRead():
             accumulated_gps.append(recent_gps)
 
             # TODO: change time 
-            if extract_time - update_data_counter > 5:
+            if extract_time - update_data_counter > 1:
                 update_data_counter = extract_time
 
                 with open("gps_data/recent_gps.csv", mode='w') as file:
@@ -170,6 +170,14 @@ def UARTRead():
                     for gps_dataset in accumulated_gps:
                         writer.writerow(gps_dataset)
                 LOGGER.info("Dumped 30 seconds of gps data to data file")
+            
+            if (time.time() - starttime > 300):
+                starttime = time.time()
+                value = datetime.datetime.fromtimestamp(starttime)
+                date = value.strftime('%Y-%m-%d_%H:%M:%S')
+                filename = f"all_gps_data_{date}"
+                csv_file = create_gps_all_file(filename)
+                LOGGER.info("Created Additional GPS Data File")
 
             time.sleep(1.5)
     except Exception as e:

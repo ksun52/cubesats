@@ -17,7 +17,7 @@ def camera_run():
 
 
     # resolution and framerate given by team mike 
-    camera = picamera.PiCamera(resolution=(4056, 3050), framerate=30.1)
+    camera = picamera.PiCamera(resolution=(4056, 3040), framerate=30.1)
 
     LOGGER.info("Started up camera")
 
@@ -30,19 +30,21 @@ def camera_run():
 
         # capture a thumbnail - resize to smaller 
         thumbnailfile = create_media_file("thumbnails", timestamp, ".jpg")
-        camera.capture(thumbnailfile, resolution=(320,240))
+        camera.resolution=(1664, 1248)
+        camera.capture(thumbnailfile, resize=(320,240))
         LOGGER.info("thumbnail pic at low resolution captured")
 
         # set a full res photo for saving onto storage 
-        camera.resolution = (4056, 3050)
-        fullres_file = create_media_file("fullres_pics", timestamp, ".jpg")
-        camera.capture(fullres_file)
-        LOGGER.info("full resolution pic captured")
+        
+        # fullres_file = create_media_file("fullres_pics", timestamp, ".jpg")
+        # camera.resolution=(4056, 3040)
+        # camera.capture(fullres_file)
+        # LOGGER.info("full resolution pic captured")
 
         # NOW RECORD VIDEO
         videofile = create_media_file("videos", timestamp, ".h264")
-        
-        camera.start_recording(videofile, resolution=(1664, 1248) )
+        camera.resolution=(1920, 1080)
+        camera.start_recording(videofile)
         LOGGER.info("video starting")
         camera.wait_recording(10)
 
@@ -89,6 +91,21 @@ def create_media_file(folder, timestamp, extension):
     
     return f"{folder}/{timestamp}_{counter}{extension}"
 
+def take_thumbnail():
+  starttime = time.time()
+  value = datetime.datetime.fromtimestamp(starttime)
+  date = value.strftime('%Y-%m-%d_%H:%M:%S')
+  camera = picamera.PiCamera(resolution=(4056, 3040), framerate=30.1)
+
+  # capture a thumbnail - resize to smaller 
+  thumbnailfile = create_media_file("fullres_pics", starttime, ".jpg")
+  # camera.resolution=(1664, 1248)
+  camera.capture(thumbnailfile)
+
+    
+        
+
 
 if __name__ == "__main__":
   camera_run()
+  # take_thumbnail()

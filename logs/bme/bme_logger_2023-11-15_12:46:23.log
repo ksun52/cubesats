@@ -1,2 +1,0 @@
-2023-11-15 12:46:23,674 [INFO] started up bme_logger
-2023-11-15 12:46:23,676 [INFO] bme error: Unable to identify BME680 at 0x77 (IOError)

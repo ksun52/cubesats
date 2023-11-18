@@ -1,8 +1,0 @@
-2023-11-16 11:28:10,589 [INFO] started up rtc_logger
-2023-11-16 11:28:10,589 [INFO] Starting Process to Sync RTC and Pi Time with GPS
-2023-11-16 11:28:10,591 [INFO] Listening for UBX Messages from GPS
-2023-11-16 11:28:10,591 [INFO] Trying to get GPS time
-2023-11-16 11:28:11,095 [INFO] GPS Time Received, RTC Time Set
-2023-11-16 11:28:11,132 [INFO] Received RTC Time
-2023-11-16 11:28:11,141 [INFO] Setting Pi Time
-2023-11-16 11:28:11,216 [INFO] Pi Time Successfully Set
