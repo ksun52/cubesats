@@ -30,21 +30,21 @@ def camera_run():
 
         # capture a thumbnail - resize to smaller 
         thumbnailfile = create_media_file("thumbnails", timestamp, ".jpg")
-        camera.resolution=(1664, 1248)
+        # camera.resolution=(1664, 1248)
         camera.capture(thumbnailfile, resize=(320,240))
         LOGGER.info("thumbnail pic at low resolution captured")
 
         # set a full res photo for saving onto storage 
         
-        # fullres_file = create_media_file("fullres_pics", timestamp, ".jpg")
+        fullres_file = create_media_file("fullres_pics", timestamp, ".jpg")
         # camera.resolution=(4056, 3040)
-        # camera.capture(fullres_file)
-        # LOGGER.info("full resolution pic captured")
+        camera.capture(fullres_file)
+        LOGGER.info("full resolution pic captured")
 
         # NOW RECORD VIDEO
         videofile = create_media_file("videos", timestamp, ".h264")
-        camera.resolution=(1920, 1080)
-        camera.start_recording(videofile)
+        # camera.resolution=(1920, 1080)
+        camera.start_recording(videofile, resize=(1920,1080))
         LOGGER.info("video starting")
         camera.wait_recording(10)
 

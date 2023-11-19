@@ -96,7 +96,7 @@ def watch_programs():
             LOGGER.info(f"error checking restart status: {e}")
             pdb.set_trace()
 	
-	try:
+        try:
             altitude = 0
             pressure, temp = read_bme(LOGGER)
             if (pressure != -404):
@@ -113,7 +113,7 @@ def watch_programs():
                 if mode == "landed":
                     LOGGER.info("Altitude above 400m. Exiting landed mode.")
                     mode = "flight"
-         except Exception as e:
+        except Exception as e:
             LOGGER.info(f"error with altitude stuff: {e}")
 
         time.sleep((10 - (time.time() - starttime)) % 10)
