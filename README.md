@@ -1,92 +1,59 @@
-# team-papa
+# Project Overview
+
+This repository contains the flight‑qualified Python software that flew on a 3U CubeSat balloon payload. Each program runs as an independent Linux process on a Raspberry Pi and is coordinated through a dual‑watchdog scheme and an on‑disk message bus. Together these programs perform command & data handling (CDH), sensor polling, telemetry generation, image capture and S‑band radio downlink using an ADALM‑Pluto SDR. 
+
+The core processes are: 
+- Watchdog 1
+- Watchdog 2 
+- Radio communication program 
+- Telemetry program 
+- IMU sensor manager
+- BME sensor manager 
+- Magnetometer sensor manager
+- GPS manager 
+- Camera manager 
+
+These programs run independently on each other since sensor data collection operates on various frequencies and programs cannot wait for each other's cyle times. 
+
+# Core Processes and Features
+
+## Watchdog 2 -> Watchdog 1 Bootstrap Chain
+- `watchdog2.py` is auto-started via `crontab @reboot` on the Raspberry Pi. It spawns `watchdog.py` (Watchdog 1) and checks its heartbeat every 30 seconds. Heartbeats are monitored via text files in `watcher` where monitored processes post their heartbeat times.
+- Watchdog 1 launches every other flight process, then loops every 30 seconds to restart any task whose heartbeat text file hasn’t updated in the last 30 seconds.  It also publishes its own heartbeat for Watchdog 2.
+- Altitude monitoring: when the reported altitude falls below a configurable threshold for > 30 min, the watchdog commands a landing mode that powers down non‑essential payloads to conserve battery.
+
+## Telemetry Daemon (`telemetry.py`)
+- Polls CPU metrics, TMP102 temperature sensors, EddyPDU volt/current every 10 seconds. Combines these metrics with the shared data from independent magnetometer, IMU, BME, GPS sensor programs to create a set of teleemtry data to be downlinked by the communication program. 
+- Writes a new telemetry data CSV every 30 min to reduce file‑handle risk and bound RAM growth.
+
+## Communications Service (`comms`)
+- Packages telemetry or image fragments into RAP/DAP protocol packets and transmits them to the ground station through the Pluto SDR at a configurable rate.
+- Achieved a 40 % end‑to‑end success rate (2126 beacons) during flight despite the antenna shearing off at landing. 
+
+## Sensor Daemons
+- The sensors and their corresponding manager programs are 
+    - Inertial measurement units (IMU) — `imu_run.py`
+    - Barometrc Pressure, Moisture and Environmental sensors (BME) — `bme_run.py`
+    - GPS - `gps_run.py`
+- Each sensor file follows the same template: 
+    - Open a fresh data CSV every 30 min (timestamp‑based, with collision avoidance).
+    - Read the device, append to an in‑memory list, and update a latest share‑file for Telemetry.
+    - Flush the list to disk via csv file every 30 seconds.
+    - Send out a heartbeat every 10 seconds for the watchdog.
+
+## Camera Service (`camera.py`)
+
+- Cycles every ~45 seconds: capture a 320 × 240 thumbnail, a full‑res 4056 × 3040 photo, then a 30 second video (split into 3 × 10 second chunks).
+- Thumbnails are queued for downlink; full‑res media is stored locally for post‑flight analysis.
+- Heartbeats between video chunks guarantee the watchdog won’t reset the camera mid‑recording.
 
 
+# Startup Sequence
 
-## Getting started
+1. Boot → crontab launches watchdog2.py.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+2. Watchdog 2 → Watchdog 1 → all subsystems.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+3. Subsystems write heartbeats & data; watchdogs ensure programs can recover after failure. 
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.eecs.umich.edu/cubesat-flight-lab-class/team-papa.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.eecs.umich.edu/cubesat-flight-lab-class/team-papa/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+4. Upon landing detection, non‑essential tasks (camera, high‑rate sensors) are halted to conserve battery while comms & GPS stay alive for recovery.
