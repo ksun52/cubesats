@@ -44,11 +44,11 @@ class File:
 def reconstructImage(file, filenum, full_image):
     
     if full_image == True:
-        with open('/home/pi/team-papa/comms/transmitted_thumbnails/reconstructed_image_FULL'+str(filenum)+'.jpg','wb') as image_file:
+        with open('/Users/kevin/Desktop/CubeSats/CODE/team-papa/comms/transmitted_thumbnails/reconstructed_image_FULL'+str(filenum)+'.jpg','wb') as image_file:
             byte_array = b''.join(file.all_file_parts)
             image_file.write(byte_array)
     else:
-        with open('/home/pi/team-papa/comms/transmitted_thumbnails/reconstructed_image_INCOMPLETE'+str(filenum)+'.jpg','wb') as image_file:
+        with open('/Users/kevin/Desktop/CubeSats/CODE/team-papa/comms/transmitted_thumbnails/reconstructed_image_INCOMPLETE'+str(filenum)+'.jpg','wb') as image_file:
             byte_array = b''.join(file.all_file_parts)
             image_file.write(byte_array)
 
@@ -104,72 +104,73 @@ for byte_array in result:
             #print(len(image_dict[str(file_num)]['file'].all_file_parts))
     # Otherwise, we have telemetry data
     else:
-        data_dict = {}        
+        print("")
+        # data_dict = {}        
 
-        with open('/home/pi/team-papa/comms/CFL_beacon_def.csv', 'r') as csv_file:
-            csv_reader = csv.DictReader(csv_file)
+        # with open('/home/pi/team-papa/comms/CFL_beacon_def.csv', 'r') as csv_file:
+        #     csv_reader = csv.DictReader(csv_file)
 
-            # Function to actually do the conversion function
-            def apply_conversion(expression, X):
-                try:
-                    result = eval(expression, {'X': X})
-                    return result
-                except Exception as e:
-                    return f"Error: {e}"
+        #     # Function to actually do the conversion function
+        #     def apply_conversion(expression, X):
+        #         try:
+        #             result = eval(expression, {'X': X})
+        #             return result
+        #         except Exception as e:
+        #             return f"Error: {e}"
             
-            def gyro_conversion(lsb):
-                # Gyro Conversion Function
-                return lsb / 16.4  # ±2000 dps
+        #     def gyro_conversion(lsb):
+        #         # Gyro Conversion Function
+        #         return lsb / 16.4  # ±2000 dps
 
-            def accel_conversion(lsb):
-                # Accel Conversion Function
-                return lsb / 2048.0  # ±16 g
+        #     def accel_conversion(lsb):
+        #         # Accel Conversion Function
+        #         return lsb / 2048.0  # ±16 g
 
-            for row in csv_reader:
-                title = row['Title']
-                data_type = row['Data Type']
-                offset = row['Offset']
-                size = row['Size']
-                is_signed = True if int(row['Signed'])==1 else False
-                decode_conversion_function = row['Decode Conversion Function']
-                encode_conversion_function = row['Encode Conversion Function']
-                unit = row['Unit']
-                comments = row['Comments']
-                encoded_X = byte_array[int(offset):int(offset)+int(size)]
+        #     for row in csv_reader:
+        #         title = row['Title']
+        #         data_type = row['Data Type']
+        #         offset = row['Offset']
+        #         size = row['Size']
+        #         is_signed = True if int(row['Signed'])==1 else False
+        #         decode_conversion_function = row['Decode Conversion Function']
+        #         encode_conversion_function = row['Encode Conversion Function']
+        #         unit = row['Unit']
+        #         comments = row['Comments']
+        #         encoded_X = byte_array[int(offset):int(offset)+int(size)]
 
-                #print(encoded_X)
-                #pdb.set_trace()
+        #         #print(encoded_X)
+        #         #pdb.set_trace()
 
-                # Apply specific conversion for Gyro and Accel, general conversion for others
-                if title in ["Gyro X", "Gyro Y", "Gyro Z"]:
-                    unencoded_value = gyro_conversion(int.from_bytes(encoded_X, byteorder='little', signed=is_signed))
-                elif title in ["Accel X", "Accel Y", "Accel Z"]:
-                    unencoded_value = accel_conversion(int.from_bytes(encoded_X, byteorder='little', signed=is_signed))
-                else:
-                    unencoded_value = apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed))
+        #         # Apply specific conversion for Gyro and Accel, general conversion for others
+        #         if title in ["Gyro X", "Gyro Y", "Gyro Z"]:
+        #             unencoded_value = gyro_conversion(int.from_bytes(encoded_X, byteorder='little', signed=is_signed))
+        #         elif title in ["Accel X", "Accel Y", "Accel Z"]:
+        #             unencoded_value = accel_conversion(int.from_bytes(encoded_X, byteorder='little', signed=is_signed))
+        #         else:
+        #             unencoded_value = apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed))
 
 
-                data_dict[title] = {
-                    "Type": data_type,
-                    "Offset": offset,
-                    "Size": int(size),
-                    "Signed": is_signed,
-                    "Decoding Conversion": decode_conversion_function,
-                    "Encoding Conversion": encode_conversion_function,
-                    "Unit": unit,
-                    "Comments": comments,
-                    # "Unencoded X": apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed)),
-                    "Unencoded X": unencoded_value,
-                    "Encoded X": encoded_X
-                }
-                #pdb.set_trace()
-        unencoded_x_values = {key: entry["Unencoded X"] for key, entry in data_dict.items() if "Unencoded X" in entry}    
+        #         data_dict[title] = {
+        #             "Type": data_type,
+        #             "Offset": offset,
+        #             "Size": int(size),
+        #             "Signed": is_signed,
+        #             "Decoding Conversion": decode_conversion_function,
+        #             "Encoding Conversion": encode_conversion_function,
+        #             "Unit": unit,
+        #             "Comments": comments,
+        #             # "Unencoded X": apply_conversion(decode_conversion_function,int.from_bytes(encoded_X,byteorder='little',signed=is_signed)),
+        #             "Unencoded X": unencoded_value,
+        #             "Encoded X": encoded_X
+        #         }
+        #         #pdb.set_trace()
+        # unencoded_x_values = {key: entry["Unencoded X"] for key, entry in data_dict.items() if "Unencoded X" in entry}    
 
-        # WRITE TO CSV 
-        csv_file2 = Path("transmitted_telem", "unencoded_telem.csv")
-        write_line(unencoded_x_values, csv_file2)
+        # # WRITE TO CSV 
+        # csv_file2 = Path("transmitted_telem", "unencoded_telem.csv")
+        # write_line(unencoded_x_values, csv_file2)
                 
-        #pdb.set_trace()
+        # #pdb.set_trace()
 
 # Finally, go through all files in dictionary, and if we have any complete files, run reconstruct method and save down thumbnails
 for outer_key, inner_dict in image_dict.items():
